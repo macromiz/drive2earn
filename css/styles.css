@@ -9,6 +9,8 @@
   --light-text: #adb5bd;
   --featured-color: #F9CD6F;
   --popular-color: #4895ef;
+  --positive-color: #2ecc71;
+  --negative-color: #e74c3c;
 }
 
 body {
@@ -278,22 +280,31 @@ button.search-btn:hover {
   text-overflow: ellipsis;
 }
 
-.project-cost {
-  margin-bottom: 1.5rem;
+.project-cost, .token-price {
+  margin: 1rem 0;
 }
 
-.project-cost h4 {
+.project-cost h4, .token-price h4 {
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   color: var(--light-text);
-  margin-bottom: 0.3rem;
+  margin: 0 0 0.25rem 0;
 }
 
-.project-cost p {
-  font-size: 0.95rem;
+.project-cost p, .token-price p {
   margin: 0;
+  font-size: 0.95rem;
+}
+
+.positive-change {
+  color: var(--positive-color);
+  font-weight: 500;
+}
+
+.negative-change {
+  color: var(--negative-color);
+  font-weight: 500;
 }
 
 .project-rating {

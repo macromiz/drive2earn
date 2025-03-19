@@ -20,7 +20,17 @@ async function handleRequest(request) {
   try {
     // Get token IDs from query parameters
     const url = new URL(request.url)
-    const tokenIds = url.searchParams.get('ids') || 'bitcoin,ethereum'
+    const tokenIds = url.searchParams.get('ids') || ''
+    
+    // If no token IDs are provided, return an empty response
+    if (!tokenIds) {
+      return new Response(JSON.stringify({}), {
+        headers: {
+          ...corsHeaders,
+          'Content-Type': 'application/json'
+        }
+      })
+    }
     
     console.log('Fetching prices for tokens:', tokenIds)
 
@@ -76,9 +86,18 @@ async function handleRequest(request) {
   } catch (error) {
     console.error('Error in worker:', error)
     
-    // Return a fallback response with dummy data instead of error
+    // Return a fallback response with empty data instead of dummy data
     const tokenIds = new URL(request.url).searchParams.get('ids')
-    const tokens = tokenIds ? tokenIds.split(',') : ['bitcoin', 'ethereum']
+    if (!tokenIds) {
+      return new Response(JSON.stringify({}), {
+        headers: {
+          ...corsHeaders,
+          'Content-Type': 'application/json'
+        }
+      })
+    }
+    
+    const tokens = tokenIds.split(',')
     const dummyData = {}
     
     tokens.forEach(token => {

@@ -51,6 +51,20 @@ function displayProjects(projects) {
             }
         }
         
+        // Create token price display if available
+        let tokenPriceHTML = '';
+        if (project.tokenId && project.tokenPrice) {
+            const priceChangeClass = project.tokenChange >= 0 ? 'positive-change' : 'negative-change';
+            const changeSymbol = project.tokenChange >= 0 ? '+' : '';
+            
+            tokenPriceHTML = `
+                <div class="token-price">
+                    <h4>Token Price</h4>
+                    <p>$${project.tokenPrice.toFixed(4)} <span class="${priceChangeClass}">${changeSymbol}${project.tokenChange.toFixed(2)}%</span></p>
+                </div>
+            `;
+        }
+        
         // Create HTML for project card with animation delay for staggered appearance
         const delay = index * 0.05;
         const projectCard = document.createElement('div');
@@ -72,6 +86,8 @@ function displayProjects(projects) {
                 <h4>Cost to Start</h4>
                 <p>${project.cost || 'Contact for pricing'}</p>
             </div>
+            
+            ${tokenPriceHTML}
             
             <div class="project-rating">
                 <span class="rating-value">${project.rating || '4.0'}</span>

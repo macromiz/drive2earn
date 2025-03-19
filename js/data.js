@@ -13,7 +13,8 @@ window.projects = [
         website: "https://natix.network/",
         rating: 4.8,
         logo: "natix.png",
-        featured: false
+        featured: false,
+        tokenId: "natix"
     },
     {
         name: "MapMetrics",
@@ -24,7 +25,8 @@ window.projects = [
         website: "https://mapmetrics.org/",
         rating: 4.5,
         logo: "mapmetrics.png",
-        featured: false
+        featured: false,
+        tokenId: "mapmetrics"
     },
     {
         name: "DIMO",
@@ -35,7 +37,8 @@ window.projects = [
         website: "https://dimo.zone/",
         rating: 4.6,
         logo: "dimo.png",
-        featured: false
+        featured: false,
+        tokenId: "dimo"
     },
     {
         name: "Hivemapper",
@@ -46,7 +49,8 @@ window.projects = [
         website: "https://hivemapper.com/",
         rating: 4.7,
         logo: "hivemapper.png",
-        featured: false
+        featured: false,
+        tokenId: "hivemapper"
     },
     {
         name: "Dovu",
@@ -176,8 +180,12 @@ function fetchTokenPrices() {
             // Update projects with token prices
             window.projects.forEach(project => {
                 if (project.tokenId && data[project.tokenId]) {
-                    project.tokenPrice = data[project.tokenId].price;
-                    project.tokenChange = data[project.tokenId].change;
+                    project.tokenPrice = data[project.tokenId].usd;
+                    project.tokenChange = data[project.tokenId].usd_24h_change;
+                } else if (project.tokenId) {
+                    // If token data is not available, remove any previous price data
+                    delete project.tokenPrice;
+                    delete project.tokenChange;
                 }
             });
             
