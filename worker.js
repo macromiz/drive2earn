@@ -22,46 +22,8 @@ async function handleRequest(request) {
     const url = new URL(request.url)
     console.log('Request URL:', request.url);
     
-    // Handle website serving for root path
-    if (url.pathname === "/" || url.pathname === "") {
-      // Serve the index.html file
-      return fetch("https://raw.githubusercontent.com/macromiz/drive2earn/main/index.html")
-        .then(response => {
-          return new Response(response.body, {
-            headers: {
-              "Content-Type": "text/html;charset=UTF-8"
-            }
-          });
-        });
-    }
-    
-    // Handle static assets (CSS, JS files)
-    if (url.pathname.endsWith('.css')) {
-      const cssPath = url.pathname.substring(1); // Remove leading slash
-      return fetch(`https://raw.githubusercontent.com/macromiz/drive2earn/main/${cssPath}`)
-        .then(response => {
-          return new Response(response.body, {
-            headers: {
-              "Content-Type": "text/css"
-            }
-          });
-        });
-    }
-    
-    if (url.pathname.endsWith('.js')) {
-      const jsPath = url.pathname.substring(1); // Remove leading slash
-      return fetch(`https://raw.githubusercontent.com/macromiz/drive2earn/main/${jsPath}`)
-        .then(response => {
-          return new Response(response.body, {
-            headers: {
-              "Content-Type": "application/javascript"
-            }
-          });
-        });
-    }
-    
     // Handle token price API requests
-    if (url.pathname === "/token-prices") {
+    if (url.pathname === "/token-prices" || url.pathname.startsWith("/token-prices")) {
       const tokenIds = url.searchParams.get('ids') || ''
       console.log('Token IDs from request:', tokenIds);
       
@@ -132,15 +94,15 @@ async function handleRequest(request) {
       return responseToCache
     }
     
-    // Fallback for unknown routes
-    return new Response('Not found', { status: 404 })
+    // For all other requests, return a redirect to the GitHub Pages site
+    return Response.redirect('https://macromiz.github.io/drive2earn/', 302);
 
   } catch (error) {
     console.error('Error in worker:', error)
     
     // Check if this was a token price request
     const url = new URL(request.url)
-    if (url.pathname === "/token-prices") {
+    if (url.pathname === "/token-prices" || url.pathname.startsWith("/token-prices")) {
       const tokenIds = url.searchParams.get('ids')
       if (!tokenIds) {
         return new Response(JSON.stringify({}), {
@@ -170,6 +132,6 @@ async function handleRequest(request) {
     }
     
     // General error response
-    return new Response('Error processing request', { status: 500 })
+    return Response.redirect('https://macromiz.github.io/drive2earn/', 302);
   }
 }
