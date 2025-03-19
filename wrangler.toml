@@ -7,9 +7,3 @@ compatibility_date = "2024-03-19"
 # Use Cloudflare Pages deployment settings
 [build]
 command = ""  # No build command needed for static files
-
-[site]
-bucket = "."    # The directory containing your static files
-
-[deploy]
-mode = "directory"  # Deploy as a directory of static files
