@@ -94,8 +94,55 @@ async function handleRequest(request) {
       return responseToCache
     }
     
-    // For all other requests, return a redirect to the GitHub Pages site
-    return Response.redirect('https://macromiz.github.io/drive2earn/', 302);
+    // For all other requests, proxy the content from GitHub Pages instead of redirecting
+    let githubUrl = 'https://macromiz.github.io/drive2earn'
+    
+    // Handle root path
+    if (url.pathname === '/' || url.pathname === '') {
+      githubUrl = 'https://macromiz.github.io/drive2earn/';
+    } else {
+      // Add the path to the GitHub URL
+      githubUrl = `https://macromiz.github.io/drive2earn${url.pathname}`;
+    }
+    
+    // Forward query parameters
+    if (url.search) {
+      githubUrl += url.search;
+    }
+    
+    console.log('Proxying content from:', githubUrl);
+    
+    // Fetch the content from GitHub Pages
+    const response = await fetch(githubUrl);
+    
+    // Create appropriate Content-Type header based on the file extension
+    let contentType = 'text/html';
+    
+    if (url.pathname.endsWith('.css')) {
+      contentType = 'text/css';
+    } else if (url.pathname.endsWith('.js')) {
+      contentType = 'application/javascript';
+    } else if (url.pathname.endsWith('.png')) {
+      contentType = 'image/png';
+    } else if (url.pathname.endsWith('.jpg') || url.pathname.endsWith('.jpeg')) {
+      contentType = 'image/jpeg';
+    } else if (url.pathname.endsWith('.gif')) {
+      contentType = 'image/gif';
+    } else if (url.pathname.endsWith('.svg')) {
+      contentType = 'image/svg+xml';
+    } else if (url.pathname.endsWith('.json')) {
+      contentType = 'application/json';
+    }
+    
+    // Create a new response with the GitHub Pages content but with our custom headers
+    const responseBody = await response.text();
+    
+    return new Response(responseBody, {
+      headers: {
+        'Content-Type': contentType + '; charset=UTF-8',
+        'Cache-Control': 'public, max-age=3600' // Cache for 1 hour
+      }
+    });
 
   } catch (error) {
     console.error('Error in worker:', error)
@@ -131,7 +178,10 @@ async function handleRequest(request) {
       })
     }
     
-    // General error response
-    return Response.redirect('https://macromiz.github.io/drive2earn/', 302);
+    // General error response for website
+    return new Response('Error loading content. Please try again later.', {
+      status: 500,
+      headers: { 'Content-Type': 'text/html' }
+    });
   }
 }
