@@ -1,12 +1,11 @@
 name = "drive2earn"
-main = "worker.js"
 compatibility_date = "2024-03-19"
 
-routes = [
-  { pattern = "drive2earn.digitalnomads.workers.dev/token-prices*", zone_name = "digitalnomads.workers.dev" }
-]
+# We're only tracking website files in Git, not the worker itself
+# The worker is managed directly on Cloudflare
+
+[site]
+bucket = "./"
 
 [build]
-command = ""
-[build.upload]
-format = "service-worker"
+command = "echo 'Deploying website files only'"
