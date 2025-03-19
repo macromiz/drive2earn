@@ -1,18 +1,22 @@
 // Filter and search functionality
 function filterProjects() {
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const regionFilter = document.getElementById('regionFilter');
+    
     const searchTerm = searchInput.value.toLowerCase();
     const selectedCategory = categoryFilter.value;
     const selectedRegion = regionFilter.value;
     
     // Get active tags if any
     const activeTags = Array.from(document.querySelectorAll('.tag.active')).map(tag => 
-        tag.querySelector('span').textContent.toLowerCase()
+        tag.getAttribute('data-filter').toLowerCase()
     );
 
     const filteredProjects = window.projects.filter(project => {
         const matchesSearch = searchTerm === '' || 
                             project.name.toLowerCase().includes(searchTerm) ||
-                            project.description.toLowerCase().includes(searchTerm);
+                            (project.description && project.description.toLowerCase().includes(searchTerm));
         
         const matchesCategory = selectedCategory === '' || 
                               (Array.isArray(project.category) && project.category.includes(selectedCategory));
@@ -23,10 +27,10 @@ function filterProjects() {
         // Match any active tags
         const matchesTags = activeTags.length === 0 || 
                           activeTags.some(tag => {
-                              if (tag === 'earn by driving') {
-                                  return project.category.includes('app') || project.category.includes('device');
-                              } else if (tag === 'low startup cost') {
-                                  return project.cost && (project.cost.includes('Free') || project.cost.includes('free'));
+                              if (tag === 'app') {
+                                  return project.category.includes('app');
+                              } else if (tag === 'hardware') {
+                                  return project.category.includes('device');
                               }
                               return false;
                           });
@@ -75,9 +79,9 @@ function initSearchAndFilters() {
     if (clearAllButton) {
         clearAllButton.addEventListener('click', function() {
             filterTags.forEach(tag => tag.classList.remove('active'));
-            searchInput.value = '';
-            categoryFilter.value = '';
-            regionFilter.value = '';
+            if (searchInput) searchInput.value = '';
+            if (categoryFilter) categoryFilter.value = '';
+            if (regionFilter) regionFilter.value = '';
             filterProjects();
         });
     }
@@ -85,10 +89,14 @@ function initSearchAndFilters() {
 
 // Call this on DOM content loaded
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Initializing search and filters');
     initSearchAndFilters();
     
     // Initial display of all projects
     if (window.projects && window.projects.length > 0) {
+        console.log('Displaying projects:', window.projects.length);
         displayProjects(window.projects);
+    } else {
+        console.error('No projects found or projects not loaded');
     }
 }); 

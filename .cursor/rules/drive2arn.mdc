@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+If we're making changes in code, automatically push them to GitHub repository.
