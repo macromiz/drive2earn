@@ -90,17 +90,6 @@ function displayProjects(projects) {
             logoUrl = 'https://www.carro.sg/favicon.ico';
         }
         
-        // Format regions
-        let regionText = '';
-        if (project.region.includes('global')) {
-            regionText = '<span><i class="fas fa-globe-americas"></i> global</span>';
-        } else if (project.region.includes('north-america')) {
-            regionText = '<span><i class="fas fa-map-marker-alt"></i> north-america</span>';
-            if (project.region.includes('europe')) {
-                regionText += ' <span><i class="fas fa-map-marker-alt"></i> europe</span>';
-            }
-        }
-        
         // Create token price display if available
         let tokenPriceHTML = '';
         if (project.tokenPrice) {
@@ -127,6 +116,20 @@ function displayProjects(projects) {
             `;
         }
         
+        // Extract hardware cost from project.cost
+        let hardwareCost = null;
+        if (project.cost) {
+            const costText = project.cost.toLowerCase();
+            if (costText.includes('$')) {
+                // Find the cost in the string using regex
+                const costRegex = /\$\d+(?:-\d+)?/g;
+                const matches = project.cost.match(costRegex);
+                if (matches && matches.length > 0) {
+                    hardwareCost = matches[0];
+                }
+            }
+        }
+        
         // Generate project tags
         let tagsHTML = '<div class="project-tags">';
         
@@ -141,9 +144,14 @@ function displayProjects(projects) {
             tagsHTML += `<span class="project-tag"><i class="fas fa-chart-line"></i>Passive</span>`;
         }
         
-        // Additional tags based on project features
+        // Add cost tag
         if (project.cost && project.cost.toLowerCase().includes('free')) {
             tagsHTML += `<span class="project-tag"><i class="fas fa-hand-holding-usd"></i>Free</span>`;
+        }
+        
+        // Add hardware cost tag if available
+        if (hardwareCost) {
+            tagsHTML += `<span class="project-tag"><i class="fas fa-tag"></i>${hardwareCost}</span>`;
         }
         
         // Add region as a tag
@@ -178,7 +186,7 @@ function displayProjects(projects) {
         // Use company logo if available, otherwise use icon
         const logoHTML = logoUrl ? 
             `<div class="project-logo">
-                <img src="${logoUrl}" alt="${project.name} logo" onerror="this.onerror=null;this.src='https://placehold.co/64x64/4cc9f0/white?text=${project.name.charAt(0)}';this.style.padding='10px';">
+                <img src="${logoUrl}" alt="${project.name} logo" onerror="this.onerror=null;this.src=null;this.parentNode.innerHTML='<i class=\\\"fas ${project.category.includes('app') ? 'fa-mobile-alt' : 'fa-car'}\\\"></i>';">
             </div>` : 
             `<div class="project-icon">
                 <i class="fas ${project.category.includes('app') ? 'fa-mobile-alt' : 'fa-car'}"></i>
@@ -188,17 +196,9 @@ function displayProjects(projects) {
             <div class="project-badge ${isFeatured ? 'featured-badge' : 'regular-badge'}">${badgeText}</div>
             ${logoHTML}
             <h3 class="project-name">${project.name}</h3>
-            <div class="project-regions">
-                ${regionText}
-            </div>
             <p class="project-description">${project.description || ''}</p>
             
             ${tagsHTML}
-            
-            <div class="project-cost">
-                <h4>COST TO START</h4>
-                <p>${project.cost || 'Contact for pricing'}</p>
-            </div>
             
             ${tokenPriceHTML}
             
@@ -217,7 +217,7 @@ function displayProjects(projects) {
         heroBanner.innerHTML = `
             <div class="container">
                 <h1>Turn Your Vehicle Data Into Passive Income</h1>
-                <p>Discover the best ways to earn cryptocurrency while driving</p>
+                <p>Discover the best ways to earn while driving</p>
             </div>
         `;
         
