@@ -171,8 +171,11 @@ function fetchTokenPrices() {
         return;
     }
     
-    // Use worker.js to fetch prices
-    fetch('/token-prices?ids=' + tokenIds.join(','))
+    // Log the token IDs being requested
+    console.log("Requesting token prices for:", tokenIds.join(','));
+    
+    // Use worker.js to fetch prices with full URL
+    fetch('https://drive2earn.io/token-prices?ids=' + tokenIds.join(','))
         .then(response => response.json())
         .then(data => {
             console.log("Token prices received:", data);
