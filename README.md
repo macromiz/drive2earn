@@ -36,3 +36,4 @@ This project is deployed on Cloudflare Pages. Changes pushed to the main branch 
 ## License
 
 [MIT License](LICENSE)
+# Example change
