@@ -15,7 +15,9 @@ window.projects = [
         rating: 4.8,
         logo: "natix.png",
         featured: false,
-        tokenId: "natix"
+        tokenId: "natix-network",
+        tokenPrice: 0.00692, // Manual price update from CoinGecko (#1345)
+        tokenChange: -2.41
     },
     {
         name: "MapMetrics",
@@ -27,7 +29,9 @@ window.projects = [
         rating: 4.5,
         logo: "mapmetrics.png",
         featured: false,
-        tokenId: "mapmetrics"
+        tokenId: "mapmetrics",
+        tokenPrice: 0.0349,
+        tokenChange: -3.84
     },
     {
         name: "DIMO",
@@ -39,7 +43,9 @@ window.projects = [
         rating: 4.6,
         logo: "dimo.png",
         featured: false,
-        tokenId: "dimo"
+        tokenId: "dimo",
+        tokenPrice: 0.1024, // Manual price update from CoinGecko (#1011)
+        tokenChange: -1.97
     },
     {
         name: "Hivemapper",
@@ -51,7 +57,9 @@ window.projects = [
         rating: 4.7,
         logo: "hivemapper.png",
         featured: false,
-        tokenId: "hivemapper"
+        tokenId: "hivemapper",
+        tokenPrice: 0.1628, // Manual price update from CoinGecko (#329)
+        tokenChange: -4.39
     },
     {
         name: "Dovu",
@@ -62,7 +70,10 @@ window.projects = [
         website: "https://dovu.earth/",
         rating: 4.0,
         logo: "dovu.png",
-        featured: true
+        featured: true,
+        tokenId: "dovu",
+        tokenPrice: 0.0000574, // Manual price update from CoinGecko (#1656)
+        tokenChange: -4.12
     },
     {
         name: "Wibson",
@@ -106,7 +117,10 @@ window.projects = [
         website: "https://www.peaq.network/",
         rating: 4.1,
         logo: "peaq.png",
-        featured: true
+        featured: true,
+        tokenId: "peaq",
+        tokenPrice: 0.0189, // Manual price update from CoinGecko (#501)
+        tokenChange: -4.16
     },
     {
         name: "DreamCars",
@@ -157,48 +171,11 @@ function initCatalog() {
 
 // Function to fetch token prices
 function fetchTokenPrices() {
-    console.log("Fetching token prices...");
+    console.log("Using pre-defined token prices from data.js");
+    // Token prices are now directly defined in the project data
     
-    // Collect token IDs from projects
-    const tokenIds = [];
-    window.projects.forEach(project => {
-        if (project.tokenId) {
-            tokenIds.push(project.tokenId);
-        }
-    });
-    
-    if (tokenIds.length === 0) {
-        console.log("No token IDs found in projects");
-        return;
+    // Refresh display if needed
+    if (typeof displayProjects === 'function') {
+        displayProjects(window.projects);
     }
-    
-    // Log the token IDs being requested
-    console.log("Requesting token prices for:", tokenIds.join(','));
-    
-    // Use worker.js to fetch prices with full URL
-    fetch('https://drive2earn.digitalnomads.workers.dev/token-prices?ids=' + tokenIds.join(','))
-        .then(response => response.json())
-        .then(data => {
-            console.log("Token prices received:", data);
-            
-            // Update projects with token prices
-            window.projects.forEach(project => {
-                if (project.tokenId && data[project.tokenId]) {
-                    project.tokenPrice = data[project.tokenId].usd;
-                    project.tokenChange = data[project.tokenId].usd_24h_change;
-                } else if (project.tokenId) {
-                    // If token data is not available, remove any previous price data
-                    delete project.tokenPrice;
-                    delete project.tokenChange;
-                }
-            });
-            
-            // Refresh display if needed
-            if (typeof displayProjects === 'function') {
-                displayProjects(window.projects);
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching token prices:", error);
-        });
 } 

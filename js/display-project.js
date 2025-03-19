@@ -70,20 +70,24 @@ function displayProjects(projects) {
         const cardClass = isFeatured ? 'project-card featured' : 'project-card';
         const badgeText = isFeatured ? 'Featured' : 'Popular';
         
-        // Get company logo URL based on project name
+        // Get company logo URL based on project name - using direct logo URLs from their websites
         let logoUrl = '';
         if (project.name === 'NATIX Network') {
-            logoUrl = 'https://natix.network/wp-content/uploads/2023/10/natix-logo-v1.svg';
+            logoUrl = 'https://natix.network/wp-content/uploads/2023/10/NATIX-Network-Logo-1.png';
         } else if (project.name === 'MapMetrics') {
-            logoUrl = 'https://mapmetrics.org/wp-content/uploads/2023/07/logo.svg';
+            logoUrl = 'https://mapmetrics.org/wp-content/uploads/2022/12/mapmetrics-logoicon.svg';
         } else if (project.name === 'DIMO') {
-            logoUrl = 'https://dimo.zone/images/logos/logo.svg';
+            logoUrl = 'https://dimo.zone/images/logos/logo-symbol.svg';
         } else if (project.name === 'Hivemapper') {
-            logoUrl = 'https://hivemapper.com/assets/hivemapper-mark.svg';
+            logoUrl = 'https://hivemapper.com/assets/hivemapper-logo.svg';
         } else if (project.name === 'Dovu') {
-            logoUrl = 'https://dovu.earth/images/dovu-logo.svg';
+            logoUrl = 'https://assets-global.website-files.com/63e3d6707f80a779f5d25261/64085b66bf5b6362c8d60ec8_dovu-icon-p-500.png';
         } else if (project.name === 'peaq Network') {
-            logoUrl = 'https://peaq.network/assets/logo-icon.svg';
+            logoUrl = 'https://peaq.network/static/media/logo-horizontal.66e2f172c1ca5f8a6b83.svg';
+        } else if (project.name === 'DreamCars') {
+            logoUrl = 'https://dreamcars.co/logo.svg';
+        } else if (project.name === 'Carro') {
+            logoUrl = 'https://www.carro.sg/favicon.ico';
         }
         
         // Format regions
@@ -99,14 +103,26 @@ function displayProjects(projects) {
         
         // Create token price display if available
         let tokenPriceHTML = '';
-        if (project.tokenId && project.tokenPrice) {
+        if (project.tokenPrice) {
             const priceChangeClass = project.tokenChange >= 0 ? 'positive-change' : 'negative-change';
             const changeSymbol = project.tokenChange >= 0 ? '+' : '';
             
+            // Format the price based on its value
+            let formattedPrice;
+            if (project.tokenPrice < 0.001) {
+                formattedPrice = project.tokenPrice.toExponential(2);
+            } else if (project.tokenPrice < 0.01) {
+                formattedPrice = project.tokenPrice.toFixed(6);
+            } else if (project.tokenPrice < 1) {
+                formattedPrice = project.tokenPrice.toFixed(4);
+            } else {
+                formattedPrice = project.tokenPrice.toFixed(2);
+            }
+            
             tokenPriceHTML = `
                 <div class="token-price">
-                    <h4>Token Price</h4>
-                    <p>$${project.tokenPrice.toFixed(4)} <span class="${priceChangeClass}">${changeSymbol}${project.tokenChange.toFixed(2)}%</span></p>
+                    <h4>TOKEN PRICE</h4>
+                    <p>$${formattedPrice} <span class="${priceChangeClass}">${changeSymbol}${project.tokenChange.toFixed(2)}%</span></p>
                 </div>
             `;
         }
@@ -162,7 +178,7 @@ function displayProjects(projects) {
         // Use company logo if available, otherwise use icon
         const logoHTML = logoUrl ? 
             `<div class="project-logo">
-                <img src="${logoUrl}" alt="${project.name} logo">
+                <img src="${logoUrl}" alt="${project.name} logo" onerror="this.onerror=null;this.src='https://placehold.co/64x64/4cc9f0/white?text=${project.name.charAt(0)}';this.style.padding='10px';">
             </div>` : 
             `<div class="project-icon">
                 <i class="fas ${project.category.includes('app') ? 'fa-mobile-alt' : 'fa-car'}"></i>
@@ -180,7 +196,7 @@ function displayProjects(projects) {
             ${tagsHTML}
             
             <div class="project-cost">
-                <h4>Cost to Start</h4>
+                <h4>COST TO START</h4>
                 <p>${project.cost || 'Contact for pricing'}</p>
             </div>
             

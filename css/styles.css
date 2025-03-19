@@ -14,6 +14,8 @@
   --negative-color: #ef4444;
   --section-bg: #2d4156;
   --hero-text-bg: rgba(31, 45, 64, 0.9);
+  --section-separator: #4cc9f0;
+  --alternate-section-bg: #283447;
 }
 
 body {
@@ -61,22 +63,24 @@ header {
 
 /* Hero Banner - Fixed below header */
 .hero-banner {
-  background-color: var(--hero-text-bg);
-  padding: 1.5rem 0;
+  background: linear-gradient(to right, var(--dark-bg), var(--section-bg), var(--dark-bg));
+  padding: 2.5rem 0;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .hero-banner h1 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.75rem 0;
   color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero-banner p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--light-text);
   margin: 0;
   max-width: 800px;
@@ -180,10 +184,24 @@ header {
 /* Search and filter section */
 .search-section {
   background-color: var(--section-bg);
-  border-radius: 0.75rem;
-  padding: 2rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(76, 201, 240, 0.1);
+  position: relative;
+}
+
+.search-section::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+  border-radius: 2px;
 }
 
 .search-bar {
@@ -251,12 +269,13 @@ button.search-btn {
   transition: all 0.3s ease;
   flex: 0 0 auto;
   height: 48px;
+  box-shadow: 0 4px 10px rgba(76, 201, 240, 0.3);
 }
 
 button.search-btn:hover {
   background-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(76, 201, 240, 0.3);
+  box-shadow: 0 6px 15px rgba(76, 201, 240, 0.4);
 }
 
 /* Tags styles */
@@ -321,22 +340,35 @@ button.search-btn:hover {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  gap: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+.projects-grid::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
 }
 
 .project-card {
   background-color: var(--section-bg);
-  border-radius: 0.75rem;
-  padding: 1.75rem;
+  border-radius: 1rem;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
   animation: fadeIn 0.5s ease forwards;
   opacity: 0;
   transform: translateY(20px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -352,19 +384,20 @@ button.search-btn:hover {
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
   border-color: rgba(76, 201, 240, 0.2);
 }
 
 .project-card.featured {
   border: 1px solid rgba(255, 209, 102, 0.3);
   background-color: rgba(45, 65, 86, 0.95);
+  box-shadow: 0 10px 30px rgba(255, 209, 102, 0.1);
 }
 
 .project-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.25rem;
+  right: 1.25rem;
   padding: 0.4rem 0.8rem;
   border-radius: 2rem;
   font-size: 0.7rem;
@@ -390,9 +423,10 @@ button.search-btn:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   overflow: hidden;
   background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .project-logo img {
@@ -409,8 +443,9 @@ button.search-btn:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   color: var(--accent-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .project-icon i {
@@ -418,7 +453,7 @@ button.search-btn:hover {
 }
 
 .project-name {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 0.75rem;
@@ -429,7 +464,7 @@ button.search-btn:hover {
   gap: 0.75rem;
   font-size: 0.85rem;
   color: var(--light-text);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .project-regions span {
@@ -444,45 +479,59 @@ button.search-btn:hover {
 .project-description {
   font-size: 1rem;
   color: var(--light-text);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   flex-grow: 1;
   line-height: 1.6;
 }
 
 .project-cost, .token-price {
-  margin: 1.25rem 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 1.5rem 0;
+  padding-top: 1.5rem;
+  position: relative;
+}
+
+.project-cost::before, .token-price::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.01));
 }
 
 .project-cost h4, .token-price h4 {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--light-text);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.5px;
 }
 
 .project-cost p, .token-price p {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
 }
 
 .positive-change {
   color: var(--positive-color);
   font-weight: 500;
+  padding-left: 0.3rem;
 }
 
 .negative-change {
   color: var(--negative-color);
   font-weight: 500;
+  padding-left: 0.3rem;
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1.25rem 0;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
 }
 
 .project-tag {
@@ -520,13 +569,14 @@ button.search-btn:hover {
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 10px rgba(76, 201, 240, 0.2);
 }
 
 .learn-more-btn:hover {
   background-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
 }
 
 /* No results styling */
@@ -555,70 +605,87 @@ button.search-btn:hover {
 
 /* Benefits Section Styling */
 .benefits-section {
-  padding: 2.5rem;
-  margin-top: 4rem;
-  margin-bottom: 3rem;
-  background-color: var(--section-bg);
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 3.5rem 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  background: linear-gradient(to bottom, var(--section-bg), var(--alternate-section-bg));
+  border-radius: 1rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(76, 201, 240, 0.1);
+  position: relative;
+}
+
+.benefits-section::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+  border-radius: 100%;
 }
 
 .benefits-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 2.75rem;
+  font-size: 2.4rem;
+  margin-bottom: 3.5rem;
   position: relative;
   display: inline-block;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .benefits-section h2:after {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -12px;
+  bottom: -15px;
   transform: translateX(-50%);
-  width: 60px;
+  width: 80px;
   height: 3px;
-  background: var(--accent-color);
+  background: linear-gradient(to right, var(--accent-color), var(--primary-color));
   border-radius: 3px;
 }
 
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.75rem;
+  gap: 2.5rem;
   margin-bottom: 1.5rem;
 }
 
 .benefit-card {
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.75rem;
   background-color: rgba(255, 255, 255, 0.04);
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .benefit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.07);
   border-color: rgba(76, 201, 240, 0.15);
 }
 
 .benefit-card i {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: var(--accent-color);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .benefit-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
 }
 
 .benefit-card p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--light-text);
   line-height: 1.6;
 }
@@ -635,6 +702,7 @@ button.search-btn:hover {
   
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 
   /* Hero Section Responsive */
@@ -655,6 +723,7 @@ button.search-btn:hover {
   /* Benefits Section Responsive */
   .benefits-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
   .hero-banner h1 {
@@ -693,10 +762,21 @@ button.search-btn:hover {
 
 /* Footer */
 footer {
-  margin-top: 4rem;
-  padding: 2rem 0;
-  background-color: var(--section-bg);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 5rem;
+  padding: 2.5rem 0;
+  background: linear-gradient(to bottom, var(--section-bg), var(--dark-bg));
+  border-top: 1px solid rgba(76, 201, 240, 0.1);
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
 }
 
 .footer-content {
@@ -719,5 +799,5 @@ footer {
 }
 
 .footer-links a:hover {
-  color: var(--text-color);
+  color: var(--accent-color);
 } 
