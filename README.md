@@ -1,46 +1,38 @@
 # Drive2Earn.io
 
-A comprehensive directory of blockchain-based DePIN projects for vehicle monetization.
+A platform for discovering and comparing projects that allow users to monetize their vehicle data.
 
-## Project Structure
+## Features
 
-### Root Directory
-Contains all files that need to be deployed to production:
-- `index.html` - Main website page
-- `/css` - Stylesheets
-- `/js` - JavaScript files including catalog.js with project data
-- `/images` - Image assets
-- `worker.js` - Cloudflare Worker script for API proxy
-- `.gitignore` - Git version control configuration
+- Browse cryptocurrency and blockchain projects in the mobility space
+- Filter by region, cost, and category
+- View detailed information about each project
+- Real-time token price tracking
 
-### Local Development
-Local development files are kept in the `/local` directory:
-- `server.js` - Local development server
-- `.env` - Environment variables (contains API keys, not for production)
-- `package.json` & `package-lock.json` - Node.js dependencies
-- `/knowledge` - Development documentation and reference materials
-- `/node_modules` - Dependencies installed by npm
+## Structure
 
-## Development Setup
+- `index.html` - Main entry point
+- `css/` - Styling files
+- `js/` - JavaScript files for functionality
+- `worker.js` - Cloudflare Worker for API proxying
 
-1. Install dependencies:
-```
-cd local
-npm install
-```
+## Development
 
-2. Start the development server:
-```
-cd local
-npm run dev
-```
+### Requirements
+- Node.js 14+
+- npm or yarn
 
-3. Visit http://localhost:3000 to view the site locally
+### Local Setup
+1. Clone the repository
+2. Navigate to the `/local` directory
+3. Run `npm install`
+4. Create a `.env` file with necessary API keys
+5. Run `npm start` to start the development server
 
 ## Deployment
 
-When deploying to Cloudflare Pages, only upload the files in the root directory. 
-Do not upload the `/local` directory or its contents.
+This project is deployed on Cloudflare Pages. Changes pushed to the main branch are automatically deployed.
 
-Configure your environment variables (like COINGECKO_API_KEY) directly in the 
-Cloudflare Dashboard rather than using the .env file. 
+## License
+
+[MIT License](LICENSE)
