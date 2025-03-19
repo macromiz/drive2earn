@@ -1,4 +1,5 @@
 name = "drive2earn"
+main = "worker.js"  # This is a placeholder file for builds
 compatibility_date = "2024-03-19"
 
 # We're only tracking website files in Git, not the worker itself
