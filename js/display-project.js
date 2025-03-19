@@ -70,12 +70,20 @@ function displayProjects(projects) {
         const cardClass = isFeatured ? 'project-card featured' : 'project-card';
         const badgeText = isFeatured ? 'Featured' : 'Popular';
         
-        // Get appropriate icon based on category
-        let iconClass = 'fa-car';
-        if (project.category.includes('app')) {
-            iconClass = 'fa-mobile-alt';
-        } else if (project.category.includes('device')) {
-            iconClass = 'fa-microchip';
+        // Get company logo URL based on project name
+        let logoUrl = '';
+        if (project.name === 'NATIX Network') {
+            logoUrl = 'https://natix.network/wp-content/uploads/2023/10/natix-logo-v1.svg';
+        } else if (project.name === 'MapMetrics') {
+            logoUrl = 'https://mapmetrics.org/wp-content/uploads/2023/07/logo.svg';
+        } else if (project.name === 'DIMO') {
+            logoUrl = 'https://dimo.zone/images/logos/logo.svg';
+        } else if (project.name === 'Hivemapper') {
+            logoUrl = 'https://hivemapper.com/assets/hivemapper-mark.svg';
+        } else if (project.name === 'Dovu') {
+            logoUrl = 'https://dovu.earth/images/dovu-logo.svg';
+        } else if (project.name === 'peaq Network') {
+            logoUrl = 'https://peaq.network/assets/logo-icon.svg';
         }
         
         // Format regions
@@ -150,11 +158,19 @@ function displayProjects(projects) {
             project.website = 'https://dreamcars.co';
         }
         
+        // Create HTML for project card
+        // Use company logo if available, otherwise use icon
+        const logoHTML = logoUrl ? 
+            `<div class="project-logo">
+                <img src="${logoUrl}" alt="${project.name} logo">
+            </div>` : 
+            `<div class="project-icon">
+                <i class="fas ${project.category.includes('app') ? 'fa-mobile-alt' : 'fa-car'}"></i>
+            </div>`;
+        
         projectCard.innerHTML = `
             <div class="project-badge ${isFeatured ? 'featured-badge' : 'regular-badge'}">${badgeText}</div>
-            <div class="project-icon">
-                <i class="fas ${iconClass}"></i>
-            </div>
+            ${logoHTML}
             <h3 class="project-name">${project.name}</h3>
             <div class="project-regions">
                 ${regionText}
@@ -177,6 +193,24 @@ function displayProjects(projects) {
     });
     
     projectsContainer.appendChild(projectsGrid);
+    
+    // Add hero banner if it doesn't exist yet
+    if (!document.querySelector('.hero-banner')) {
+        const heroBanner = document.createElement('div');
+        heroBanner.className = 'hero-banner';
+        heroBanner.innerHTML = `
+            <div class="container">
+                <h1>Turn Your Vehicle Data Into Passive Income</h1>
+                <p>Discover the best ways to earn cryptocurrency while driving</p>
+            </div>
+        `;
+        
+        // Insert after header
+        const header = document.querySelector('header');
+        if (header && header.nextSibling) {
+            header.parentNode.insertBefore(heroBanner, header.nextSibling);
+        }
+    }
 }
 
 // Helper function to generate star ratings
