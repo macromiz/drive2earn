@@ -33,6 +33,36 @@ function displayProjects(projects) {
         project.name !== 'Wibson'
     );
     
+    // Fix incomplete descriptions that end with ellipses
+    filteredProjects.forEach(project => {
+        // Check if description ends with ellipsis or is incomplete
+        if (project.description) {
+            if (project.description.endsWith('...')) {
+                // Complete descriptions based on project name
+                if (project.name === 'NATIX Network') {
+                    project.description = "Turn your smartphone into an AI-powered dashcam and navigation assistant. The Drive& mobile app uses computer vision to detect road events and rewards users for contributing high-quality data to the network.";
+                } else if (project.name === 'MapMetrics') {
+                    project.description = "The world's first crypto-powered navigation app, rewarding users for contributing their travel data to a decentralized mapping network. MapMetrics offers real-time traffic updates and personalized routing.";
+                } else if (project.name === 'DIMO') {
+                    project.description = "An open platform that lets drivers collect, own, and monetize their car's data. Connect your vehicle to DIMO to earn tokens and gain insights about your driving habits while maintaining full control of your data.";
+                } else if (project.name === 'Hivemapper') {
+                    project.description = "A decentralized global mapping network that uses dashcam-equipped drivers to build a live street-view map. Earn HONEY tokens by contributing mapping data while driving your usual routes.";
+                } else if (project.name === 'Dovu') {
+                    project.description = "A platform that incentivizes vehicle owners to share driving data in exchange for tokens. Backed by Jaguar Land Rover, focusing on carbon-offset initiatives and sustainable mobility solutions.";
+                } else if (project.name === 'peaq Network') {
+                    project.description = "A decentralized network for IoT applications with a focus on mobility. Car owners can earn tokens by sharing vehicle data or offering services like charging stations and parking spaces.";
+                } else if (project.name === 'DreamCars') {
+                    project.description = "A platform connecting car enthusiasts with advertisers, allowing drivers to earn by displaying branded content on their vehicles. Simply apply car wraps or stickers and earn while driving normally.";
+                } else if (project.name === 'Carro') {
+                    project.description = "Singapore-based car marketplace with a drive-to-earn feature. Install their telematics device to track driving behavior and earn rewards for safe driving practices and consistent vehicle maintenance.";
+                } else {
+                    // For any other projects with ellipses, make a generic completion
+                    project.description = project.description.replace('...', '') + " with blockchain-based rewards and transparent data policies.";
+                }
+            }
+        }
+    });
+    
     // Add projects to the grid
     filteredProjects.forEach((project, index) => {
         // Define the card style (featured or regular)
@@ -92,6 +122,20 @@ function displayProjects(projects) {
             tagsHTML += `<span class="project-tag"><i class="fas fa-hand-holding-usd"></i>Free</span>`;
         }
         
+        // Add region as a tag
+        if (project.region.includes('global')) {
+            tagsHTML += `<span class="project-tag"><i class="fas fa-globe"></i>Global</span>`;
+        }
+        if (project.region.includes('north-america')) {
+            tagsHTML += `<span class="project-tag"><i class="fas fa-map-marker-alt"></i>North America</span>`;
+        }
+        if (project.region.includes('europe')) {
+            tagsHTML += `<span class="project-tag"><i class="fas fa-map-marker-alt"></i>Europe</span>`;
+        }
+        if (project.region.includes('asia')) {
+            tagsHTML += `<span class="project-tag"><i class="fas fa-map-marker-alt"></i>Asia</span>`;
+        }
+        
         tagsHTML += '</div>';
         
         // Create HTML for project card with animation delay for staggered appearance
@@ -102,7 +146,7 @@ function displayProjects(projects) {
         
         // Update DreamCars info if present
         if (project.name === 'DreamCars') {
-            project.description = 'A platform connecting car enthusiasts with advertisers, allowing drivers to earn by displaying branded content on their vehicles.';
+            project.description = 'A platform connecting car enthusiasts with advertisers, allowing drivers to earn by displaying branded content on their vehicles. Earn passive income just by driving as you normally would.';
             project.website = 'https://dreamcars.co';
         }
         

@@ -2,17 +2,17 @@
 :root {
   --primary-color: #4361ee;
   --secondary-color: #5e72eb;
-  --accent-color: #5096ff;
+  --accent-color: #4cc9f0;
   --light-bg: #f8f9fa;
-  --dark-bg: #1f2033;
-  --card-bg: #292b40;
+  --dark-bg: #212b39;
+  --card-bg: #283447;
   --text-color: #ffffff;
-  --light-text: #b4b8c5;
+  --light-text: #d0d5dd;
   --featured-color: #ffd166;
   --popular-color: #4cc9f0;
-  --positive-color: #2ecc71;
-  --negative-color: #e74c3c;
-  --section-bg: #292b40;
+  --positive-color: #38c976;
+  --negative-color: #ef4444;
+  --section-bg: #283447;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
 
 /* Header styling */
 header {
-  background-color: rgba(41, 43, 64, 0.95);
+  background-color: rgba(33, 43, 57, 0.95);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
@@ -61,10 +61,10 @@ header {
 /* Hero Section Styling */
 .hero-section {
   text-align: center;
-  padding: 3rem 0 4rem;
+  padding: 4rem 0 5rem;
   margin-bottom: 3rem;
-  background-color: #4361ee; /* Solid background color instead of gradient */
-  border-radius: 1rem;
+  background-color: #4361ee; /* Solid background color */
+  border-radius: 0.75rem;
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
@@ -88,7 +88,7 @@ header {
 
 .hero-subtitle {
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 3rem;
 }
 
@@ -103,8 +103,8 @@ header {
   flex: 1;
   max-width: 250px;
   padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -112,7 +112,7 @@ header {
 .benefit-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .benefit-item i {
@@ -130,7 +130,7 @@ header {
 
 .benefit-item p {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .cta-button {
@@ -155,10 +155,10 @@ header {
 /* Search and filter section */
 .search-section {
   background-color: var(--section-bg);
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .search-bar {
@@ -185,36 +185,39 @@ header {
 
 input[type="text"], select {
   width: 100%;
-  padding: 0.9rem 1rem 0.9rem 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1rem 1rem 2.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.07);
   color: var(--text-color);
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
 input[type="text"]:focus, select:focus {
   outline: none;
   border-color: var(--accent-color);
-  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.3);
+  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 button.search-btn {
-  padding: 0.9rem 1.8rem;
+  padding: 1rem 2rem;
   background-color: var(--accent-color);
   color: white;
   border: none;
   border-radius: 0.75rem;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
   flex: 0 0 auto;
 }
 
 button.search-btn:hover {
   background-color: var(--primary-color);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 201, 240, 0.3);
 }
 
 /* Tags styles */
@@ -222,20 +225,21 @@ button.search-btn:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  align-items: center;
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1.25rem;
-  background-color: rgba(80, 150, 255, 0.15);
+  padding: 0.6rem 1.25rem;
+  background-color: rgba(76, 201, 240, 0.15);
   border-radius: 2rem;
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-color);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .tag i {
@@ -250,7 +254,8 @@ button.search-btn:hover {
 }
 
 .tag:hover {
-  background-color: rgba(80, 150, 255, 0.25);
+  background-color: rgba(76, 201, 240, 0.25);
+  transform: translateY(-2px);
 }
 
 .tag.active {
@@ -263,14 +268,14 @@ button.search-btn:hover {
   font-size: 0.9rem;
   cursor: pointer;
   margin-left: 0.75rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 1rem;
   border-radius: 0.5rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .clear-tags:hover {
   color: var(--text-color);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Projects grid layout */
@@ -278,22 +283,24 @@ button.search-btn:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.75rem;
+  margin-top: 1rem;
 }
 
 .project-card {
   background-color: var(--section-bg);
-  border-radius: 1rem;
-  padding: 1.5rem;
+  border-radius: 0.75rem;
+  padding: 1.75rem;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   animation: fadeIn 0.5s ease forwards;
   opacity: 0;
   transform: translateY(20px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   height: 100%;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @keyframes fadeIn {
@@ -305,20 +312,21 @@ button.search-btn:hover {
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  border-color: rgba(76, 201, 240, 0.2);
 }
 
 .project-card.featured {
   border: 1px solid rgba(255, 209, 102, 0.3);
-  background-color: rgba(41, 43, 64, 0.95);
+  background-color: rgba(40, 52, 71, 0.95);
 }
 
 .project-badge {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 2rem;
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -336,14 +344,14 @@ button.search-btn:hover {
 }
 
 .project-icon {
-  width: 60px;
-  height: 60px;
-  background-color: rgba(80, 150, 255, 0.1);
+  width: 64px;
+  height: 64px;
+  background-color: rgba(76, 201, 240, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   color: var(--accent-color);
 }
 
@@ -352,10 +360,10 @@ button.search-btn:hover {
 }
 
 .project-name {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .project-regions {
@@ -363,7 +371,7 @@ button.search-btn:hover {
   gap: 0.75rem;
   font-size: 0.85rem;
   color: var(--light-text);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .project-regions span {
@@ -376,14 +384,15 @@ button.search-btn:hover {
 }
 
 .project-description {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--light-text);
   margin-bottom: 1.5rem;
   flex-grow: 1;
+  line-height: 1.6;
 }
 
 .project-cost, .token-price {
-  margin: 1rem 0;
+  margin: 1.25rem 0;
 }
 
 .project-cost h4, .token-price h4 {
@@ -396,7 +405,7 @@ button.search-btn:hover {
 
 .project-cost p, .token-price p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .positive-change {
@@ -413,43 +422,51 @@ button.search-btn:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
 }
 
 .project-tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 2rem;
   font-size: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.09);
   color: var(--light-text);
+  transition: all 0.2s ease;
+}
+
+.project-tag:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .project-tag i {
   margin-right: 0.35rem;
   font-size: 0.7rem;
+  color: var(--accent-color);
 }
 
 .learn-more-btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.75rem;
   background-color: var(--accent-color);
   color: white;
   border: none;
   border-radius: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
+  margin-top: 0.75rem;
 }
 
 .learn-more-btn:hover {
   background-color: var(--primary-color);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
 }
 
 /* No results styling */
@@ -468,7 +485,7 @@ button.search-btn:hover {
 
 .no-results h2 {
   font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .no-results p {
@@ -478,18 +495,19 @@ button.search-btn:hover {
 
 /* Benefits Section Styling */
 .benefits-section {
-  padding: 2rem;
-  margin-top: 3rem;
+  padding: 2.5rem;
+  margin-top: 4rem;
   margin-bottom: 2rem;
   background-color: var(--section-bg);
-  border-radius: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .benefits-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  margin-bottom: 2.75rem;
   position: relative;
   display: inline-block;
 }
@@ -498,9 +516,9 @@ button.search-btn:hover {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -10px;
+  bottom: -12px;
   transform: translateX(-50%);
-  width: 50px;
+  width: 60px;
   height: 3px;
   background: var(--accent-color);
   border-radius: 3px;
@@ -509,37 +527,40 @@ button.search-btn:hover {
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  gap: 1.75rem;
   margin-bottom: 1.5rem;
 }
 
 .benefit-card {
-  padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.03);
-  border-radius: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .benefit-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(76, 201, 240, 0.15);
 }
 
 .benefit-card i {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--accent-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .benefit-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .benefit-card p {
   font-size: 0.95rem;
   color: var(--light-text);
+  line-height: 1.6;
 }
 
 /* Responsive adjustments */
