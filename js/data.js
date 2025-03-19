@@ -4,178 +4,303 @@
  * Last updated: 2024-03-19 - Test auto deployment
  */
 
-window.projects = [
+// Project data for Drive2Earn
+const projects = [
     {
+        id: 1,
         name: "NATIX Network",
-        category: ["app", "device"],
-        region: ["global"],
-        description: "Turn your smartphone into an AI-powered dashcam and navigation assistant. The Drive& mobile app uses computer vision to detect road events and rewards users for contributing to the network.",
-        cost: "Free app, no hardware required (optional $279 VX360 for Tesla owners)",
-        website: "https://natix.network/",
-        rating: 4.8,
-        logo: "natix.png",
-        featured: false,
-        tokenId: "natix-network",
-        tokenPrice: 0.00692, // Manual price update from CoinGecko (#1345)
-        tokenChange: -2.41
+        description: "NATIX helps cities transform existing urban camera networks into powerful AI sensing tools using computer vision, without sharing any video or image data. The system generates insights across mobility, safety, and traffic analytics while preserving privacy.",
+        category: "device",
+        region: ["global", "north-america", "europe"],
+        logo: "https://uploads-ssl.webflow.com/64d7cea4c213947d7d05ea38/64d8ddcf1f0429e2aefb2d0f_natix-logo-white-bg.png",
+        token: "NTIX",
+        tokenPrice: 0.055,
+        priceChange: 3.2,
+        url: "https://natix.network/",
+        hardwareCost: "$299",
+        featured: true
     },
     {
+        id: 2,
         name: "MapMetrics",
-        category: ["app", "device"],
+        description: "MapMetrics rewards users for contributing GPS location data while driving. The app validates, processes, and enhances map quality data and compensates users with MAP tokens. Perfect for daily commuters looking to earn passively.",
+        category: "app",
         region: ["global"],
-        description: "The world's first crypto-powered navigation app, rewarding users for contributing their travel data to a decentralized mapping network.",
-        cost: "Free app; optional Special Position Tracker (SPT) device ($50-100) for higher earnings",
-        website: "https://mapmetrics.org/",
-        rating: 4.5,
-        logo: "mapmetrics.png",
-        featured: false,
-        tokenId: "mapmetrics",
-        tokenPrice: 0.0349,
-        tokenChange: -3.84
+        logo: "https://pbs.twimg.com/profile_images/1625953683342336000/8LhLtXGR_400x400.jpg",
+        token: "MAP",
+        tokenPrice: 0.042,
+        priceChange: 1.5,
+        url: "https://mapmetrics.org/",
+        featured: true
     },
     {
+        id: 3,
         name: "DIMO",
-        category: ["device", "app"],
+        description: "DIMO is a user-owned IoT platform connecting drivers, vehicles and apps. It allows users to earn tokens by sharing vehicle data while maintaining ownership and control of their information, creating value from everyday driving.",
+        category: "device",
         region: ["north-america", "europe"],
-        description: "An open platform that lets drivers collect, own, and monetize their car's data. Connect your vehicle to DIMO to earn tokens and gain insights about your driving habits.",
-        cost: "Free for modern connected cars (Tesla, etc.); others need DIMO Macaron ($39) or LTE Adapter ($169)",
-        website: "https://dimo.zone/",
-        rating: 4.6,
-        logo: "dimo.png",
-        featured: false,
-        tokenId: "dimo",
-        tokenPrice: 0.1024, // Manual price update from CoinGecko (#1011)
-        tokenChange: -1.97
+        logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a6073ffa27de6e2d03e051_DIMO_400x400.png",
+        token: "DIMO",
+        tokenPrice: 0.16,
+        priceChange: 5.2,
+        url: "https://dimo.zone/",
+        hardwareCost: "$99-$249"
     },
     {
+        id: 4,
         name: "Hivemapper",
-        category: ["device", "app"],
-        region: ["global"],
-        description: "A decentralized global mapping network that uses dashcam-equipped drivers to build a live street-view map. Earn HONEY tokens by contributing mapping data.",
-        cost: "Requires Hivemapper Dashcam ($300-600)",
-        website: "https://hivemapper.com/",
-        rating: 4.7,
-        logo: "hivemapper.png",
-        featured: false,
-        tokenId: "hivemapper",
-        tokenPrice: 0.1628, // Manual price update from CoinGecko (#329)
-        tokenChange: -4.39
+        description: "Hivemapper is building a global, blockchain-based map using dashcams and community contributions. Drivers earn HONEY tokens by capturing street-level imagery that improves map accuracy and freshness through the Hivemapper Dashcam.",
+        category: "device",
+        region: ["global", "north-america"],
+        logo: "https://pbs.twimg.com/profile_images/1635267082441412608/Kd5c_mt8_400x400.png",
+        token: "HONEY",
+        tokenPrice: 0.18,
+        priceChange: -2.4,
+        url: "https://hivemapper.com/",
+        hardwareCost: "$549"
     },
     {
-        name: "Dovu",
-        category: ["app"],
-        region: ["global"],
-        description: "A platform that incentivizes vehicle owners to share driving data in exchange for tokens. Backed by Jaguar Land Rover, focusing on carbon-offset initiatives.",
-        cost: "Free app download",
-        website: "https://dovu.earth/",
-        rating: 4.0,
-        logo: "dovu.png",
-        featured: true,
-        tokenId: "dovu",
-        tokenPrice: 0.0000574, // Manual price update from CoinGecko (#1656)
-        tokenChange: -4.12
-    },
-    {
-        name: "Wibson",
-        category: ["app"],
-        region: ["global"],
-        description: "A blockchain-based marketplace that allows users to securely sell personal data, including driving information, directly to buyers with full transparency.",
-        cost: "Free app, earn by selling your driving data",
-        website: "https://wibson.org/",
-        rating: 3.9,
-        logo: "wibson.png",
-        featured: true
-    },
-    {
-        name: "Nodle",
-        category: ["app"],
-        region: ["global"],
-        description: "An IoT connectivity network that rewards users for sharing their smartphone's Bluetooth connectivity. Drivers can earn NODL tokens while on the move.",
-        cost: "Free app download, no additional hardware",
-        website: "https://nodle.com/",
-        rating: 4.2,
-        logo: "nodle.png",
-        featured: true
-    },
-    {
+        id: 5,
         name: "Helium Mobile",
-        category: ["device"],
+        description: "A community-built wireless network that lets users earn HNT tokens by sharing cellular coverage from Helium Hotspots or simply by sharing signal strength data through the mobile app.",
+        category: "app",
         region: ["north-america"],
-        description: "The People's Network now offering mobile coverage. Install a Helium Mobile Hotspot in your vehicle to provide 5G coverage and earn HNT tokens while driving.",
-        cost: "Requires Helium Mobile Hotspot ($499-899)",
-        website: "https://www.helium.com/mobile",
-        rating: 4.4,
-        logo: "helium.png",
+        logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/655691c4ea24ce9ec39d0f0a_helium-mobile-logo.png",
+        token: "MOBILE",
+        tokenPrice: 0.003,
+        priceChange: -1.8,
+        url: "https://helium.com/"
+    },
+    {
+        id: 6,
+        name: "Nodle",
+        description: "A crowdsourced connectivity network that rewards users for sharing their phone's Bluetooth signal. By running the Nodle app in the background, users help locate and connect IoT devices while earning NODL tokens.",
+        category: "app",
+        region: ["global"],
+        logo: "https://pbs.twimg.com/profile_images/1606266544605081601/SFwCU_CL_400x400.jpg",
+        token: "NODL",
+        tokenPrice: 0.00234,
+        priceChange: 0.5,
+        url: "https://www.nodle.com/"
+    },
+    {
+        id: 7,
+        name: "Dovu",
+        description: "Dovu enables users to earn DOV tokens by tracking and verifying their carbon-friendly transportation choices. The platform rewards sustainable mobility behaviors, helping reduce carbon footprints while earning crypto.",
+        category: "app",
+        region: ["europe"],
+        logo: "https://pbs.twimg.com/profile_images/1468947000813162496/N5-tYlZ5_400x400.jpg",
+        token: "DOV",
+        tokenPrice: 0.0005,
+        priceChange: -0.6,
+        url: "https://dovu.earth/",
         featured: true
     },
     {
+        id: 8,
         name: "peaq Network",
-        category: ["app", "device"],
-        region: ["global"],
-        description: "A decentralized network for IoT applications with a focus on mobility. Car owners can earn tokens by sharing vehicle data or offering services like charging stations.",
-        cost: "Free app; optional hardware integrations",
-        website: "https://www.peaq.network/",
-        rating: 4.1,
-        logo: "peaq.png",
-        featured: true,
-        tokenId: "peaq",
-        tokenPrice: 0.0189, // Manual price update from CoinGecko (#501)
-        tokenChange: -4.16
+        description: "peaq Network is building the Economy of Things on Web3 foundations. Users can earn from vehicle data and services including charging stations, ridesharing, and connected vehicle applications, all powered by blockchain technology.",
+        category: "device",
+        region: ["europe", "global"],
+        logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a5fb25e3125c4d2ea0928b_peaq.png",
+        token: "PEAQ",
+        tokenPrice: 0.029,
+        priceChange: 2.1,
+        url: "https://www.peaq.network/",
+        hardwareCost: "$50-$200"
     },
     {
-        name: "DreamCars",
-        category: ["app", "marketplace"],
-        region: ["global"],
-        description: "A blockchain-powered platform for car-sharing and mobility services. Vehicle owners can earn by renting their cars or sharing driving data.",
-        cost: "Free registration; commission on rentals",
-        website: "https://dreamcars.io/",
-        rating: 3.8,
-        logo: "dreamcars.png",
-        featured: true
-    },
-    {
-        name: "Carro",
-        category: ["device", "app"],
-        region: ["asia"],
-        description: "Singapore-based car marketplace with a drive-to-earn feature. Install their telematics device to track driving behavior and earn rewards for safe driving.",
-        cost: "Free with Carro subscription; device included",
-        website: "https://carro.sg/",
-        rating: 4.3,
-        logo: "carro.png",
-        featured: false
-    },
-    {
+        id: 9,
         name: "CarBlocks",
-        category: ["device", "data"],
-        region: ["global"],
-        description: "A blockchain solution for secure vehicle data sharing. Drivers can monetize their car's data while maintaining privacy and control over what they share.",
-        cost: "OBD-II device ($25-40) + free app",
-        website: "https://carblocks.io/",
-        rating: 3.7,
-        logo: "carblocks.png",
-        featured: false
+        description: "A platform for secure vehicle data sharing and monetization using blockchain technology. Connect your car's OBD-II port to earn tokens by sharing valuable driving and diagnostic information.",
+        category: "device",
+        region: ["asia", "europe"],
+        logo: "",
+        token: "CARB",
+        url: "https://carblocks.io/",
+        hardwareCost: "$30"
+    },
+    {
+        id: 10,
+        name: "Wibson",
+        description: "A blockchain-based data marketplace that allows users to securely and anonymously sell validated personal data, including driving patterns and location information, earning Wibson tokens in exchange.",
+        category: "app",
+        region: ["global", "south-america"],
+        logo: "",
+        token: "WIB",
+        url: "https://wibson.org/"
+    },
+    {
+        id: 11,
+        name: "DreamCars",
+        description: "DreamCars is creating a decentralized platform for vehicle data monetization, allowing drivers to share driving data and earn tokens. The project focuses on building a comprehensive mobility data marketplace.",
+        category: "app",
+        region: ["north-america", "europe"],
+        logo: "",
+        token: "DREAM",
+        tokenPrice: 0.012,
+        priceChange: 1.1,
+        url: "https://dreamcars.co/"
+    },
+    {
+        id: 12,
+        name: "Carro",
+        description: "Carro leverages vehicle data to provide better insurance rates and vehicle maintenance insights while compensating users with CAR tokens. The platform uses AI to analyze driving habits and vehicle performance.",
+        category: "device",
+        region: ["asia"],
+        logo: "",
+        token: "CAR",
+        tokenPrice: 0.075,
+        priceChange: 0.9,
+        url: "https://carro.sg/",
+        hardwareCost: "$120"
     }
 ];
 
-// Function to initialize the catalog
-function initCatalog() {
-    console.log("Catalog initialized with " + window.projects.length + " projects");
+// Token prices simulation
+function fetchTokenPrices() {
+    // This would be replaced by actual API calls to get real token prices
+    // For now, we'll just simulate some price changes
     
-    // Call the display function if it exists
-    if (typeof displayProjects === 'function') {
-        displayProjects(window.projects);
-    } else {
-        console.error("displayProjects function not found");
-    }
+    projects.forEach(project => {
+        if (project.tokenPrice) {
+            // Simulate price changes within -3% to +3%
+            const randomChange = (Math.random() * 6 - 3).toFixed(2);
+            project.priceChange = parseFloat(randomChange);
+            
+            // Update token price based on change
+            const changeAmount = project.tokenPrice * (project.priceChange / 100);
+            project.tokenPrice = parseFloat((project.tokenPrice + changeAmount).toFixed(6));
+        }
+    });
 }
 
-// Function to fetch token prices
-function fetchTokenPrices() {
-    console.log("Using pre-defined token prices from data.js");
-    // Token prices are now directly defined in the project data
+// Function to initialize the catalog
+function initCatalog() {
+    // Filter unique categories
+    const categories = [...new Set(projects.map(project => project.category))];
     
-    // Refresh display if needed
-    if (typeof displayProjects === 'function') {
-        displayProjects(window.projects);
+    // Filter unique regions
+    const regions = [];
+    projects.forEach(project => {
+        if (project.region && Array.isArray(project.region)) {
+            project.region.forEach(region => {
+                if (!regions.includes(region)) {
+                    regions.push(region);
+                }
+            });
+        }
+    });
+    
+    // Create the filter section
+    createFilterSection(categories, regions);
+    
+    // Display all projects initially
+    filterProjects();
+    
+    // Optional: Fetch token prices every 5 minutes
+    fetchTokenPrices();
+    setInterval(fetchTokenPrices, 5 * 60 * 1000);
+}
+
+// Function to filter projects based on selected criteria
+function filterProjects() {
+    const searchInput = document.getElementById('searchInput')?.value?.toLowerCase() || '';
+    const categoryFilter = document.getElementById('categoryFilter')?.value || 'all';
+    const regionFilter = document.getElementById('regionFilter')?.value || 'all';
+    
+    let filteredProjects = projects;
+    
+    // Filter by search input
+    if (searchInput) {
+        filteredProjects = filteredProjects.filter(project => 
+            project.name.toLowerCase().includes(searchInput) || 
+            project.description.toLowerCase().includes(searchInput)
+        );
     }
+    
+    // Filter by category
+    if (categoryFilter !== 'all') {
+        filteredProjects = filteredProjects.filter(project => 
+            project.category === categoryFilter
+        );
+    }
+    
+    // Filter by region
+    if (regionFilter !== 'all') {
+        filteredProjects = filteredProjects.filter(project => 
+            project.region && project.region.includes(regionFilter)
+        );
+    }
+    
+    // Display the filtered projects
+    displayProjects(filteredProjects);
+}
+
+// Create filter section
+function createFilterSection(categories, regions) {
+    const categoryFilter = document.getElementById('categoryFilter');
+    const regionFilter = document.getElementById('regionFilter');
+    
+    if (categoryFilter) {
+        // Add all option first
+        categoryFilter.innerHTML = '<option value="all">All Categories</option>';
+        
+        // Add each category
+        categories.forEach(category => {
+            // Display friendly names for categories
+            let displayName = '';
+            switch(category) {
+                case 'app':
+                    displayName = 'App-Based';
+                    break;
+                case 'device':
+                    displayName = 'Device-Based';
+                    break;
+                default:
+                    displayName = category.charAt(0).toUpperCase() + category.slice(1);
+            }
+            
+            categoryFilter.innerHTML += `<option value="${category}">${displayName}</option>`;
+        });
+    }
+    
+    if (regionFilter) {
+        // Add all option first
+        regionFilter.innerHTML = '<option value="all">All Regions</option>';
+        
+        // Map of region values to display names
+        const regionNames = {
+            'global': 'Global',
+            'north-america': 'North America',
+            'europe': 'Europe',
+            'asia': 'Asia',
+            'south-america': 'South America',
+            'africa': 'Africa',
+            'oceania': 'Oceania'
+        };
+        
+        // Add each region with proper display name
+        regions.forEach(region => {
+            const displayName = regionNames[region] || region.charAt(0).toUpperCase() + region.slice(1);
+            regionFilter.innerHTML += `<option value="${region}">${displayName}</option>`;
+        });
+    }
+    
+    // Set up search and filter handlers
+    document.getElementById('searchInput')?.addEventListener('input', debounce(filterProjects, 300));
+    document.getElementById('categoryFilter')?.addEventListener('change', filterProjects);
+    document.getElementById('regionFilter')?.addEventListener('change', filterProjects);
+    document.getElementById('searchBtn')?.addEventListener('click', filterProjects);
+}
+
+// Debounce function to prevent too many filter calls
+function debounce(func, delay) {
+    let timeout;
+    return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+    };
 } 
