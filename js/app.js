@@ -1,3 +1,8 @@
+/**
+ * Main application file for Drive2Earn.io
+ * Handles initialization and main functionality
+ */
+
 // Filter and search functionality
 function filterProjects() {
     const searchInput = document.getElementById('searchInput');
@@ -87,16 +92,65 @@ function initSearchAndFilters() {
     }
 }
 
-// Call this on DOM content loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initializing search and filters');
-    initSearchAndFilters();
+    console.log('App initialized');
     
-    // Initial display of all projects
-    if (window.projects && window.projects.length > 0) {
-        console.log('Displaying projects:', window.projects.length);
-        displayProjects(window.projects);
+    // Ensure catalog is initialized
+    if (typeof initCatalog === 'function') {
+        initCatalog();
     } else {
-        console.error('No projects found or projects not loaded');
+        console.error('initCatalog function not found');
     }
-}); 
+    
+    // Set up tag filtering
+    setupTagFiltering();
+});
+
+// Set up tag filtering functionality
+function setupTagFiltering() {
+    const tags = document.querySelectorAll('.tag');
+    
+    tags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Toggle active class
+            this.classList.toggle('active');
+            
+            // Update category filter if needed
+            if (filter === 'app' || filter === 'hardware') {
+                const categoryFilter = document.getElementById('categoryFilter');
+                if (categoryFilter) {
+                    categoryFilter.value = filter === 'hardware' ? 'device' : filter;
+                    
+                    // Trigger change event to update projects
+                    const event = new Event('change');
+                    categoryFilter.dispatchEvent(event);
+                }
+            }
+        });
+    });
+    
+    // Handle clear tags
+    const clearTagsBtn = document.querySelector('.clear-tags');
+    if (clearTagsBtn) {
+        clearTagsBtn.addEventListener('click', function() {
+            // Clear all active tags
+            tags.forEach(tag => tag.classList.remove('active'));
+            
+            // Reset filters
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilter = document.getElementById('categoryFilter');
+            const regionFilter = document.getElementById('regionFilter');
+            
+            if (searchInput) searchInput.value = '';
+            if (categoryFilter) categoryFilter.value = 'all';
+            if (regionFilter) regionFilter.value = 'all';
+            
+            // Trigger filtering
+            if (typeof filterProjects === 'function') {
+                filterProjects();
+            }
+        });
+    }
+} 

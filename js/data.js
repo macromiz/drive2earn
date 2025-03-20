@@ -1,7 +1,7 @@
 /**
  * Project data for Drive2Earn.io
  * This file contains all the project information displayed on the site
- * Last updated: 2024-03-19 - Test auto deployment
+ * Last updated: 2024-03-20
  */
 
 // Project data for Drive2Earn
@@ -157,6 +157,9 @@ const projects = [
     }
 ];
 
+// Make projects accessible globally
+window.projects = projects;
+
 // Token prices simulation
 function fetchTokenPrices() {
     // This would be replaced by actual API calls to get real token prices
@@ -173,10 +176,17 @@ function fetchTokenPrices() {
             project.tokenPrice = parseFloat((project.tokenPrice + changeAmount).toFixed(6));
         }
     });
+    
+    // If display function exists, refresh the display
+    if (typeof displayProjects === 'function') {
+        filterProjects();
+    }
 }
 
 // Function to initialize the catalog
 function initCatalog() {
+    console.log("Initializing catalog with", projects.length, "projects");
+    
     // Filter unique categories
     const categories = [...new Set(projects.map(project => project.category))];
     
@@ -205,36 +215,52 @@ function initCatalog() {
 
 // Function to filter projects based on selected criteria
 function filterProjects() {
-    const searchInput = document.getElementById('searchInput')?.value?.toLowerCase() || '';
-    const categoryFilter = document.getElementById('categoryFilter')?.value || 'all';
-    const regionFilter = document.getElementById('regionFilter')?.value || 'all';
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const regionFilter = document.getElementById('regionFilter');
+    
+    const searchValue = searchInput ? searchInput.value.toLowerCase() : '';
+    const categoryValue = categoryFilter ? categoryFilter.value : 'all';
+    const regionValue = regionFilter ? regionFilter.value : 'all';
+    
+    console.log("Filtering projects:", {
+        search: searchValue,
+        category: categoryValue,
+        region: regionValue
+    });
     
     let filteredProjects = projects;
     
     // Filter by search input
-    if (searchInput) {
+    if (searchValue) {
         filteredProjects = filteredProjects.filter(project => 
-            project.name.toLowerCase().includes(searchInput) || 
-            project.description.toLowerCase().includes(searchInput)
+            project.name.toLowerCase().includes(searchValue) || 
+            (project.description && project.description.toLowerCase().includes(searchValue))
         );
     }
     
     // Filter by category
-    if (categoryFilter !== 'all') {
+    if (categoryValue && categoryValue !== 'all') {
         filteredProjects = filteredProjects.filter(project => 
-            project.category === categoryFilter
+            project.category === categoryValue
         );
     }
     
     // Filter by region
-    if (regionFilter !== 'all') {
+    if (regionValue && regionValue !== 'all') {
         filteredProjects = filteredProjects.filter(project => 
-            project.region && project.region.includes(regionFilter)
+            project.region && project.region.includes(regionValue)
         );
     }
     
+    console.log("Found", filteredProjects.length, "matching projects");
+    
     // Display the filtered projects
-    displayProjects(filteredProjects);
+    if (typeof displayProjects === 'function') {
+        displayProjects(filteredProjects);
+    } else {
+        console.error("displayProjects function not found");
+    }
 }
 
 // Create filter section
@@ -288,10 +314,47 @@ function createFilterSection(categories, regions) {
     }
     
     // Set up search and filter handlers
-    document.getElementById('searchInput')?.addEventListener('input', debounce(filterProjects, 300));
-    document.getElementById('categoryFilter')?.addEventListener('change', filterProjects);
-    document.getElementById('regionFilter')?.addEventListener('change', filterProjects);
-    document.getElementById('searchBtn')?.addEventListener('click', filterProjects);
+    if (document.getElementById('searchInput')) {
+        document.getElementById('searchInput').addEventListener('input', debounce(filterProjects, 300));
+    }
+    
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', filterProjects);
+    }
+    
+    if (regionFilter) {
+        regionFilter.addEventListener('change', filterProjects);
+    }
+    
+    const searchBtn = document.getElementById('searchButton') || document.getElementById('searchBtn');
+    if (searchBtn) {
+        searchBtn.addEventListener('click', filterProjects);
+    }
+    
+    // Handle tag clicks
+    const tags = document.querySelectorAll('.tag');
+    tags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            if (filter === 'app' || filter === 'hardware') {
+                if (categoryFilter) {
+                    categoryFilter.value = filter === 'hardware' ? 'device' : filter;
+                    filterProjects();
+                }
+            }
+        });
+    });
+    
+    // Handle clear tags
+    const clearTags = document.querySelector('.clear-tags');
+    if (clearTags) {
+        clearTags.addEventListener('click', function() {
+            if (searchInput) searchInput.value = '';
+            if (categoryFilter) categoryFilter.value = 'all';
+            if (regionFilter) regionFilter.value = 'all';
+            filterProjects();
+        });
+    }
 }
 
 // Debounce function to prevent too many filter calls

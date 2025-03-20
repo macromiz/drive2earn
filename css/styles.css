@@ -192,18 +192,6 @@ header {
   position: relative;
 }
 
-.search-section::after {
-  content: '';
-  position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
-  height: 4px;
-  background: linear-gradient(to right, var(--accent-color), var(--primary-color));
-  border-radius: 2px;
-}
-
 .search-bar {
   display: flex;
   flex-wrap: wrap;
