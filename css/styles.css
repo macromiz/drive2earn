@@ -63,12 +63,12 @@ header {
 
 /* Hero Banner - Fixed below header */
 .hero-banner {
-  background: linear-gradient(to right, var(--dark-bg), var(--section-bg), var(--dark-bg));
+  background-color: var(--section-bg);
   padding: 3rem 0;
   text-align: center;
   margin-bottom: 4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
 }
 
 .hero-banner h1 {
@@ -457,7 +457,7 @@ button.search-btn i {
 .project-description {
   font-size: 1rem;
   color: var(--light-text);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1rem;
   flex-grow: 1;
   line-height: 1.6;
 }
@@ -509,7 +509,7 @@ button.search-btn i {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .project-tag {
@@ -534,7 +534,7 @@ button.search-btn i {
 }
 
 .learn-more-btn {
-  display: inline-block;
+  display: block;
   padding: 0.8rem 1.75rem;
   background-color: var(--accent-color);
   color: white;
@@ -547,7 +547,7 @@ button.search-btn i {
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
-  margin-top: 1.5rem;
+  margin: 1.25rem auto 0;
   box-shadow: 0 4px 10px rgba(76, 201, 240, 0.2);
 }
 
