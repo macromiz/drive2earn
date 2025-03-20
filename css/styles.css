@@ -409,8 +409,8 @@ button.search-btn i {
 }
 
 .project-logo {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -418,16 +418,31 @@ button.search-btn i {
   margin-bottom: 1.75rem;
   overflow: hidden;
   background-color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
   position: relative;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(76, 201, 240, 0.2);
+  border-color: var(--accent-color);
 }
 
 .project-logo img {
-  width: 85%;
-  height: 85%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
   max-width: 100%;
   max-height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.project-logo:hover img {
+  transform: scale(1.1);
 }
 
 .project-icon {

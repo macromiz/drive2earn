@@ -82,7 +82,22 @@ function displayProjects(projects) {
                     logoUrl = 'https://pbs.twimg.com/profile_images/1625953683342336000/8LhLtXGR_400x400.jpg';
                 } else if (project.name === 'Dovu') {
                     logoUrl = 'https://pbs.twimg.com/profile_images/1468947000813162496/N5-tYlZ5_400x400.jpg';
+                } else if (project.name === 'DIMO') {
+                    logoUrl = 'https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a6073ffa27de6e2d03e051_DIMO_400x400.png';
+                } else if (project.name === 'Hivemapper') {
+                    logoUrl = 'https://pbs.twimg.com/profile_images/1635267082441412608/Kd5c_mt8_400x400.png';
+                } else if (project.name === 'peaq Network') {
+                    logoUrl = 'https://pbs.twimg.com/profile_images/1501193832131440643/F9MUw9YP_400x400.jpg';
                 }
+                
+                // Create the project logo HTML with better fallback
+                const logoHTML = logoUrl ? 
+                    `<div class="project-logo">
+                        <img src="${logoUrl}" alt="${project.name} logo" onerror="this.onerror=null;this.parentNode.innerHTML='<i class=\\'fas fa-${project.category === 'device' ? 'microchip' : 'mobile-alt'} fa-2x\\'></i>';">
+                    </div>` : 
+                    `<div class="project-logo">
+                        <i class="fas fa-${project.category === 'device' ? 'microchip' : 'mobile-alt'} fa-2x"></i>
+                    </div>`;
                 
                 // Extract hardware cost if present
                 let hardwareCost = '';
@@ -107,9 +122,7 @@ function displayProjects(projects) {
                 
                 projectCard.innerHTML = `
                     ${project.featured ? '<div class="project-badge featured-badge">Featured</div>' : ''}
-                    <div class="project-logo">
-                        ${logoUrl ? `<img src="${logoUrl}" alt="${project.name} logo" onerror="this.onerror=null;this.parentNode.innerHTML='<i class=\\'fas fa-coin fa-2x\\'></i>';">` : '<i class="fas fa-coin fa-2x"></i>'}
-                    </div>
+                    ${logoHTML}
                     <h3 class="project-name">${project.name}</h3>
                     <p class="project-description">${project.description}</p>
                     <div class="project-tags">
@@ -119,7 +132,7 @@ function displayProjects(projects) {
                     </div>
                     ${project.tokenPrice ? `
                     <div class="token-price">
-                        <h4>Token Price</h4>
+                        <h4>TOKEN PRICE</h4>
                         <p>$${project.tokenPrice} ${project.priceChange ? `<span class="${project.priceChange > 0 ? 'positive-change' : 'negative-change'}">${project.priceChange > 0 ? '+' : ''}${project.priceChange}%</span>` : ''}</p>
                     </div>
                     ` : ''}
