@@ -177,93 +177,15 @@ function fetchTokenPrices() {
         }
     });
     
-    // If display function exists, refresh the display
-    if (typeof displayProjects === 'function') {
-        filterProjects();
+    console.log('Token prices updated');
+    
+    // Refresh display if the filter function exists
+    if (typeof filterAndDisplayProjects === 'function') {
+        filterAndDisplayProjects();
     }
 }
 
-// Function to initialize the catalog
-function initCatalog() {
-    console.log("Initializing catalog with", projects.length, "projects");
-    
-    // Filter unique categories
-    const categories = [...new Set(projects.map(project => project.category))];
-    
-    // Filter unique regions
-    const regions = [];
-    projects.forEach(project => {
-        if (project.region && Array.isArray(project.region)) {
-            project.region.forEach(region => {
-                if (!regions.includes(region)) {
-                    regions.push(region);
-                }
-            });
-        }
-    });
-    
-    // Create the filter section
-    createFilterSection(categories, regions);
-    
-    // Display all projects initially
-    filterProjects();
-    
-    // Optional: Fetch token prices every 5 minutes
-    fetchTokenPrices();
-    setInterval(fetchTokenPrices, 5 * 60 * 1000);
-}
-
-// Function to filter projects based on selected criteria
-function filterProjects() {
-    const searchInput = document.getElementById('searchInput');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const regionFilter = document.getElementById('regionFilter');
-    
-    const searchValue = searchInput ? searchInput.value.toLowerCase() : '';
-    const categoryValue = categoryFilter ? categoryFilter.value : 'all';
-    const regionValue = regionFilter ? regionFilter.value : 'all';
-    
-    console.log("Filtering projects:", {
-        search: searchValue,
-        category: categoryValue,
-        region: regionValue
-    });
-    
-    let filteredProjects = projects;
-    
-    // Filter by search input
-    if (searchValue) {
-        filteredProjects = filteredProjects.filter(project => 
-            project.name.toLowerCase().includes(searchValue) || 
-            (project.description && project.description.toLowerCase().includes(searchValue))
-        );
-    }
-    
-    // Filter by category
-    if (categoryValue && categoryValue !== 'all') {
-        filteredProjects = filteredProjects.filter(project => 
-            project.category === categoryValue
-        );
-    }
-    
-    // Filter by region
-    if (regionValue && regionValue !== 'all') {
-        filteredProjects = filteredProjects.filter(project => 
-            project.region && project.region.includes(regionValue)
-        );
-    }
-    
-    console.log("Found", filteredProjects.length, "matching projects");
-    
-    // Display the filtered projects
-    if (typeof displayProjects === 'function') {
-        displayProjects(filteredProjects);
-    } else {
-        console.error("displayProjects function not found");
-    }
-}
-
-// Create filter section
+// Create filter section - this populates the filter dropdowns
 function createFilterSection(categories, regions) {
     const categoryFilter = document.getElementById('categoryFilter');
     const regionFilter = document.getElementById('regionFilter');
@@ -312,58 +234,4 @@ function createFilterSection(categories, regions) {
             regionFilter.innerHTML += `<option value="${region}">${displayName}</option>`;
         });
     }
-    
-    // Set up search and filter handlers
-    if (document.getElementById('searchInput')) {
-        document.getElementById('searchInput').addEventListener('input', debounce(filterProjects, 300));
-    }
-    
-    if (categoryFilter) {
-        categoryFilter.addEventListener('change', filterProjects);
-    }
-    
-    if (regionFilter) {
-        regionFilter.addEventListener('change', filterProjects);
-    }
-    
-    const searchBtn = document.getElementById('searchButton') || document.getElementById('searchBtn');
-    if (searchBtn) {
-        searchBtn.addEventListener('click', filterProjects);
-    }
-    
-    // Handle tag clicks
-    const tags = document.querySelectorAll('.tag');
-    tags.forEach(tag => {
-        tag.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            if (filter === 'app' || filter === 'hardware') {
-                if (categoryFilter) {
-                    categoryFilter.value = filter === 'hardware' ? 'device' : filter;
-                    filterProjects();
-                }
-            }
-        });
-    });
-    
-    // Handle clear tags
-    const clearTags = document.querySelector('.clear-tags');
-    if (clearTags) {
-        clearTags.addEventListener('click', function() {
-            if (searchInput) searchInput.value = '';
-            if (categoryFilter) categoryFilter.value = 'all';
-            if (regionFilter) regionFilter.value = 'all';
-            filterProjects();
-        });
-    }
-}
-
-// Debounce function to prevent too many filter calls
-function debounce(func, delay) {
-    let timeout;
-    return function() {
-        const context = this;
-        const args = arguments;
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(context, args), delay);
-    };
 } 
