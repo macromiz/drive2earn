@@ -95,14 +95,48 @@ function initSearchAndFilters() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('App initialized');
     
-    // Ensure catalog is initialized
-    if (typeof initCatalog === 'function') {
-        initCatalog();
-    } else {
-        console.error('initCatalog function not found');
+    // Check if projects container exists
+    const projectsContainer = document.getElementById('projects-container');
+    if (!projectsContainer) {
+        console.error('Missing #projects-container element');
+        return;
     }
     
-    // Set up tag filtering
+    // Print debugging info
+    console.log('Projects container found:', projectsContainer);
+    
+    // Check if projects are available globally
+    if (typeof window.projects !== 'undefined') {
+        console.log('Projects available in window:', window.projects.length);
+    } else {
+        console.error('Projects not defined in window object');
+    }
+    
+    // Check for required functions
+    if (typeof initCatalog !== 'function') {
+        console.error('initCatalog function not found');
+        return;
+    }
+    
+    if (typeof displayProjects !== 'function') {
+        console.error('displayProjects function not found');
+        return;
+    }
+    
+    // Initialize the catalog (this will call filterProjects and displayProjects)
+    try {
+        initCatalog();
+    } catch (error) {
+        console.error('Error initializing catalog:', error);
+        
+        // Fallback: directly display all projects if initialization fails
+        if (window.projects && displayProjects) {
+            console.log('Fallback: directly displaying all projects');
+            displayProjects(window.projects);
+        }
+    }
+    
+    // Set up additional tag filtering
     setupTagFiltering();
 });
 
