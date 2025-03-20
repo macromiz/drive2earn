@@ -523,16 +523,10 @@ button.search-btn i {
 /* Project tags styling */
 .project-tags {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap;
   gap: 0.75rem;
-  margin: 0.5rem 0;
-  padding-bottom: 0.5rem;
-  scrollbar-width: none; /* Firefox */
-}
-
-.project-tags::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  margin: 0.5rem 0 1rem 0;
+  max-width: 100%;
 }
 
 .project-tag {
@@ -544,8 +538,7 @@ button.search-btn i {
   background-color: rgba(255, 255, 255, 0.09);
   color: var(--light-text);
   transition: all 0.2s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
+  margin-bottom: 0.5rem;
 }
 
 .project-tag:hover {
