@@ -66,30 +66,6 @@ const projects = [
         hardwareCost: "$549"
     },
     {
-        id: 5,
-        name: "Helium Mobile",
-        description: "A community-built wireless network that lets users earn HNT tokens by sharing cellular coverage from Helium Hotspots or simply by sharing signal strength data through the mobile app.",
-        category: "app",
-        region: ["north-america"],
-        logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/655691c4ea24ce9ec39d0f0a_helium-mobile-logo.png",
-        token: "MOBILE",
-        tokenPrice: 0.003,
-        priceChange: -1.8,
-        url: "https://helium.com/"
-    },
-    {
-        id: 6,
-        name: "Nodle",
-        description: "A crowdsourced connectivity network that rewards users for sharing their phone's Bluetooth signal. By running the Nodle app in the background, users help locate and connect IoT devices while earning NODL tokens.",
-        category: "app",
-        region: ["global"],
-        logo: "https://pbs.twimg.com/profile_images/1606266544605081601/SFwCU_CL_400x400.jpg",
-        token: "NODL",
-        tokenPrice: 0.00234,
-        priceChange: 0.5,
-        url: "https://www.nodle.com/"
-    },
-    {
         id: 7,
         name: "Dovu",
         description: "Dovu enables users to earn DOV tokens by tracking and verifying their carbon-friendly transportation choices. The platform rewards sustainable mobility behaviors, helping reduce carbon footprints while earning crypto.",
@@ -123,7 +99,7 @@ const projects = [
         region: ["asia", "europe"],
         logo: "",
         token: "CARB",
-        url: "https://carblocks.io/",
+        url: "https://www.carblock.io/",
         hardwareCost: "$30"
     },
     {
