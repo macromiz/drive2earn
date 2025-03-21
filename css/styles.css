@@ -810,7 +810,12 @@ button.search-btn i {
   }
   
   .project-card {
-    margin-bottom: 1rem; /* Add some spacing between cards */
+    margin-bottom: 3rem; /* Increase spacing between cards */
+  }
+  
+  /* Fix for cards stacking too close */
+  .projects-row:last-child .project-card:last-child {
+    margin-bottom: 0;
   }
   
   .hero-cta {
