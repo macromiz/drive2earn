@@ -810,23 +810,24 @@ button.search-btn i {
   }
   
   .project-card {
-    margin-bottom: 8rem;
-    padding-bottom: 3rem;
+    margin-bottom: 6rem;
     position: relative;
     z-index: 1;
-    border: 1px solid rgba(184, 255, 80, 0.2);
-    border-bottom: 8px solid var(--dark-bg);
+    border-bottom: 8px solid rgba(184, 255, 80, 0.1);
+    padding-bottom: 2rem;
   }
   
   .project-card::after {
-    content: "";
+    content: '';
     position: absolute;
-    bottom: -4rem;
+    bottom: -4px;
     left: 0;
     right: 0;
-    height: 2px;
-    background: linear-gradient(to right, transparent, rgba(184, 255, 80, 0.3), transparent);
-    z-index: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(184, 255, 80, 0.3) 50%, 
+        rgba(255, 255, 255, 0) 100%);
   }
   
   .hero-cta {
@@ -872,6 +873,14 @@ button.search-btn i {
     max-width: 80%;
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Force clear any floats */
+  .projects-row::after {
+    content: "";
+    display: table;
+    clear: both;
   }
 }
 

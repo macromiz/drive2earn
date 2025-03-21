@@ -170,6 +170,9 @@ window.projects = projects;
 async function fetchTokenPrices() {
     console.log('Fetching token prices from CoinGecko...');
     
+    // Track that we're attempting to fetch prices
+    window.lastPriceUpdateAttempt = new Date().toISOString();
+    
     try {
         // Get projects with CoinGecko IDs
         const projectsWithIds = projects.filter(p => p.coingeckoId);
@@ -182,8 +185,15 @@ async function fetchTokenPrices() {
         // Create array of IDs for API call
         const coinIds = projectsWithIds.map(p => p.coingeckoId).join(',');
         
-        // Fetch data from CoinGecko API
-        const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinIds}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h`);
+        // Fetch data from CoinGecko API with timeout to prevent hanging
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+        
+        const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinIds}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h`, {
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
         
         if (!response.ok) {
             throw new Error(`API Error: ${response.status}`);
@@ -198,18 +208,24 @@ async function fetchTokenPrices() {
             if (project) {
                 project.tokenPrice = coin.current_price;
                 project.priceChange = coin.price_change_percentage_24h || 0;
+                project.lastPriceUpdate = new Date().toISOString();
                 console.log(`Updated ${project.name} price: $${project.tokenPrice}, change: ${project.priceChange}%`);
             }
         });
+        
+        // Track successful update
+        window.lastSuccessfulPriceUpdate = new Date().toISOString();
+        console.log('Price update completed successfully');
     } catch (error) {
         console.error('Error fetching token prices:', error);
-        // Fall back to using hardcoded values
+        // Fall back to using hardcoded values - BUT STILL DISPLAY PROJECTS
         console.log('Using cached token values');
-    }
-    
-    // Refresh display if the filter function exists
-    if (typeof filterAndDisplayProjects === 'function') {
-        filterAndDisplayProjects();
+    } finally {
+        // Always refresh the display when we're done
+        if (typeof filterAndDisplayProjects === 'function') {
+            // Use a short timeout to ensure other processing completes
+            setTimeout(filterAndDisplayProjects, 100);
+        }
     }
 }
 
@@ -229,7 +245,10 @@ function simulateTokenPrices() {
         }
     });
     
-    // Refresh display if the filter function exists
+    // Add a note that these are simulated values
+    window.usingSimulatedPrices = true;
+    
+    // Always refresh the display
     if (typeof filterAndDisplayProjects === 'function') {
         filterAndDisplayProjects();
     }

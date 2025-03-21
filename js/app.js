@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initial display of projects - ensure this happens
+    // Initial display of projects - ensure this happens BEFORE any API calls
     console.log("About to display projects initially");
     try {
         if (typeof filterAndDisplayProjects === 'function') {
@@ -100,31 +100,19 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.innerHTML += `<div style="color:red;padding:20px;background:black;position:fixed;bottom:0;left:0;right:0;z-index:9999">ERROR: ${error.message}</div>`;
     }
     
-    // Fetch token prices from CoinGecko API
+    // Fetch token prices from CoinGecko API - this should happen AFTER initial display
     try {
+        // Initial fetch is done regardless of time
         fetchTokenPrices().catch(error => {
             console.error('Error in token price fetch:', error);
-            // Fallback to simulation if the API fails
-            simulateTokenPrices();
+            // If API fails, we still have projects displayed with cached values
         });
     } catch (error) {
         console.error('Fatal error in token price fetch:', error);
-        // Ensure we have fallback prices if async/await isn't supported
-        simulateTokenPrices();
     }
     
-    // Set up auto-refresh for token prices (every 5 minutes)
-    setInterval(() => {
-        try {
-            fetchTokenPrices().catch(error => {
-                console.error('Error in token price refresh:', error);
-                simulateTokenPrices();
-            });
-        } catch (error) {
-            console.error('Fatal error in token price refresh:', error);
-            simulateTokenPrices();
-        }
-    }, 5 * 60 * 1000); // 5 minutes
+    // Set up scheduled updates for token prices at specified times (7am, 3pm, 11pm CET)
+    setupScheduledPriceUpdates();
 });
 
 /**
@@ -240,4 +228,74 @@ function getCtaButtonText(projectName, category) {
     }
     
     return buttonText;
+}
+
+/**
+ * Set up scheduled updates for token prices at specified times
+ * Updates will happen at 7am, 3pm, and 11pm CET
+ */
+function setupScheduledPriceUpdates() {
+    console.log('Setting up scheduled price updates...');
+    
+    // Define update hours in CET (7, 15, 23)
+    const updateHoursCET = [7, 15, 23];
+    
+    // Check every hour if it's time for an update
+    setInterval(() => {
+        try {
+            // Get current time in CET
+            const now = new Date();
+            // Convert to CET
+            const cetTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+            const currentHourCET = cetTime.getHours();
+            const currentMinuteCET = cetTime.getMinutes();
+            
+            // Check if it's one of our update hours and within the first 5 minutes of the hour
+            if (updateHoursCET.includes(currentHourCET) && currentMinuteCET < 5) {
+                console.log(`Scheduled update at ${currentHourCET}:${currentMinuteCET} CET`);
+                fetchTokenPrices().catch(error => {
+                    console.error('Error in scheduled token price update:', error);
+                    // Continue showing projects with existing prices if API fails
+                });
+            }
+        } catch (error) {
+            console.error('Error in scheduled update check:', error);
+        }
+    }, 60 * 1000); // Check every minute
+    
+    // For debug purposes, log the next update times
+    logNextUpdateTimes(updateHoursCET);
+}
+
+/**
+ * Log the next scheduled update times for debugging
+ */
+function logNextUpdateTimes(updateHoursCET) {
+    // Get current time in CET
+    const now = new Date();
+    const cetTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+    const currentHourCET = cetTime.getHours();
+    
+    console.log(`Current time: ${cetTime.toLocaleString()} CET`);
+    console.log('Next scheduled updates:');
+    
+    let foundNextUpdate = false;
+    
+    // Check for updates later today
+    for (const hour of updateHoursCET) {
+        if (hour > currentHourCET) {
+            const nextUpdate = new Date(cetTime);
+            nextUpdate.setHours(hour, 0, 0, 0);
+            console.log(`- ${nextUpdate.toLocaleString()} CET`);
+            foundNextUpdate = true;
+        }
+    }
+    
+    // If no more updates today, show first update tomorrow
+    if (!foundNextUpdate) {
+        const tomorrow = new Date(cetTime);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(updateHoursCET[0], 0, 0, 0);
+        console.log(`- ${tomorrow.toLocaleString()} CET (tomorrow)`);
+    }
 } 
