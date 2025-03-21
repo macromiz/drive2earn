@@ -1,11 +1,25 @@
 function displayProjects(projects) {
+    console.log("displayProjects called with", projects ? projects.length : 0, "projects");
+    
+    // Debug the projects array to see what's being passed
+    if (projects && projects.length > 0) {
+        console.log("Sample project data:", JSON.stringify(projects[0]));
+    } else {
+        console.warn("Projects array is empty or undefined:", projects);
+    }
+    
     const projectsContainer = document.getElementById('projects-container');
+    if (!projectsContainer) {
+        console.error("Projects container not found in the DOM!");
+        return;
+    }
     
     // Clear previous projects
     projectsContainer.innerHTML = '';
     
     // Check if any projects to display
     if (!projects || projects.length === 0) {
+        console.warn("No projects to display - showing empty state");
         projectsContainer.innerHTML = `
             <div class="no-results">
                 <div class="search-icon"><i class="fas fa-search fa-3x"></i></div>
@@ -16,22 +30,41 @@ function displayProjects(projects) {
         return;
     }
     
-    // Filter out projects that should be excluded
-    const excludedProjects = ['Helium Mobile', 'Nodle', 'CarBlocks', 'Wibson', 'DOVU', 'Dovu'];
-    projects = projects.filter(project => !excludedProjects.includes(project.name));
+    console.log("Original projects before filtering:", projects.map(p => p.name).join(', '));
+    
+    // Filter out projects that should be excluded - disabled for debugging
+    const excludedProjects = []; // Temporarily empty to show all projects
+    // const excludedProjects = ['Helium Mobile', 'Nodle', 'CarBlocks', 'Wibson', 'DOVU', 'Dovu'];
+    const filteredProjects = projects.filter(project => !excludedProjects.includes(project.name));
+    
+    console.log("After filtering, remaining projects:", filteredProjects.map(p => p.name).join(', '));
+    
+    // If all projects were filtered out, show empty state
+    if (filteredProjects.length === 0) {
+        console.warn("All projects were filtered out by exclusion list");
+        projectsContainer.innerHTML = `
+            <div class="no-results">
+                <div class="search-icon"><i class="fas fa-search fa-3x"></i></div>
+                <h2>No projects found</h2>
+                <p>Try adjusting your search criteria or explore different categories.</p>
+            </div>
+        `;
+        return;
+    }
     
     // Create projects grid
     const projectsGrid = document.createElement('div');
     projectsGrid.className = 'projects-grid';
     
     // Group projects in rows of 3 for better layout
-    for (let i = 0; i < projects.length; i += 3) {
+    for (let i = 0; i < filteredProjects.length; i += 3) {
         const row = document.createElement('div');
         row.className = 'projects-row';
         
         // Add up to 3 projects per row
-        for (let j = i; j < Math.min(i + 3, projects.length); j++) {
-            const project = projects[j];
+        for (let j = i; j < Math.min(i + 3, filteredProjects.length); j++) {
+            const project = filteredProjects[j];
+            console.log(`Creating card for project: ${project.name}`);
             
             // Create a delay for staggered animation
             const delay = ((j % 3) * 0.15) + (Math.floor(j / 3) * 0.1);
@@ -96,9 +129,6 @@ function displayProjects(projects) {
             const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
             card.style.backgroundImage = randomGradient;
             
-            // Create logo element with robust fallback
-            let logoHtml = '';
-            
             // Generate appropriate category icon class
             let iconClass = 'fa-car';
             if (project.category === 'app') {
@@ -108,7 +138,7 @@ function displayProjects(projects) {
             }
             
             // Create logo HTML with robust error handling
-            logoHtml = `
+            const logoHtml = `
                 <div class="project-logo">
                     <img 
                         src="${logoUrl || ''}" 
@@ -154,7 +184,7 @@ function displayProjects(projects) {
             }
             
             // Complete project description if it ends with "..."
-            let description = project.description;
+            let description = project.description || "No description available";
             if (description && description.endsWith('...')) {
                 // More complete descriptions for specific projects
                 switch(project.name) {
@@ -183,6 +213,16 @@ function displayProjects(projects) {
                 }
             }
             
+            // Check for missing getCtaButtonText function
+            let buttonText = "Learn More";
+            try {
+                if (typeof getCtaButtonText === 'function') {
+                    buttonText = getCtaButtonText(project.name, project.category);
+                }
+            } catch (e) {
+                console.warn("Error getting CTA button text:", e);
+            }
+            
             // Add card content
             card.innerHTML = `
                 ${logoHtml}
@@ -194,7 +234,7 @@ function displayProjects(projects) {
                 </div>
                 ${tokenInfo}
                 <a href="${project.name === 'DIMO' ? 'https://drivedimo.com/ADRIANIWANOWSKI' : project.url}" target="_blank" class="learn-more-btn">
-                    ${getCtaButtonText(project.name, project.category)}
+                    ${buttonText}
                 </a>
             `;
             
@@ -205,23 +245,28 @@ function displayProjects(projects) {
     }
     
     projectsContainer.appendChild(projectsGrid);
+    console.log("Projects displayed successfully");
     
     // Add animation to reveal cards as they enter viewport
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }, 100);
-                observer.unobserve(entry.target);
-            }
+    try {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }, 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
         });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.project-card').forEach(card => {
-        observer.observe(card);
-    });
+    } catch (error) {
+        console.error("Error setting up IntersectionObserver:", error);
+    }
 }
 
 // Helper function to generate star ratings
