@@ -93,7 +93,7 @@ const projects = [
     },
     {
         id: 9,
-        name: "CarBlocks",
+        name: "CarBlock",
         description: "Turn your car's diagnostic data into passive income. With a simple $30 OBD-II device, you can start earning CARB tokens while helping build the future transportation data ecosystem. Drivers typically recover their hardware cost within the first month.",
         category: "device",
         region: ["asia", "europe", "global"],

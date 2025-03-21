@@ -33,7 +33,7 @@ function displayProjects(projects) {
     console.log("Original projects before filtering:", projects.map(p => p.name).join(', '));
     
     // Filter out projects that should be excluded
-    const excludedProjects = ['Wibson', 'DOVU', 'Dovu']; // Removed CarBlocks from exclusion list
+    const excludedProjects = ['Wibson', 'DOVU', 'Dovu']; // CarBlock is now displayed
     const filteredProjects = projects.filter(project => !excludedProjects.includes(project.name));
     
     console.log("After filtering, remaining projects:", filteredProjects.map(p => p.name).join(', '));
@@ -308,6 +308,8 @@ function getCtaButtonText(projectName, category) {
             return 'Join Network';
         case 'peaq Network':
             return 'Connect & Earn';
+        case 'CarBlock':
+            return 'Get Hardware';
         case 'DreamCars':
             return 'Start Now';
         case 'Carro':
