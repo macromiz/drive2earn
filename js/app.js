@@ -4,46 +4,100 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('App initialized');
+    console.log('Drive2Earn app initializing...');
     
-    // Check if projects container exists
+    // Check if the projects container exists
     const projectsContainer = document.getElementById('projects-container');
     if (!projectsContainer) {
-        console.error('Missing #projects-container element');
+        console.error('Projects container not found!');
         return;
     }
     
-    // Print debugging info
-    console.log('Projects container found:', projectsContainer);
+    // Check if projects are available
+    if (!window.projects || !Array.isArray(window.projects)) {
+        console.error('Projects data not available!');
+        return;
+    }
     
-    // Make sure window.projects is available
-    if (!window.projects || !Array.isArray(window.projects) || window.projects.length === 0) {
-        console.error('Projects not properly loaded:', window.projects);
-        
-        // Try to fix by assigning from the const if it exists
-        if (typeof projects !== 'undefined' && Array.isArray(projects)) {
-            console.log('Fixing window.projects by assigning from local projects variable');
-            window.projects = projects;
-        }
+    console.log(`Found ${window.projects.length} projects`);
+    
+    // Extract unique categories and regions for filters
+    const categories = [...new Set(window.projects.map(project => project.category))];
+    const regions = [...new Set(window.projects.flatMap(project => project.region || []))];
+    
+    console.log('Categories:', categories);
+    console.log('Regions:', regions);
+    
+    // Create filter dropdowns
+    if (typeof createFilterSection === 'function') {
+        createFilterSection(categories, regions);
     } else {
-        console.log('Projects loaded successfully:', window.projects.length);
+        console.warn('createFilterSection function not available');
     }
     
-    // Initialize events and display projects
-    console.log('Setting up event handlers');
-    setupEventHandlers();
+    // Set up event listeners for search and filters
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', filterAndDisplayProjects);
+    } else {
+        console.warn('Search input not found');
+    }
     
-    // Display all projects initially
-    console.log('Displaying all projects');
+    const categoryFilter = document.getElementById('categoryFilter');
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', filterAndDisplayProjects);
+    } else {
+        console.warn('Category filter not found');
+    }
+    
+    const regionFilter = document.getElementById('regionFilter');
+    if (regionFilter) {
+        regionFilter.addEventListener('change', filterAndDisplayProjects);
+    } else {
+        console.warn('Region filter not found');
+    }
+    
+    // Set up tag filtering
+    setupTagFiltering();
+    
+    // Clear tags button
+    const clearTagsBtn = document.querySelector('.clear-tags');
+    if (clearTagsBtn) {
+        clearTagsBtn.addEventListener('click', function() {
+            const activeTags = document.querySelectorAll('.tag.active');
+            activeTags.forEach(tag => tag.classList.remove('active'));
+            filterAndDisplayProjects();
+        });
+    }
+    
+    // Initial display of projects
+    filterAndDisplayProjects();
+    
+    // Fetch token prices from CoinGecko API
     try {
-        if (typeof displayProjects === 'function') {
-            displayProjects(window.projects);
-        } else {
-            console.error('displayProjects function not found');
-        }
+        fetchTokenPrices().catch(error => {
+            console.error('Error in token price fetch:', error);
+            // Fallback to simulation if the API fails
+            simulateTokenPrices();
+        });
     } catch (error) {
-        console.error('Error displaying projects:', error);
+        console.error('Fatal error in token price fetch:', error);
+        // Ensure we have fallback prices if async/await isn't supported
+        simulateTokenPrices();
     }
+    
+    // Set up auto-refresh for token prices (every 5 minutes)
+    setInterval(() => {
+        try {
+            fetchTokenPrices().catch(error => {
+                console.error('Error in token price refresh:', error);
+                simulateTokenPrices();
+            });
+        } catch (error) {
+            console.error('Fatal error in token price refresh:', error);
+            simulateTokenPrices();
+        }
+    }, 5 * 60 * 1000); // 5 minutes
 });
 
 // Set up all event handlers for the page

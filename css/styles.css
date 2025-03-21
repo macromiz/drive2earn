@@ -802,37 +802,31 @@ button.search-btn i {
   
   .projects-row {
     grid-template-columns: 1fr;
-    gap: 6rem;
+    gap: 8rem;
   }
 
   .projects-grid {
-    gap: 6rem;
+    gap: 8rem;
   }
   
   .project-card {
-    margin-bottom: 6rem;
+    margin-bottom: 8rem;
     padding-bottom: 3rem;
     position: relative;
     z-index: 1;
-  }
-  
-  .projects-row:last-child .project-card:last-child {
-    margin-bottom: 0;
+    border: 1px solid rgba(184, 255, 80, 0.2);
+    border-bottom: 8px solid var(--dark-bg);
   }
   
   .project-card::after {
     content: "";
     position: absolute;
-    bottom: -3rem;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(184, 255, 80, 0.2), transparent);
+    bottom: -4rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(184, 255, 80, 0.3), transparent);
     z-index: 0;
-  }
-  
-  .projects-row:last-child .project-card:last-child::after {
-    display: none;
   }
   
   .hero-cta {

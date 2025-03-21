@@ -14,11 +14,13 @@ const projects = [
         region: ["global", "north-america", "europe"],
         logo: "https://uploads-ssl.webflow.com/64d7cea4c213947d7d05ea38/64d8ddcf1f0429e2aefb2d0f_natix-logo-white-bg.png",
         token: "NTIX",
-        tokenPrice: 0.055,
-        priceChange: 3.2,
+        tokenTicker: "NTIX",
+        tokenPrice: 0.0007383,
+        priceChange: 1.4,
         url: "https://natix.network/",
         hardwareCost: "$299",
-        featured: true
+        featured: true,
+        coingeckoId: "natix-network"
     },
     {
         id: 2,
@@ -28,10 +30,12 @@ const projects = [
         region: ["global"],
         logo: "https://pbs.twimg.com/profile_images/1625953683342336000/8LhLtXGR_400x400.jpg",
         token: "MAP",
+        tokenTicker: "MAP",
         tokenPrice: 0.042,
         priceChange: 1.5,
         url: "https://mapmetrics.org/",
-        featured: true
+        featured: true,
+        coingeckoId: "mapmetrics"
     },
     {
         id: 3,
@@ -41,10 +45,12 @@ const projects = [
         region: ["north-america", "europe"],
         logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a6073ffa27de6e2d03e051_DIMO_400x400.png",
         token: "DIMO",
-        tokenPrice: 0.16,
-        priceChange: 5.2,
+        tokenTicker: "DIMO",
+        tokenPrice: 0.07468,
+        priceChange: 6.6,
         url: "https://dimo.zone/",
-        hardwareCost: "$99-$249"
+        hardwareCost: "$99-$249",
+        coingeckoId: "dimo"
     },
     {
         id: 4,
@@ -160,10 +166,56 @@ const projects = [
 // Make projects accessible globally
 window.projects = projects;
 
-// Token prices simulation
-function fetchTokenPrices() {
-    // This would be replaced by actual API calls to get real token prices
-    // For now, we'll just simulate some price changes
+// Token prices fetching from CoinGecko API
+async function fetchTokenPrices() {
+    console.log('Fetching token prices from CoinGecko...');
+    
+    try {
+        // Get projects with CoinGecko IDs
+        const projectsWithIds = projects.filter(p => p.coingeckoId);
+        
+        if (projectsWithIds.length === 0) {
+            console.log('No projects with CoinGecko IDs found');
+            return;
+        }
+        
+        // Create array of IDs for API call
+        const coinIds = projectsWithIds.map(p => p.coingeckoId).join(',');
+        
+        // Fetch data from CoinGecko API
+        const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinIds}&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h`);
+        
+        if (!response.ok) {
+            throw new Error(`API Error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log('CoinGecko data:', data);
+        
+        // Update project data with API response
+        data.forEach(coin => {
+            const project = projects.find(p => p.coingeckoId === coin.id);
+            if (project) {
+                project.tokenPrice = coin.current_price;
+                project.priceChange = coin.price_change_percentage_24h || 0;
+                console.log(`Updated ${project.name} price: $${project.tokenPrice}, change: ${project.priceChange}%`);
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching token prices:', error);
+        // Fall back to using hardcoded values
+        console.log('Using cached token values');
+    }
+    
+    // Refresh display if the filter function exists
+    if (typeof filterAndDisplayProjects === 'function') {
+        filterAndDisplayProjects();
+    }
+}
+
+// Fallback function for when API fails
+function simulateTokenPrices() {
+    console.log('Using simulated token price changes');
     
     projects.forEach(project => {
         if (project.tokenPrice) {
@@ -176,8 +228,6 @@ function fetchTokenPrices() {
             project.tokenPrice = parseFloat((project.tokenPrice + changeAmount).toFixed(6));
         }
     });
-    
-    console.log('Token prices updated');
     
     // Refresh display if the filter function exists
     if (typeof filterAndDisplayProjects === 'function') {
