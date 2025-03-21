@@ -17,7 +17,7 @@ function displayProjects(projects) {
     }
     
     // Filter out projects that should be excluded
-    const excludedProjects = ['Helium Mobile', 'Nodle', 'CarBlocks', 'Wibson'];
+    const excludedProjects = ['Helium Mobile', 'Nodle', 'CarBlocks', 'Wibson', 'DOVU', 'Dovu'];
     projects = projects.filter(project => !excludedProjects.includes(project.name));
     
     // Create projects grid
