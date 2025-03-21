@@ -16,6 +16,10 @@ function displayProjects(projects) {
         return;
     }
     
+    // Filter out projects that should be excluded
+    const excludedProjects = ['Helium Mobile', 'Nodle', 'CarBlocks', 'Wibson'];
+    projects = projects.filter(project => !excludedProjects.includes(project.name));
+    
     // Create projects grid
     const projectsGrid = document.createElement('div');
     projectsGrid.className = 'projects-grid';
@@ -44,7 +48,7 @@ function displayProjects(projects) {
             }
             
             // Define logo URL based on project name
-            let logoUrl = project.logoUrl;
+            let logoUrl = project.logoUrl || project.logo;
             
             // Override with better logos when available
             if (project.name === 'NATIX Network') {
@@ -61,6 +65,27 @@ function displayProjects(projects) {
                 logoUrl = 'https://peaq.network/assets/img/logos/peaq-logo-white.svg';
             }
             
+            // Add fallback URLs if needed
+            if (!logoUrl) {
+                switch(project.name) {
+                    case 'Hivemapper':
+                        logoUrl = 'https://pbs.twimg.com/profile_images/1635267082441412608/Kd5c_mt8_400x400.png';
+                        break;
+                    case 'DIMO':
+                        logoUrl = 'https://pbs.twimg.com/profile_images/1480978731796824064/v4z2KGD9_400x400.jpg';
+                        break;
+                    case 'MapMetrics':
+                        logoUrl = 'https://pbs.twimg.com/profile_images/1625953683342336000/8LhLtXGR_400x400.jpg';
+                        break;
+                    case 'DOVU':
+                        logoUrl = 'https://pbs.twimg.com/profile_images/1468947000813162496/N5-tYlZ5_400x400.jpg';
+                        break;
+                    case 'NATIX Network':
+                        logoUrl = 'https://pbs.twimg.com/profile_images/1583788133037162498/5sFrFdX1_400x400.jpg';
+                        break;
+                }
+            }
+            
             // Random gradient backgrounds for cards that need visual pop
             const gradients = [
                 'linear-gradient(135deg, rgba(184, 255, 80, 0.03) 0%, rgba(15, 24, 36, 0) 100%)',
@@ -71,29 +96,27 @@ function displayProjects(projects) {
             const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
             card.style.backgroundImage = randomGradient;
             
-            // Create logo element with fallback
+            // Create logo element with robust fallback
             let logoHtml = '';
-            if (logoUrl) {
-                logoHtml = `
-                    <div class="project-logo">
-                        <img src="${logoUrl}" alt="${project.name} logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/150?text=${encodeURIComponent(project.name)}'; this.style.opacity='0.7';">
-                    </div>
-                `;
-            } else {
-                // Fallback to category-based icon if no logo
-                let iconClass = 'fa-car';
-                if (project.category === 'app') {
-                    iconClass = 'fa-mobile-alt';
-                } else if (project.category === 'device') {
-                    iconClass = 'fa-microchip';
-                }
-                
-                logoHtml = `
-                    <div class="project-logo" style="background-color: var(--section-bg); border-color: rgba(255, 255, 255, 0.1);">
-                        <i class="fas ${iconClass}" style="font-size: 2rem; color: var(--accent-color);"></i>
-                    </div>
-                `;
+            
+            // Generate appropriate category icon class
+            let iconClass = 'fa-car';
+            if (project.category === 'app') {
+                iconClass = 'fa-mobile-alt';
+            } else if (project.category === 'device') {
+                iconClass = 'fa-microchip';
             }
+            
+            // Create logo HTML with robust error handling
+            logoHtml = `
+                <div class="project-logo">
+                    <img 
+                        src="${logoUrl || ''}" 
+                        alt="${project.name} logo" 
+                        onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\\'fas ${iconClass}\\' style=\\'font-size: 2rem; color: var(--accent-color);\\' title=\\'${project.name}\\'></i>';"
+                    >
+                </div>
+            `;
             
             // Create tags based on category and region
             let tags = '';
@@ -104,23 +127,61 @@ function displayProjects(projects) {
                 tags += `<div class="project-tag"><i class="fas fa-microchip"></i>Device-Based</div>`;
             }
             
+            // Add token tag if available
+            if (project.token || project.tokenTicker) {
+                const tokenName = project.tokenTicker || project.token;
+                tags += `<div class="project-tag"><i class="fas fa-coins"></i>${tokenName}</div>`;
+            }
+            
             // Extract token info if available
             let tokenInfo = '';
-            if (project.tokenTicker && project.tokenPrice) {
-                const priceChange = project.tokenPriceChange || 0;
+            if ((project.tokenPrice && project.tokenPrice !== "N/A") || project.tokenTicker) {
+                const tokenPrice = project.tokenPrice || "N/A";
+                const priceChange = project.tokenPriceChange || project.priceChange || 0;
                 const changeClass = priceChange >= 0 ? 'positive-change' : 'negative-change';
                 const changeIcon = priceChange >= 0 ? 'fa-arrow-up' : 'fa-arrow-down';
+                const ticker = project.tokenTicker || project.token || "";
                 
                 tokenInfo = `
                     <div class="token-price">
-                        <h4>${project.tokenTicker} Price</h4>
-                        <p>$${project.tokenPrice} <span class="${changeClass}"><i class="fas ${changeIcon}"></i> ${Math.abs(priceChange)}%</span></p>
+                        <h4>${ticker} Price</h4>
+                        <p>${tokenPrice !== "N/A" ? '$' + tokenPrice : 'Price Unavailable'} 
+                           ${priceChange !== 0 && tokenPrice !== "N/A" ? 
+                            `<span class="${changeClass}"><i class="fas ${changeIcon}"></i> ${Math.abs(priceChange)}%</span>` : ''}
+                        </p>
                     </div>
                 `;
             }
             
             // Complete project description if it ends with "..."
             let description = project.description;
+            if (description && description.endsWith('...')) {
+                // More complete descriptions for specific projects
+                switch(project.name) {
+                    case 'NATIX Network':
+                        description = 'NATIX helps cities transform existing urban camera networks into powerful AI sensing tools using computer vision, without sharing any video or image data. The system generates insights across mobility, safety, and traffic analytics while preserving privacy.';
+                        break;
+                    case 'MapMetrics':
+                        description = 'MapMetrics rewards users for contributing GPS location data while driving. The app validates, processes, and enhances map quality data and compensates users with MAP tokens. Perfect for daily commuters looking to earn passively.';
+                        break;
+                    case 'DIMO':
+                        description = 'DIMO is a user-owned IoT platform connecting drivers, vehicles and apps. It allows users to earn tokens by sharing vehicle data while maintaining ownership and control of their information, creating value from everyday driving.';
+                        break;
+                    case 'Hivemapper':
+                        description = 'Hivemapper is building a global, blockchain-based map using dashcams and community contributions. Drivers earn HONEY tokens by capturing street-level imagery that improves map accuracy and freshness through the Hivemapper Dashcam.';
+                        break;
+                    case 'Dovu':
+                    case 'DOVU':
+                        description = 'Dovu enables users to earn DOV tokens by tracking and verifying their carbon-friendly transportation choices. The platform rewards sustainable mobility behaviors, helping reduce carbon footprints while earning crypto.';
+                        break;
+                    case 'peaq Network':
+                        description = 'peaq Network is building the Economy of Things on Web3 foundations. Users can earn from vehicle data and services including charging stations, ridesharing, and connected vehicle applications, all powered by blockchain technology.';
+                        break;
+                    default:
+                        // For other projects, just remove the ellipsis
+                        description = description.slice(0, -3);
+                }
+            }
             
             // Add card content
             card.innerHTML = `
