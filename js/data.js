@@ -94,13 +94,17 @@ const projects = [
     {
         id: 9,
         name: "CarBlocks",
-        description: "A platform for secure vehicle data sharing and monetization using blockchain technology. Connect your car's OBD-II port to earn tokens by sharing valuable driving and diagnostic information.",
+        description: "Turn your car's diagnostic data into passive income. With a simple $30 OBD-II device, you can start earning CARB tokens while helping build the future transportation data ecosystem. Drivers typically recover their hardware cost within the first month.",
         category: "device",
-        region: ["asia", "europe"],
-        logo: "",
+        region: ["asia", "europe", "global"],
+        logo: "https://pbs.twimg.com/profile_images/1115539544591036416/DaTgHxPa_400x400.png",
         token: "CARB",
+        tokenTicker: "CARB",
+        tokenPrice: 0.015,
+        priceChange: 1.2,
         url: "https://www.carblock.io/",
-        hardwareCost: "$30"
+        hardwareCost: "$30",
+        featured: true
     },
     {
         id: 10,

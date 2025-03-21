@@ -32,8 +32,8 @@ function displayProjects(projects) {
     
     console.log("Original projects before filtering:", projects.map(p => p.name).join(', '));
     
-    // Filter out projects that should be excluded - disabled for debugging
-    const excludedProjects = ['CarBlocks', 'Wibson', 'DOVU', 'Dovu']; // Removed Helium Mobile and Nodle
+    // Filter out projects that should be excluded
+    const excludedProjects = ['Wibson', 'DOVU', 'Dovu']; // Removed CarBlocks from exclusion list
     const filteredProjects = projects.filter(project => !excludedProjects.includes(project.name));
     
     console.log("After filtering, remaining projects:", filteredProjects.map(p => p.name).join(', '));
