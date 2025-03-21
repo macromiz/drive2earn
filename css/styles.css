@@ -802,20 +802,37 @@ button.search-btn i {
   
   .projects-row {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 6rem;
   }
 
   .projects-grid {
-    gap: 3.5rem;
+    gap: 6rem;
   }
   
   .project-card {
-    margin-bottom: 3rem; /* Increase spacing between cards */
+    margin-bottom: 6rem;
+    padding-bottom: 3rem;
+    position: relative;
+    z-index: 1;
   }
   
-  /* Fix for cards stacking too close */
   .projects-row:last-child .project-card:last-child {
     margin-bottom: 0;
+  }
+  
+  .project-card::after {
+    content: "";
+    position: absolute;
+    bottom: -3rem;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(184, 255, 80, 0.2), transparent);
+    z-index: 0;
+  }
+  
+  .projects-row:last-child .project-card:last-child::after {
+    display: none;
   }
   
   .hero-cta {
@@ -829,7 +846,6 @@ button.search-btn i {
     text-align: center;
   }
 
-  /* Hero Section Responsive */
   .hero-section h1 {
     font-size: 2.2rem;
   }
@@ -844,7 +860,6 @@ button.search-btn i {
     width: 100%;
   }
 
-  /* Benefits Section Responsive */
   .benefits-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
