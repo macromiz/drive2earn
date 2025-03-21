@@ -778,6 +778,18 @@ button.search-btn i {
   line-height: 1.6;
 }
 
+/* Mobile fixes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .search-bar {
@@ -790,7 +802,26 @@ button.search-btn i {
   
   .projects-row {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
+  }
+
+  .projects-grid {
+    gap: 3.5rem;
+  }
+  
+  .project-card {
+    margin-bottom: 1rem; /* Add some spacing between cards */
+  }
+  
+  .hero-cta {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .hero-cta a {
+    width: 80%;
+    text-align: center;
   }
 
   /* Hero Section Responsive */
@@ -815,11 +846,18 @@ button.search-btn i {
   }
   
   .hero-banner h1 {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
   }
   
   .hero-banner p {
-    font-size: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .learn-more-btn {
+    width: 100%;
+    max-width: 80%;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -845,6 +883,22 @@ button.search-btn i {
   .footer-links a {
     margin-left: 1rem;
     margin-right: 1rem;
+  }
+  
+  .hero-banner {
+    padding: 4rem 0;
+  }
+  
+  .hero-banner h1 {
+    font-size: 2rem;
+  }
+  
+  .projects-grid {
+    gap: 3rem;
+  }
+  
+  .projects-row {
+    gap: 3rem;
   }
 }
 

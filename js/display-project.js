@@ -193,7 +193,9 @@ function displayProjects(projects) {
                     ${hardwareCost}
                 </div>
                 ${tokenInfo}
-                <a href="${project.url}" target="_blank" class="learn-more-btn">Learn More</a>
+                <a href="${project.name === 'DIMO' ? 'https://drivedimo.com/ADRIANIWANOWSKI' : project.url}" target="_blank" class="learn-more-btn">
+                    ${getCtaButtonText(project.name, project.category)}
+                </a>
             `;
             
             row.appendChild(card);
@@ -246,4 +248,27 @@ function generateStarRating(rating) {
     }
     
     return starsHtml;
+}
+
+// Add outside the card creation loop, above the place where you add observers
+// Helper function to get appropriate CTA text based on project
+function getCtaButtonText(projectName, category) {
+    switch(projectName) {
+        case 'DIMO':
+            return 'Start Earning Rewards';
+        case 'Hivemapper':
+            return 'Map & Earn';
+        case 'MapMetrics':
+            return 'Drive & Earn';
+        case 'NATIX Network':
+            return 'Join Network';
+        case 'peaq Network':
+            return 'Connect & Earn';
+        case 'DreamCars':
+            return 'Start Now';
+        case 'Carro':
+            return 'Get Started';
+        default:
+            return category === 'app' ? 'Download App' : 'Start Earning';
+    }
 } 
