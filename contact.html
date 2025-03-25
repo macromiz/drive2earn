@@ -261,9 +261,9 @@
                     &copy; 2025 Drive2Earn.io - All Rights Reserved
                 </div>
                 <div class="footer-links">
-                    <a href="privacy-policy.html">Privacy Policy</a>
-                    <a href="terms-of-service.html">Terms of Service</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="https://drive2earn.io/privacy-policy.html">Privacy Policy</a>
+                    <a href="https://drive2earn.io/terms-of-service.html">Terms of Service</a>
+                    <a href="https://drive2earn.io/contact.html">Contact</a>
                 </div>
             </div>
         </div>
@@ -271,7 +271,7 @@
     
     <!-- Cookie Banner -->
     <div id="cookie-banner" style="display: none;">
-        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy-policy.html#cookies">Learn more</a></p>
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="https://drive2earn.io/privacy-policy.html#cookies">Learn more</a></p>
         <button id="accept-cookies">Accept</button>
     </div>
     
@@ -282,6 +282,7 @@
         // Form handling script
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
+            const contactForm = document.getElementById('contactForm');
             
             // Check for form submission status from URL parameters
             if (urlParams.has('submitted')) {
@@ -291,6 +292,21 @@
             
             if (urlParams.has('error')) {
                 document.getElementById('errorMessage').style.display = 'block';
+            }
+            
+            // Add loading state to prevent multiple submissions
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    // Disable submit button to prevent multiple submissions
+                    const submitBtn = this.querySelector('.btn-submit');
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    }
+                    
+                    // Allow form to submit normally
+                    return true;
+                });
             }
         });
     </script>

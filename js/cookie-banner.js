@@ -82,6 +82,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 bannerLink.style.color = 'var(--accent-color)';
                 bannerLink.style.textDecoration = 'none';
                 
+                // Convert relative URL to absolute URL
+                if (bannerLink.getAttribute('href') && !bannerLink.getAttribute('href').startsWith('http')) {
+                    const currentUrl = window.location.href;
+                    const baseUrl = currentUrl.split('/').slice(0, 3).join('/'); // Get protocol and domain
+                    const relativeUrl = bannerLink.getAttribute('href');
+                    bannerLink.setAttribute('href', baseUrl + '/' + relativeUrl.replace(/^\//, ''));
+                }
+                
                 bannerLink.addEventListener('mouseover', function() {
                     this.style.textDecoration = 'underline';
                 });

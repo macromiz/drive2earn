@@ -53,7 +53,7 @@ header {
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--text-color);
+  color: white;
   text-decoration: none;
 }
 
@@ -250,7 +250,7 @@ header {
   display: inline-block;
   padding: 1rem 2.5rem;
   background: white;
-  color: var(--primary-color);
+  color: var(--dark-bg) !important;
   font-weight: 600;
   font-size: 1.1rem;
   border-radius: 2rem;
@@ -965,9 +965,50 @@ footer::before {
 
 .footer-links a:hover {
   color: var(--accent-color);
+  text-decoration: none;
 }
 
 /* Make all text properly selectable */
 .project-card * {
   user-select: text;
+}
+
+/* Add these rules to ensure all links use the accent color */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Project links should be controlled separately */
+.project-link {
+    color: var(--primary-color);
+}
+
+/* Cookie banner link adjustment */
+#cookie-banner a {
+    color: var(--accent-color);
+}
+
+#cookie-banner a:hover {
+    text-decoration: underline;
+}
+
+/* Keep header logo white */
+header .logo {
+    color: white;
+    text-decoration: none;
+}
+
+header .logo:hover {
+    text-decoration: none;
+}
+
+/* CTA buttons */
+.cta-button {
+    color: var(--dark-bg) !important;
 } 
