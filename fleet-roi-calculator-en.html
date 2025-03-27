@@ -20,6 +20,9 @@
             --text-color: #333;
             --light-text: #e1e5eb;
             --section-bg: rgba(21, 32, 43, 0.8);
+            --success-color: #4BB543;
+            --warning-color: #FFA500;
+            --error-color: #FF6B6B;
         }
         
         * {
@@ -150,7 +153,7 @@
         }
         
         .calculator-container {
-            background-color: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             padding: 2.5rem;
@@ -202,6 +205,9 @@
             margin-bottom: 0.5rem;
             color: var(--primary-color);
             font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .connection-section p {
@@ -391,6 +397,128 @@
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
         .delay-4 { animation-delay: 0.8s; }
+
+        /* Compatibility Checker Modal */
+        .compatibility-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .compatibility-form {
+            margin-top: 1rem;
+        }
+
+        .compatibility-form select,
+        .compatibility-form input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 2px solid #e1e5eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .compatibility-form select:focus,
+        .compatibility-form input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .compatibility-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .result-success {
+            background-color: rgba(75, 181, 67, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+        }
+
+        .result-warning {
+            background-color: rgba(255, 165, 0, 0.1);
+            border: 1px solid var(--warning-color);
+            color: var(--warning-color);
+        }
+
+        .result-error {
+            background-color: rgba(255, 107, 107, 0.1);
+            border: 1px solid var(--error-color);
+            color: var(--error-color);
+        }
+
+        .check-compatibility-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .check-compatibility-btn:hover {
+            background-color: #3ab7e0;
+            transform: translateY(-2px);
+        }
+
+        .emoji-icon {
+            font-size: 1.2em;
+            margin-right: 0.3em;
+        }
     </style>
 </head>
 <body>
@@ -417,7 +545,7 @@
         
         <div class="calculator-container fade-in delay-1">
             <div class="connection-section">
-                <h2>Software Connection</h2>
+                <h2><span class="emoji-icon">🔌</span>Software Connection</h2>
                 <select id="softwareConnection">
                     <option value="none">None</option>
                     <option value="tesla">Tesla</option>
@@ -426,7 +554,10 @@
             </div>
             
             <div class="connection-section">
-                <h2>Hardware Connection</h2>
+                <h2><span class="emoji-icon">📱</span>Hardware Connection</h2>
+                <button class="check-compatibility-btn" onclick="openCompatibilityChecker()">
+                    <span class="emoji-icon">🚗</span>Check Vehicle Compatibility
+                </button>
                 <select id="hardwareConnection">
                     <option value="none">None</option>
                     <option value="lte">LTE</option>
@@ -437,7 +568,7 @@
             </div>
             
             <div class="connection-section">
-                <h2>Streak Boost</h2>
+                <h2><span class="emoji-icon">🔥</span>Streak Boost</h2>
                 <p>Drive for consecutive weeks to earn a streak boost and earn more.</p>
                 <select id="streakBoost">
                     <option value="0">0-3 weeks</option>
@@ -446,26 +577,6 @@
                     <option value="3">36+ weeks</option>
                 </select>
                 <div class="reward-info" id="streakReward">+0.00 $DIMO</div>
-            </div>
-            
-            <div class="dimo-price">
-                <h2>$DIMO Price</h2>
-                <p>The price of $DIMO can vary. By default, the slider is set to the current price.</p>
-                <input type="range" min="0.01" max="0.5" step="0.01" value="0.12" class="price-slider" id="priceSlider">
-                <div class="price-display">
-                    <div><span id="tokenPrice">0.12</span> USD = 1 $DIMO token</div>
-                    <select id="currencySelect" class="currency-select">
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="GBP">GBP</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="connection-section">
-                <h2>Fleet Size</h2>
-                <p>Enter the number of vehicles in your fleet:</p>
-                <input type="number" min="1" value="1" class="form-control" id="fleetSize" style="width: 100%; padding: 0.75rem; border: 1px solid #ced4da; border-radius: 5px; font-size: 1rem; margin-bottom: 0.5rem;">
             </div>
         </div>
         
@@ -513,6 +624,28 @@
                 <span class="amount-value" id="annualFleetFiat">0.00 USD</span>
             </div>
             
+            <div class="settings-section" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed #ccc;">
+                <div class="dimo-price">
+                    <h3>$DIMO Price</h3>
+                    <p>The price of $DIMO can vary. By default, the slider is set to the current price.</p>
+                    <input type="range" min="0.01" max="0.5" step="0.01" value="0.12" class="price-slider" id="priceSlider">
+                    <div class="price-display">
+                        <div><span id="tokenPrice">0.12</span> USD = 1 $DIMO token</div>
+                        <select id="currencySelect" class="currency-select">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="fleet-size" style="margin-top: 1.5rem;">
+                    <h3>Fleet Size</h3>
+                    <p>Enter the number of vehicles in your fleet:</p>
+                    <input type="number" min="1" value="1" class="form-control" id="fleetSize" style="width: 100%; padding: 0.75rem; border: 1px solid #ced4da; border-radius: 8px; font-size: 1rem; margin-bottom: 0.5rem;">
+                </div>
+            </div>
+            
             <p class="price-note" id="priceNote">Calculations based on DIMO token price of $0.12 as of March 26, 2025. Data from CoinGecko.</p>
         </div>
     </div>
@@ -524,6 +657,27 @@
         </div>
     </footer>
     
+    <!-- Compatibility Checker Modal -->
+    <div class="compatibility-modal" id="compatibilityModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeCompatibilityChecker()">&times;</button>
+            <h2><span class="emoji-icon">🚗</span>Vehicle Compatibility Checker</h2>
+            <div class="compatibility-form">
+                <select id="carMake" onchange="updateModels()">
+                    <option value="">Select Make</option>
+                </select>
+                <select id="carModel" disabled>
+                    <option value="">Select Model</option>
+                </select>
+                <input type="number" id="carYear" placeholder="Enter Year (e.g., 2020)" min="1990" max="2024">
+                <button class="check-compatibility-btn" onclick="checkCompatibility()">
+                    <span class="emoji-icon">✨</span>Check Compatibility
+                </button>
+            </div>
+            <div class="compatibility-result" id="compatibilityResult"></div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initial values
@@ -602,25 +756,22 @@
             const ctx = document.getElementById('earningsChart').getContext('2d');
             let earningsChart;
             
-            function createChart(baseEarnings) {
+            function createChart(baseEarnings, selectedStreakLevel) {
                 // Create week labels (52 weeks)
                 const labels = Array.from({length: 52}, (_, i) => `Week ${i+1}`);
                 
                 // Generate data based on streak levels
                 const data = [];
                 
-                // Start date
-                const startDate = new Date();
-                
                 for (let week = 0; week < 52; week++) {
                     let streakBonus = 0;
                     
-                    // Apply streak bonus based on week number
-                    if (week >= 36) {
+                    // Apply streak bonus based on week number and selected streak level
+                    if (week >= 36 && selectedStreakLevel >= 3) {
                         streakBonus = rewards.streak[3].dimo;
-                    } else if (week >= 21) {
+                    } else if (week >= 21 && selectedStreakLevel >= 2) {
                         streakBonus = rewards.streak[2].dimo;
-                    } else if (week >= 4) {
+                    } else if (week >= 4 && selectedStreakLevel >= 1) {
                         streakBonus = rewards.streak[1].dimo;
                     }
                     
@@ -743,12 +894,44 @@
                     }
                 });
             }
+
+            // Calculate progressive annual earnings based on streak progression
+            function calculateAnnualEarnings(baseEarnings, selectedStreakLevel) {
+                let totalAnnualDimo = 0;
+                
+                // Weeks 0-3: Base earnings only (4 weeks)
+                totalAnnualDimo += baseEarnings * 4;
+                
+                // Weeks 4-20: Base earnings + Level 1 streak (17 weeks)
+                if (selectedStreakLevel >= 1) {
+                    totalAnnualDimo += (baseEarnings + rewards.streak[1].dimo) * 17;
+                } else {
+                    totalAnnualDimo += baseEarnings * 17;
+                }
+                
+                // Weeks 21-35: Base earnings + Level 2 streak (15 weeks)
+                if (selectedStreakLevel >= 2) {
+                    totalAnnualDimo += (baseEarnings + rewards.streak[2].dimo) * 15;
+                } else {
+                    totalAnnualDimo += baseEarnings * 15;
+                }
+                
+                // Weeks 36-52: Base earnings + Level 3 streak (16 weeks)
+                if (selectedStreakLevel >= 3) {
+                    totalAnnualDimo += (baseEarnings + rewards.streak[3].dimo) * 16;
+                } else {
+                    totalAnnualDimo += baseEarnings * 16;
+                }
+                
+                return totalAnnualDimo;
+            }
             
             // Calculate and update rewards
             function updateRewards() {
                 const software = softwareSelect.value;
                 const hardware = hardwareSelect.value;
                 const streak = streakSelect.value;
+                const selectedStreakLevel = parseInt(streak);
                 const price = parseFloat(priceSlider.value);
                 const currency = currencySelect.value;
                 const fleetSize = parseInt(fleetSizeInput.value) || 1; // Default to 1 if invalid
@@ -758,26 +941,29 @@
                 hardwareReward.innerHTML = `+${rewards.hardware[hardware].dimo.toFixed(2)} $DIMO`;
                 streakReward.innerHTML = `+${rewards.streak[streak].dimo.toFixed(2)} $DIMO`;
                 
-                // Calculate total rewards per vehicle
-                const totalDimo = 
-                    rewards.software[software].dimo + 
-                    rewards.hardware[hardware].dimo + 
-                    rewards.streak[streak].dimo;
+                // Base earnings (without streak)
+                const baseEarnings = rewards.software[software].dimo + rewards.hardware[hardware].dimo;
+                
+                // Current weekly earnings with streak
+                const totalWeeklyDimo = baseEarnings + rewards.streak[streak].dimo;
+                
+                // Calculate annual earnings with streak progression
+                const annualDimoValue = calculateAnnualEarnings(baseEarnings, selectedStreakLevel);
                 
                 // Update level bar - we'll keep it based on a theoretical maximum
                 if (levelBar) {
-                    const levelPercentage = Math.min((totalDimo / 50) * 100, 100);
+                    const levelPercentage = Math.min((totalWeeklyDimo / 50) * 100, 100);
                     levelBar.style.width = `${levelPercentage}%`;
                 }
                 
                 // Update per vehicle earnings
-                const weeklyFiatValue = totalDimo * price;
-                const annualFiatValue = weeklyFiatValue * 52;
+                const weeklyFiatValue = totalWeeklyDimo * price;
+                const annualFiatValue = annualDimoValue * price;
                 
                 // Calculate fleet totals
-                const weeklyFleetDimoValue = totalDimo * fleetSize;
+                const weeklyFleetDimoValue = totalWeeklyDimo * fleetSize;
                 const weeklyFleetFiatValue = weeklyFiatValue * fleetSize;
-                const annualFleetDimoValue = weeklyFleetDimoValue * 52;
+                const annualFleetDimoValue = annualDimoValue * fleetSize;
                 const annualFleetFiatValue = annualFiatValue * fleetSize;
                 
                 // Apply currency conversion
@@ -787,9 +973,9 @@
                 const convertedAnnualFleetFiat = annualFleetFiatValue * exchangeRates[currency];
                 
                 // Update per vehicle displays
-                weeklyDimo.textContent = `${totalDimo.toFixed(2)} $DIMO`;
+                weeklyDimo.textContent = `${totalWeeklyDimo.toFixed(2)} $DIMO`;
                 weeklyFiat.textContent = `${convertedWeeklyFiat.toFixed(2)} ${currency}`;
-                annualDimo.textContent = `${(totalDimo * 52).toFixed(2)} $DIMO`;
+                annualDimo.textContent = `${annualDimoValue.toFixed(2)} $DIMO`;
                 annualFiat.textContent = `${convertedAnnualFiat.toFixed(2)} ${currency}`;
                 
                 // Update fleet totals displays
@@ -801,14 +987,13 @@
                 // Update token price display
                 tokenPrice.textContent = price.toFixed(2);
                 
-                // Update the graph with new base earnings
-                const baseEarnings = rewards.software[software].dimo + rewards.hardware[hardware].dimo;
-                createChart(baseEarnings);
+                // Update the graph with progressive streak levels
+                createChart(baseEarnings, selectedStreakLevel);
             }
             
             // Set initial values
             priceSlider.value = dimoPrice;
-            createChart(0); // Initial chart with 0 base earnings
+            createChart(0, 0); // Initial chart with 0 base earnings and streak level 0
             updateRewards();
             
             // Event listeners
@@ -819,6 +1004,113 @@
             currencySelect.addEventListener('change', updateRewards);
             fleetSizeInput.addEventListener('input', updateRewards);
         });
+
+        // Add this to your existing script
+        const compatibilityData = {
+            "Acura": {
+                "models": ["ILX", "MDX", "RDX", "TLX", "TSX"],
+                "compatibility": {
+                    "ILX": { "2014": "Yes" },
+                    "MDX": { "2000": "Yes", "2024": "Yes" },
+                    "RDX": { "2012": "Yes", "2024": "Yes" },
+                    "TLX": { "2015": "Yes", "2024": "Yes" },
+                    "TSX": { "2009": "Yes" }
+                }
+            },
+            "Alfa Romeo": {
+                "models": ["147", "159", "Brera", "Giulia", "Giulietta", "GT", "Mito"],
+                "compatibility": {
+                    "147": { "2000": "No", "2010": "No" },
+                    "Giulia": { "2016": "Yes", "2024": "Yes" }
+                }
+            }
+            // More makes and models will be added
+        };
+
+        function openCompatibilityChecker() {
+            document.getElementById('compatibilityModal').style.display = 'flex';
+            populateCarMakes();
+        }
+
+        function closeCompatibilityChecker() {
+            document.getElementById('compatibilityModal').style.display = 'none';
+        }
+
+        function populateCarMakes() {
+            const makeSelect = document.getElementById('carMake');
+            makeSelect.innerHTML = '<option value="">Select Make</option>';
+            
+            Object.keys(compatibilityData).forEach(make => {
+                const option = document.createElement('option');
+                option.value = make;
+                option.textContent = make;
+                makeSelect.appendChild(option);
+            });
+        }
+
+        function updateModels() {
+            const make = document.getElementById('carMake').value;
+            const modelSelect = document.getElementById('carModel');
+            modelSelect.innerHTML = '<option value="">Select Model</option>';
+            
+            if (make && compatibilityData[make]) {
+                compatibilityData[make].models.forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+                modelSelect.disabled = false;
+            } else {
+                modelSelect.disabled = true;
+            }
+        }
+
+        function checkCompatibility() {
+            const make = document.getElementById('carMake').value;
+            const model = document.getElementById('carModel').value;
+            const year = document.getElementById('carYear').value;
+            const resultDiv = document.getElementById('compatibilityResult');
+            
+            if (!make || !model || !year) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            let result = '';
+            let resultClass = '';
+            let emoji = '';
+
+            if (compatibilityData[make]?.compatibility[model]?.[year]) {
+                const status = compatibilityData[make].compatibility[model][year];
+                
+                if (status === 'Yes') {
+                    result = 'Great! Your car works well with this device.';
+                    resultClass = 'result-success';
+                    emoji = '✅';
+                } else if (status === 'No') {
+                    result = 'This device is not guaranteed to work for your car.';
+                    resultClass = 'result-error';
+                    emoji = '❌';
+                }
+            } else {
+                result = "Your car is likely compatible. We expect this device to work with your vehicle, but your specific vehicle type has not been tested yet. You're welcome to give it a try, though we can't guarantee it will work.";
+                resultClass = 'result-warning';
+                emoji = '⚠️';
+            }
+
+            resultDiv.innerHTML = `<span class="emoji-icon">${emoji}</span>${result}`;
+            resultDiv.className = `compatibility-result ${resultClass}`;
+            resultDiv.style.display = 'block';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('compatibilityModal');
+            if (event.target === modal) {
+                closeCompatibilityChecker();
+            }
+        }
     </script>
 </body>
-</html> 
+</html>
