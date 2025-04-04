@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drive2Earn.io - Monetize Your Vehicle Data While Maintaining Privacy</title>
     <meta name="description" content="Turn your vehicle data into valuable assets while maintaining complete privacy control. Discover audited projects that allow you to earn cryptocurrency by sharing your driving data.">
-    <!-- Dark theme (default) -->
-    <link rel="stylesheet" href="https://drive2earn.io/css/styles-new.css?v=1.0.2" id="dark-theme">
-    <!-- Light theme (alternative) -->
-    <link rel="stylesheet" href="https://drive2earn.io/css/styles-light.css?v=1.0.0" id="light-theme" disabled>
+    <!-- Light theme only -->
+    <link rel="stylesheet" href="https://drive2earn.io/css/styles-light.css?v=1.0.0">
     <!-- Fallback CSS if the new one fails -->
     <link rel="stylesheet" href="https://drive2earn.io/css/styles.css?v=1.0.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -37,14 +35,14 @@
                     console.warn('CSS styles not properly loaded, trying inline styles');
                     
                     // Apply basic inline styles to ensure visibility
-                    document.body.style.backgroundColor = '#0f1824';
-                    document.body.style.color = '#ffffff';
+                    document.body.style.backgroundColor = '#ffffff';
+                    document.body.style.color = '#2d3748';
                     document.body.style.fontFamily = 'Inter, sans-serif';
                     
                     // Add emergency CSS from relative path
                     const cssLink = document.createElement('link');
                     cssLink.rel = 'stylesheet';
-                    cssLink.href = 'css/styles-new.css?v=' + new Date().getTime();
+                    cssLink.href = 'css/styles-light.css?v=' + new Date().getTime();
                     document.head.appendChild(cssLink);
                     
                     // Refresh the page after a brief delay if needed
@@ -57,45 +55,6 @@
                     }, 2000);
                 }
             }, 1000);
-        });
-        
-        // Theme switcher functionality
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            // Update theme attribute
-            html.setAttribute('data-theme', newTheme);
-            
-            // Update stylesheet
-            document.getElementById('dark-theme').disabled = (newTheme === 'light');
-            document.getElementById('light-theme').disabled = (newTheme === 'dark');
-            
-            // Save preference in localStorage
-            localStorage.setItem('theme', newTheme);
-            
-            // Update toggle button icon
-            const themeIcon = document.getElementById('theme-icon');
-            if (themeIcon) {
-                themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-        }
-        
-        // Apply saved theme preference on load
-        window.addEventListener('load', function() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
-                document.getElementById('dark-theme').disabled = (savedTheme === 'light');
-                document.getElementById('light-theme').disabled = (savedTheme === 'dark');
-                
-                // Update toggle button icon
-                const themeIcon = document.getElementById('theme-icon');
-                if (themeIcon) {
-                    themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-                }
-            }
         });
     </script>
 </head>
@@ -110,9 +69,6 @@
                     <a href="#faq-section" class="nav-link">FAQ</a>
                     <a href="#benefits-section" class="nav-link">Benefits</a>
                     <a href="contact.html" class="nav-link">Contact</a>
-                    <button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle">
-                        <i id="theme-icon" class="fas fa-sun"></i>
-                    </button>
                 </nav>
                 <a href="#projects-container" class="cta-button-sm">Find Projects</a>
             </div>
