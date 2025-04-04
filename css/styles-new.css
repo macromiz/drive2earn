@@ -438,9 +438,9 @@ section {
 /* Projects Grid Styling */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
-  margin: 2rem 0;
+  margin: 2rem auto;
   width: 100%;
 }
 
@@ -449,8 +449,8 @@ section {
   flex-direction: column;
   height: 100%;
   background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
@@ -459,43 +459,50 @@ section {
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-  border-color: rgba(86, 171, 47, 0.4);
+  border-color: var(--accent-color);
 }
 
 .project-header {
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem 1.5rem 0.5rem;
+  padding: 1rem;
+  align-items: center;
 }
 
 .project-logo {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 8px;
   overflow: hidden;
   background-color: #f8f9fa;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #edf2f7;
 }
 
 .project-logo img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: contain;
+  display: block;
 }
 
 .project-badges {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .badge {
-  font-size: 0.7rem;
-  padding: 0.2rem 0.6rem;
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 4px;
   font-weight: 600;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .badge.featured {
@@ -504,28 +511,29 @@ section {
 }
 
 .badge.popular {
-  background-color: #56ab2f;
+  background-color: var(--accent-color);
   color: white;
 }
 
 .project-name {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
-  padding: 0.5rem 1.5rem;
+  padding: 0.25rem 1rem;
   color: #2d3748;
 }
 
 .project-description {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #4a5568;
-  padding: 0 1.5rem;
-  margin: 0.5rem 0;
+  padding: 0 1rem;
+  margin: 0.25rem 0 0.75rem;
   flex-grow: 1;
+  line-height: 1.5;
 }
 
 .project-details {
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1rem;
   border-top: 1px solid #e2e8f0;
   background-color: #f8f9fa;
   margin-top: auto;
@@ -535,7 +543,7 @@ section {
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .detail-item:last-child {
@@ -543,21 +551,22 @@ section {
 }
 
 .detail-item i {
-  color: #56ab2f;
+  color: var(--accent-color);
   margin-right: 0.5rem;
-  width: 20px;
+  width: 16px;
   text-align: center;
+  font-size: 0.9rem;
 }
 
 .view-project-btn {
   display: block;
-  background-color: #56ab2f;
+  background-color: var(--accent-color);
   color: white;
   text-align: center;
   text-decoration: none;
   padding: 0.75rem;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
 }
 
@@ -568,10 +577,12 @@ section {
 .no-projects, .error-message, .no-results {
   text-align: center;
   padding: 2rem;
-  background-color: #f8f9fa;
+  background-color: #f0f4f8;
   border-radius: 8px;
-  margin: 2rem 0;
+  margin: 2rem auto;
   color: #4a5568;
+  max-width: 700px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .error-message {
@@ -580,7 +591,10 @@ section {
 
 /* Search Section Styling */
 .search-section {
-  margin: 2rem 0 3rem;
+  margin: 1.5rem 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .search-header {
@@ -740,7 +754,7 @@ section {
 footer {
   background-color: #1a2a6c;
   color: #ffffff;
-  padding: 4rem 0 2rem;
+  padding: 2rem 0 1rem;
   position: relative;
 }
 
@@ -748,32 +762,35 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .footer-logo {
   flex: 1;
-  min-width: 250px;
-  margin-bottom: 2rem;
+  min-width: 200px;
+  margin-bottom: 1rem;
 }
 
 .footer-logo p {
   color: rgba(255, 255, 255, 0.8);
-  margin-top: 1rem;
-  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .footer-links-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
   flex: 2;
 }
 
 .footer-links-column h4 {
   color: #ffffff;
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
   font-weight: 600;
 }
 
@@ -781,7 +798,8 @@ footer {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   display: block;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
   transition: color 0.3s ease;
 }
 
@@ -792,15 +810,15 @@ footer {
 
 .social-links {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
@@ -814,13 +832,8 @@ footer {
 }
 
 .footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
 .copyright {
@@ -889,4 +902,182 @@ p, h1, h2, h3, h4, h5, h6, span, div {
 
 #accept-cookies:hover {
   background-color: #4a9428;
+}
+
+/* Fix centering issues throughout the site */
+.container, .hero-content, .projects-grid, .section-title, .section-subtitle {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Center project images */
+.project-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0 0;
+}
+
+.project-logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Reduce excessive spacing */
+.hero-banner {
+  padding: 3rem 0;
+}
+
+section {
+  padding: 3rem 0;
+}
+
+.value-props-container {
+  margin: 1.5rem auto;
+}
+
+/* Update design with brighter colors and more dynamic elements */
+:root {
+  --primary-color: #3b82f6;
+  --secondary-color: #4f46e5;
+  --accent-color: #22c55e;
+  --gradient-start: #4f46e5;
+  --gradient-end: #0ea5e9;
+}
+
+/* Gradient backgrounds for dynamic look */
+header {
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+}
+
+.hero-banner {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add dynamic background elements */
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Greyed-out car silhouettes in background */
+.background-cars {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="rgba(255,255,255,0.03)" d="M544 192h-16L419.22 56.02A64.025 64.025 0 0 0 369.24 32H155.33c-26.17 0-49.7 15.93-59.42 40.23L48 194.26C20.44 201.4 0 226.21 0 256v112c0 8.84 7.16 16 16 16h48c0 53.02 42.98 96 96 96s96-42.98 96-96h128c0 53.02 42.98 96 96 96s96-42.98 96-96h48c8.84 0 16-7.16 16-16v-80c0-53.02-42.98-96-96-96zM160 432c-26.47 0-48-21.53-48-48s21.53-48 48-48 48 21.53 48 48-21.53 48-48 48zm72-240H116.93l38.4-96H232v96zm48 0V96h89.24l76.8 96H280zm200 240c-26.47 0-48-21.53-48-48s21.53-48 48-48 48 21.53 48 48-21.53 48-48 48z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 50%;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+/* Adjust value propositions for better appearance */
+.bad-alternative {
+  background-color: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.better-solution {
+  background-color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.bad-alternative i {
+  color: #ef4444;
+}
+
+/* Make buttons more dynamic */
+.cta-button, .view-project-btn, .search-btn {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::after, .view-project-btn::after, .search-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.cta-button:hover::after, .view-project-btn:hover::after, .search-btn:hover::after {
+  left: 100%;
+}
+
+/* More compact project cards */
+.project-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.project-header {
+  padding: 1rem 1.25rem 0.5rem;
+}
+
+.project-name {
+  padding: 0.25rem 1.25rem;
+}
+
+.project-description {
+  padding: 0 1.25rem;
+  margin: 0.25rem 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+.project-details {
+  padding: 0.75rem 1.25rem;
+}
+
+/* Fix #projects-container styling for better centering */
+#projects-container {
+  min-height: 200px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
