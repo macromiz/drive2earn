@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Drive2Earn.io</title>
-    <meta name="description" content="Privacy Policy for Drive2Earn.io - Learn how we protect your data">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="description" content="Privacy Policy for Drive2Earn.io. Learn how we collect, use, and protect your personal information.">
+    <link rel="stylesheet" href="css/styles-light.css?v=1.0.0">
+    <link rel="stylesheet" href="css/styles-new.css?v=1.0.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,171 +19,182 @@
         });
     </script>
     <style>
-        .page-content {
-            background: var(--section-bg);
-            border-radius: 1rem;
-            padding: 3rem;
-            margin: 3rem 0;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(76, 201, 240, 0.1);
-            user-select: text !important;
+        /* Additional Styles for Privacy Policy Page */
+        .policy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            color: #2d3748;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
         
-        .page-content h1 {
-            font-size: 2.6rem;
+        .policy-header {
+            border-bottom: 3px solid #56ab2f;
+            padding-bottom: 1.5rem;
             margin-bottom: 2rem;
-            position: relative;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            user-select: text !important;
         }
         
-        .page-content h1:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -18px;
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, var(--accent-color), var(--primary-color));
-            border-radius: 3px;
+        .policy-section {
+            margin-bottom: 2.5rem;
         }
         
-        .page-content h2 {
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem;
-            color: var(--accent-color);
+        .policy-section h2 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
         
-        .page-content p, .page-content ul, .page-content ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--light-text);
-            margin-bottom: 1.5rem;
-            user-select: text !important;
+        .policy-section p, .policy-section li {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #4a5568;
         }
         
-        .page-content ul, .page-content ol {
-            padding-left: 2rem;
-            user-select: text !important;
-        }
-        
-        .page-content li {
-            margin-bottom: 0.75rem;
-            user-select: text !important;
-        }
-        
-        .page-content a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .page-content a:hover {
-            text-decoration: underline;
+        .policy-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .last-updated {
+            font-size: 0.9rem;
+            color: #718096;
             font-style: italic;
-            margin-top: 3rem;
-            color: var(--light-text);
-            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #56ab2f;
+            color: #ffffff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            background-color: #4a9428;
+            transform: translateY(-2px);
+        }
+        
+        main {
+            background-color: #f8f9fa;
+            padding: 3rem 0;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">Drive2<span>Earn</span>.io</a>
-                <nav class="main-nav">
-                    <!-- No navigation items for now -->
-                </nav>
-            </div>
+            <nav class="navbar">
+                <div class="logo">Drive<span>2</span>Earn.io</div>
+                <div class="nav-links">
+                    <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                    <a href="index.html#benefits-section" class="nav-link">Benefits</a>
+                    <a href="index.html#faq-section" class="nav-link">FAQ</a>
+                    <a href="index.html#projects-container" class="cta-button-sm">Start Earning</a>
+                </div>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
     </header>
-    
-    <main class="container">
-        <div class="page-content">
-            <h1>Privacy Policy</h1>
-            
-            <p>Last Updated: March 25, 2025</p>
-            
-            <p>At Drive2Earn.io, we value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
-            
-            <h2>1. Information We Collect</h2>
-            
-            <p>We may collect several types of information from and about users of our website, including:</p>
-            
-            <ul>
-                <li><strong>Personal Data:</strong> Email addresses when you contact us or sign up for updates.</li>
-                <li><strong>Usage Data:</strong> Information about how you interact with our website, including pages visited, time spent on pages, and navigation patterns.</li>
-                <li><strong>Device Information:</strong> Information about your device, including IP address, browser type, operating system, and other technical data.</li>
-                <li><strong>Cookies and Similar Technologies:</strong> We use cookies to enhance your experience and collect information about your browsing activities.</li>
-            </ul>
-            
-            <h2>2. How We Use Your Information</h2>
-            
-            <p>We may use the information we collect for various purposes, including:</p>
-            
-            <ul>
-                <li>To provide, maintain, and improve our website</li>
-                <li>To respond to your inquiries and communication</li>
-                <li>To monitor and analyze usage patterns and trends</li>
-                <li>To protect against unauthorized access and legal violations</li>
-                <li>To send you information regarding updates, new features, or promotional content (with your consent)</li>
-            </ul>
-            
-            <h2>3. Data Sharing and Disclosure</h2>
-            
-            <p>We may share your information in the following circumstances:</p>
-            
-            <ul>
-                <li><strong>Service Providers:</strong> We may share your information with third-party vendors who perform services on our behalf.</li>
-                <li><strong>Legal Requirements:</strong> We may disclose information if required by law or in response to valid requests by public authorities.</li>
-                <li><strong>Business Transfers:</strong> In connection with a corporate merger, consolidation, or restructuring, your information may be transferred as part of that transaction.</li>
-            </ul>
-            
-            <h2>4. Data Security</h2>
-            
-            <p>We implement appropriate security measures to protect your personal information. However, please note that no method of transmission over the internet or electronic storage is 100% secure.</p>
-            
-            <h2>5. Your Rights</h2>
-            
-            <p>Depending on your location, you may have certain rights regarding your personal data, including:</p>
-            
-            <ul>
-                <li>The right to access and obtain a copy of your personal data</li>
-                <li>The right to rectification of inaccurate data</li>
-                <li>The right to erasure of your data (under certain conditions)</li>
-                <li>The right to restrict or object to processing</li>
-                <li>The right to data portability</li>
-            </ul>
-            
-            <p>To exercise these rights, please contact us at <a href="mailto:contact@drive2earn.io">contact@drive2earn.io</a>.</p>
-            
-            <h2 id="cookies">6. Cookies Policy</h2>
-            
-            <p>Our website uses cookies to enhance your browsing experience. You can manage your cookie preferences through your browser settings.</p>
-            
-            <h2>7. Children's Privacy</h2>
-            
-            <p>Our services are not directed towards individuals under the age of 16. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.</p>
-            
-            <h2>8. Changes to Privacy Policy</h2>
-            
-            <p>We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date.</p>
-            
-            <h2>9. Contact Us</h2>
-            
-            <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-            
-            <p>
-                Email: <a href="mailto:contact@drive2earn.io">contact@drive2earn.io</a>
-            </p>
-            
-            <div class="last-updated">
-                This Privacy Policy was last updated on March 25, 2025.
+
+    <main>
+        <div class="container">
+            <div class="policy-container">
+                <div class="policy-header">
+                    <h1>Privacy Policy</h1>
+                    <p class="last-updated">Last Updated: March 25, 2025</p>
+                </div>
+                
+                <div class="policy-section">
+                    <p>At Drive2Earn.io, we value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>1. Information We Collect</h2>
+                    <p>We may collect several types of information from and about users of our website, including:</p>
+                    <ul>
+                        <li><strong>Personal Data:</strong> Email addresses when you contact us or sign up for updates.</li>
+                        <li><strong>Usage Data:</strong> Information about how you interact with our website, including pages visited, time spent on pages, and navigation patterns.</li>
+                        <li><strong>Device Information:</strong> Information about your device, including IP address, browser type, operating system, and other technical data.</li>
+                        <li><strong>Cookies and Similar Technologies:</strong> We use cookies to enhance your experience and collect information about your browsing activities.</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>2. How We Use Your Information</h2>
+                    <p>We may use the information we collect for various purposes, including:</p>
+                    <ul>
+                        <li>To provide and maintain our website</li>
+                        <li>To notify you about changes to our website or services</li>
+                        <li>To allow you to participate in interactive features when you choose to do so</li>
+                        <li>To improve our website and user experience</li>
+                        <li>To monitor the usage of our website</li>
+                        <li>To detect, prevent, and address technical issues</li>
+                        <li>To provide customer support</li>
+                        <li>To send you newsletters and updates (with your consent)</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>3. Disclosure of Your Information</h2>
+                    <p>We may disclose your personal information in the following situations:</p>
+                    <ul>
+                        <li><strong>To Service Providers:</strong> We may share your information with third-party service providers who perform services on our behalf.</li>
+                        <li><strong>For Business Transfers:</strong> We may share or transfer your information in connection with a merger, acquisition, or sale of all or a portion of our assets.</li>
+                        <li><strong>For Legal Purposes:</strong> We may disclose your information when required by law or in response to valid legal requests.</li>
+                        <li><strong>With Your Consent:</strong> We may disclose your information for any other purpose with your consent.</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>4. Data Security</h2>
+                    <p>We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>5. Your Data Protection Rights</h2>
+                    <p>Depending on your location, you may have certain rights regarding your personal data, including:</p>
+                    <ul>
+                        <li>The right to access, update, or delete your information</li>
+                        <li>The right to rectification (to correct your information)</li>
+                        <li>The right to object to processing</li>
+                        <li>The right to restrict processing</li>
+                        <li>The right to data portability</li>
+                        <li>The right to withdraw consent</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>6. Cookies</h2>
+                    <p>We use cookies and similar tracking technologies to track activity on our website and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our website.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>7. Children's Privacy</h2>
+                    <p>Our website is not intended for children under the age of 18. We do not knowingly collect personal information from children under 18. If you are a parent or guardian and you believe your child has provided us with personal information, please contact us.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>8. Changes to This Privacy Policy</h2>
+                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>9. Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                    <p>Email: privacy@drive2earn.io</p>
+                </div>
+                
+                <a href="index.html" class="back-to-home">Back to Home</a>
             </div>
         </div>
     </main>
@@ -190,26 +202,60 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-text">
-                    &copy; 2025 Drive2Earn.io - All Rights Reserved
+                <div class="footer-links-container">
+                    <div class="footer-links-column">
+                        <h4>Navigation</h4>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#benefits-section">Benefits</a>
+                        <a href="index.html#faq-section">FAQ</a>
+                        <a href="index.html#projects-container">Projects</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Resources</h4>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-of-service.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <a href="https://drive2earn.io/privacy-policy.html">Privacy Policy</a>
-                    <a href="https://drive2earn.io/terms-of-service.html">Terms of Service</a>
-                    <a href="https://drive2earn.io/contact.html">Contact</a>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 Drive2Earn.io</p>
             </div>
         </div>
     </footer>
     
     <!-- Cookie Banner -->
-    <div id="cookie-banner" style="display: none;">
-        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="https://drive2earn.io/privacy-policy.html#cookies">Learn more</a></p>
+    <div id="cookie-banner">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
         <button id="accept-cookies">Accept</button>
     </div>
-    
-    <!-- Scripts -->
-    <script src="js/data.js"></script>
-    <script src="js/cookie-banner.js"></script>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Cookie banner
+        document.getElementById('accept-cookies').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        });
+        
+        // Check if cookies were previously accepted
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 </body>
 </html> 

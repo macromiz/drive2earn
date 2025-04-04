@@ -775,11 +775,10 @@ section {
 
 /* Improve footer readability and make it more compact */
 footer {
-  background-color: #ffffff;
-  color: #2d3748;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  color: #ffffff;
   padding: 1.5rem 0 0.5rem;
   position: relative;
-  border-top: 1px solid #e2e8f0;
 }
 
 .footer-content {
@@ -799,7 +798,7 @@ footer {
 }
 
 .footer-links-column h4 {
-  color: #2d3748;
+  color: #ffffff;
   font-size: 1rem;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -807,7 +806,7 @@ footer {
 }
 
 .footer-links-column a {
-  color: #4a5568;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   display: block;
   margin-bottom: 0.5rem;
@@ -817,7 +816,7 @@ footer {
 }
 
 .footer-links-column a:hover {
-  color: #56ab2f;
+  color: #ffffff;
   text-decoration: underline;
 }
 
@@ -834,14 +833,13 @@ footer {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #f7fafc;
-  color: #4a5568;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
 }
 
 .social-link:hover {
-  background-color: #56ab2f;
+  background-color: var(--accent-color);
   color: #ffffff;
   transform: translateY(-3px);
 }
@@ -850,10 +848,11 @@ footer {
   margin-top: 1rem;
   padding-top: 0.5rem;
   text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .copyright {
-  color: #718096;
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
 }
 
@@ -897,39 +896,44 @@ p, h1, h2, h3, h4, h5, h6, span, div {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #1a2a6c;
-  color: #ffffff;
+  background-color: white;
+  color: #2d3748;
   padding: 1rem;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #e2e8f0;
 }
 
 #cookie-banner p {
   margin: 0 1rem 0 0;
   flex: 1;
+  font-size: 0.9rem;
 }
 
 #cookie-banner a {
-  color: #56ab2f;
+  color: var(--accent-color);
   text-decoration: underline;
+  font-weight: 500;
 }
 
 #accept-cookies {
-  background-color: #56ab2f;
-  color: #ffffff;
+  background-color: var(--accent-color);
+  color: white;
   border: none;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
   white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
 #accept-cookies:hover {
   background-color: #4a9428;
+  transform: translateY(-1px);
 }
 
 /* Fix centering issues throughout the site */
@@ -956,10 +960,10 @@ p, h1, h2, h3, h4, h5, h6, span, div {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-  color: #56ab2f;
-  font-weight: 600;
-  font-size: 1.2rem;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 /* Reduce excessive spacing */
@@ -1107,4 +1111,74 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+}
+
+/* Update navbar styling for better alignment */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cta-button-sm {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-button-sm:hover {
+  background-color: #4a9428;
+  transform: translateY(-2px);
+}
+
+.mobile-menu-btn {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--gradient-start);
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 1rem;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
 }

@@ -79,71 +79,13 @@ function displayProjects(projects) {
                 hardwareCost = `<div class="project-tag"><i class="fas fa-microchip"></i>Hardware: ${project.hardwareCost}</div>`;
             }
             
-            // Define logo URL based on project name
-            let logoUrl = project.logoUrl || project.logo;
+            // Use project initial for the project logo placeholder
+            const projectInitial = project.name.charAt(0);
             
-            // Override with better logos when available
-            if (project.name === 'NATIX Network') {
-                logoUrl = 'https://natix.network/wp-content/uploads/2023/07/natix-logo-white.svg';
-            } else if (project.name === 'MapMetrics') {
-                logoUrl = 'https://mapmetrics.io/wp-content/uploads/2023/04/mapmatrics-logo.svg';
-            } else if (project.name === 'DIMO') {
-                logoUrl = 'https://dimo.zone/images/dimo-d.png';
-            } else if (project.name === 'Hivemapper') {
-                logoUrl = 'https://assets-global.website-files.com/6246f2beab6e8d480e24dccf/624749f0b8857dd957a91a2d_H-dashcam-logomark.svg';
-            } else if (project.name === 'DOVU') {
-                logoUrl = 'https://dovu.earth/assets/img/public/logo.svg';
-            } else if (project.name === 'peaq Network') {
-                logoUrl = 'https://peaq.network/assets/img/logos/peaq-logo-white.svg';
-            }
-            
-            // Add fallback URLs if needed
-            if (!logoUrl) {
-                switch(project.name) {
-                    case 'Hivemapper':
-                        logoUrl = 'https://pbs.twimg.com/profile_images/1635267082441412608/Kd5c_mt8_400x400.png';
-                        break;
-                    case 'DIMO':
-                        logoUrl = 'https://pbs.twimg.com/profile_images/1480978731796824064/v4z2KGD9_400x400.jpg';
-                        break;
-                    case 'MapMetrics':
-                        logoUrl = 'https://pbs.twimg.com/profile_images/1625953683342336000/8LhLtXGR_400x400.jpg';
-                        break;
-                    case 'DOVU':
-                        logoUrl = 'https://pbs.twimg.com/profile_images/1468947000813162496/N5-tYlZ5_400x400.jpg';
-                        break;
-                    case 'NATIX Network':
-                        logoUrl = 'https://pbs.twimg.com/profile_images/1583788133037162498/5sFrFdX1_400x400.jpg';
-                        break;
-                }
-            }
-            
-            // Random gradient backgrounds for cards that need visual pop
-            const gradients = [
-                'linear-gradient(135deg, rgba(184, 255, 80, 0.03) 0%, rgba(15, 24, 36, 0) 100%)',
-                'linear-gradient(135deg, rgba(76, 201, 240, 0.03) 0%, rgba(15, 24, 36, 0) 100%)',
-                'linear-gradient(135deg, rgba(94, 114, 235, 0.03) 0%, rgba(15, 24, 36, 0) 100%)'
-            ];
-            
-            const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
-            card.style.backgroundImage = randomGradient;
-            
-            // Generate appropriate category icon class
-            let iconClass = 'fa-car';
-            if (project.category === 'app') {
-                iconClass = 'fa-mobile-alt';
-            } else if (project.category === 'device') {
-                iconClass = 'fa-microchip';
-            }
-            
-            // Create logo HTML with robust error handling
+            // Create logo HTML with placeholder instead of image
             const logoHtml = `
                 <div class="project-logo">
-                    <img 
-                        src="${logoUrl || ''}" 
-                        alt="${project.name} logo" 
-                        onerror="this.onerror=null; this.src='img/placeholder-logo.png'; this.alt='Project logo placeholder';"
-                    >
+                    <div class="project-logo-placeholder">${projectInitial}</div>
                 </div>
             `;
             
