@@ -493,23 +493,23 @@ section {
 }
 
 .project-logo {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 8px;
   overflow: hidden;
   background-color: #f8f9fa;
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #edf2f7;
+  margin: 0 auto 0 0;
+  border: 1px solid #e2e8f0;
 }
 
 .project-logo img {
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
-  display: block;
+  margin: 0 auto;
 }
 
 .project-badges {
@@ -775,10 +775,11 @@ section {
 
 /* Improve footer readability and make it more compact */
 footer {
-  background-color: #1a2a6c;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #2d3748;
   padding: 1.5rem 0 0.5rem;
   position: relative;
+  border-top: 1px solid #e2e8f0;
 }
 
 .footer-content {
@@ -798,7 +799,7 @@ footer {
 }
 
 .footer-links-column h4 {
-  color: #ffffff;
+  color: #2d3748;
   font-size: 1rem;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -806,7 +807,7 @@ footer {
 }
 
 .footer-links-column a {
-  color: rgba(255, 255, 255, 0.8);
+  color: #4a5568;
   text-decoration: none;
   display: block;
   margin-bottom: 0.5rem;
@@ -816,7 +817,7 @@ footer {
 }
 
 .footer-links-column a:hover {
-  color: #ffffff;
+  color: #56ab2f;
   text-decoration: underline;
 }
 
@@ -833,9 +834,10 @@ footer {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background-color: #f7fafc;
+  color: #4a5568;
   transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
 }
 
 .social-link:hover {
@@ -851,7 +853,7 @@ footer {
 }
 
 .copyright {
-  color: rgba(255, 255, 255, 0.6);
+  color: #718096;
   font-size: 0.9rem;
 }
 
@@ -941,24 +943,23 @@ p, h1, h2, h3, h4, h5, h6, span, div {
   box-sizing: border-box;
 }
 
-/* Center project images */
-.project-logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #f8f9fa;
+/* Fallback icon styling for project logos */
+.project-logo .fallback-icon {
+  font-size: 1.8rem;
+  color: #56ab2f;
+}
+
+/* Project logo placeholder */
+.project-logo-placeholder {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 0 0;
-}
-
-.project-logo img {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
-  margin: 0 auto;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+  color: #56ab2f;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 /* Reduce excessive spacing */

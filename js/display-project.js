@@ -142,7 +142,7 @@ function displayProjects(projects) {
                     <img 
                         src="${logoUrl || ''}" 
                         alt="${project.name} logo" 
-                        onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\\'fas ${iconClass}\\' style=\\'font-size: 2rem; color: var(--accent-color);\\' title=\\'${project.name}\\'></i>';"
+                        onerror="this.onerror=null; this.src='img/placeholder-logo.png'; this.alt='Project logo placeholder';"
                     >
                 </div>
             `;
@@ -316,5 +316,56 @@ function getCtaButtonText(projectName, category) {
             return 'Get Started';
         default:
             return category === 'app' ? 'Download App' : 'Start Earning';
+    }
+}
+
+function createProjectCard(project) {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    
+    // Create card content with image error handling
+    card.innerHTML = `
+        <div class="project-header">
+            <div class="project-logo">
+                <img src="${project.logoUrl}" alt="${project.name} logo" onerror="this.onerror=null; this.src='img/placeholder-logo.png'; this.alt='Project logo placeholder';">
+            </div>
+            <div class="project-badges">
+                ${project.featured ? '<span class="badge featured">FEATURED</span>' : ''}
+                ${project.popular ? '<span class="badge popular">POPULAR</span>' : ''}
+            </div>
+        </div>
+        <h3 class="project-name">${project.name}</h3>
+        <p class="project-description">${project.description}</p>
+        <div class="project-details">
+            <div class="detail-item">
+                <i class="fas fa-coins"></i>
+                <span>Est. Earnings: ${project.earnings}</span>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-globe-americas"></i>
+                <span>Region: ${project.region}</span>
+            </div>
+            <div class="detail-item">
+                <i class="fas fa-car"></i>
+                <span>Type: ${project.type}</span>
+            </div>
+        </div>
+        <a href="${project.url}" class="view-project-btn">View Details</a>
+    `;
+    
+    return card;
+}
+
+// Helper function to determine CTA text based on project type
+function getCtaText(category) {
+    if (!category) return 'View Details';
+    
+    category = category.toLowerCase();
+    if (category.includes('app')) {
+        return 'Download App';
+    } else if (category.includes('device') || category.includes('obd')) {
+        return 'Order Device';
+    } else {
+        return 'View Details';
     }
 } 

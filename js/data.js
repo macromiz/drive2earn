@@ -403,4 +403,199 @@ function createFilterSection(categories, regions) {
             regionFilter.innerHTML += `<option value="${region}">${displayName}</option>`;
         });
     }
-} 
+}
+
+// Sample project data for the homepage
+const featuredProjects = [
+    {
+        id: 'natix',
+        name: 'NATIX Network',
+        description: 'Transform urban camera networks into AI sensing tools with privacy-preserving computer vision.',
+        earnings: '$50-$120/month',
+        region: 'global',
+        type: 'Camera Network',
+        featured: true,
+        popular: true,
+        logoUrl: 'img/logos/natix-logo.png'
+    },
+    {
+        id: 'mapmetrics',
+        name: 'MapMetrics',
+        description: 'Earn tokens by contributing to map quality with your GPS location data while driving.',
+        earnings: '$30-$80/month',
+        region: 'global',
+        type: 'Navigation App',
+        featured: true,
+        popular: true,
+        logoUrl: 'img/logos/mapmetrics-logo.png'
+    },
+    {
+        id: 'dimo',
+        name: 'DIMO',
+        description: 'Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.',
+        earnings: '$40-$100/month',
+        region: 'north-america',
+        type: 'OBD Device',
+        featured: true,
+        popular: true,
+        logoUrl: 'img/logos/dimo-logo.png'
+    },
+    {
+        id: 'carblock',
+        name: 'CarBlock',
+        description: 'Convert your car\'s diagnostic data into income with a simple and affordable OBD-II device.',
+        earnings: '$25-$60/month',
+        region: 'global',
+        type: 'OBD Scanner',
+        featured: true,
+        popular: true,
+        logoUrl: 'img/logos/carblock-logo.png'
+    },
+    {
+        id: 'wibson',
+        name: 'Wibson',
+        description: 'Sell your driving patterns and location data securely and anonymously on this blockchain marketplace.',
+        earnings: '$10-$30/month',
+        region: 'global',
+        type: 'Data Marketplace',
+        logoUrl: 'img/logos/wibson-logo.png'
+    },
+    {
+        id: 'dreamcars',
+        name: 'DreamCars',
+        description: 'Join a decentralized platform for vehicle data monetization and earn tokens for sharing driving data.',
+        earnings: '$20-$50/month',
+        region: 'north-america',
+        type: 'Mobility Marketplace',
+        logoUrl: 'img/logos/dreamcars-logo.png'
+    },
+    {
+        id: 'carro',
+        name: 'Carro',
+        description: 'Get better insurance rates and earn tokens by sharing your vehicle data with this AI-powered platform.',
+        earnings: '$15-$45/month',
+        region: 'asia',
+        type: 'Insurance & Data',
+        logoUrl: 'img/logos/carro-logo.png'
+    }
+];
+
+// Function to initialize project data
+function initializeProjectData() {
+    const projectsContainer = document.getElementById('projects-container');
+    if (projectsContainer) {
+        displayProjects(featuredProjects);
+    }
+}
+
+// Initialize search functionality
+function initializeSearch() {
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const regionFilter = document.getElementById('regionFilter');
+    const tags = document.querySelectorAll('.tag');
+    const clearTags = document.querySelector('.clear-tags');
+    
+    if (searchBtn && searchInput) {
+        // Search button click handler
+        searchBtn.addEventListener('click', function() {
+            performSearch();
+        });
+        
+        // Enter key press in search input
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    }
+    
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', performSearch);
+    }
+    
+    if (regionFilter) {
+        regionFilter.addEventListener('change', performSearch);
+    }
+    
+    // Tag filtering
+    if (tags) {
+        tags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.classList.toggle('active');
+                performSearch();
+            });
+        });
+    }
+    
+    // Clear all tags
+    if (clearTags) {
+        clearTags.addEventListener('click', function() {
+            tags.forEach(tag => tag.classList.remove('active'));
+            performSearch();
+        });
+    }
+}
+
+// Function to perform search with current filters
+function performSearch() {
+    const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    const regionFilter = document.getElementById('regionFilter').value;
+    const activeTags = Array.from(document.querySelectorAll('.tag.active')).map(tag => tag.getAttribute('data-filter'));
+    
+    // Filter projects based on search criteria
+    const filteredProjects = featuredProjects.filter(project => {
+        // Text search
+        const matchesSearch = searchQuery === '' || 
+            project.name.toLowerCase().includes(searchQuery) || 
+            project.description.toLowerCase().includes(searchQuery) ||
+            project.type.toLowerCase().includes(searchQuery);
+        
+        // Category filter
+        const matchesCategory = categoryFilter === 'all' || 
+            (categoryFilter === 'app' && project.type.toLowerCase().includes('app')) ||
+            (categoryFilter === 'device' && (
+                project.type.toLowerCase().includes('device') || 
+                project.type.toLowerCase().includes('obd') || 
+                project.type.toLowerCase().includes('hardware')
+            ));
+        
+        // Region filter
+        const matchesRegion = regionFilter === 'all' || 
+            project.region.toLowerCase() === regionFilter.toLowerCase();
+        
+        // Tag filters
+        const matchesTags = activeTags.length === 0 || 
+            activeTags.some(tag => {
+                if (tag === 'app') {
+                    return project.type.toLowerCase().includes('app');
+                } else if (tag === 'hardware') {
+                    return project.type.toLowerCase().includes('device') || 
+                           project.type.toLowerCase().includes('obd') || 
+                           project.type.toLowerCase().includes('scanner');
+                }
+                return false;
+            });
+        
+        return matchesSearch && matchesCategory && matchesRegion && matchesTags;
+    });
+    
+    // Display filtered projects
+    displayProjects(filteredProjects);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeProjectData();
+    initializeSearch();
+});
+
+// Make data available globally
+window.projectData = {
+    featuredProjects,
+    initializeProjectData,
+    initializeSearch,
+    performSearch
+}; 
