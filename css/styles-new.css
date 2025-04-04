@@ -241,18 +241,21 @@
   width: 48%;
   box-sizing: border-box;
   cursor: text;
+  z-index: 10;
 }
 
 .bad-alternative {
-  background-color: rgba(229, 62, 62, 0.15);
-  border: 1px solid rgba(229, 62, 62, 0.3);
+  background-color: rgba(229, 62, 62, 0.25);
+  border: 1px solid rgba(229, 62, 62, 0.4);
   color: #ffffff;
+  font-weight: 500;
 }
 
 .better-solution {
   background-color: #56ab2f; /* More vibrant green */
   color: #ffffff;
   border: 1px solid rgba(122, 199, 12, 0.3);
+  font-weight: 500;
 }
 
 .bad-alternative i {
@@ -327,6 +330,26 @@ header {
   z-index: 2;
 }
 
+/* Improve trust badge visibility */
+.trust-badge {
+  background-color: rgba(86, 171, 47, 0.3);
+  border: 1px solid rgba(86, 171, 47, 0.5);
+  color: #ffffff;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  z-index: 10;
+  position: relative;
+}
+
+.trust-badge i {
+  color: #ffffff;
+  margin-right: 0.5rem;
+}
+
 /* CTA Button styling - more vibrant */
 .cta-button {
   background-color: #56ab2f;
@@ -353,13 +376,13 @@ section {
 
 /* Ensure the Trust Badge stands out */
 .trust-badge {
-  background-color: rgba(86, 171, 47, 0.15);
-  border: 1px solid rgba(86, 171, 47, 0.3);
-  color: #56ab2f;
+  background-color: rgba(86, 171, 47, 0.3);
+  border: 1px solid rgba(86, 171, 47, 0.5);
+  color: #ffffff;
 }
 
 .trust-badge i {
-  color: #56ab2f;
+  color: #ffffff;
 }
 
 /* Step numbers and icons */
@@ -750,41 +773,28 @@ section {
   text-decoration: underline;
 }
 
-/* Improve footer readability */
+/* Improve footer readability and make it more compact */
 footer {
   background-color: #1a2a6c;
   color: #ffffff;
-  padding: 2rem 0 1rem;
+  padding: 1.5rem 0 0.5rem;
   position: relative;
 }
 
 .footer-content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.footer-logo {
-  flex: 1;
-  min-width: 200px;
-  margin-bottom: 1rem;
-}
-
-.footer-logo p {
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-}
-
 .footer-links-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  flex: 2;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
 }
 
 .footer-links-column h4 {
@@ -792,6 +802,7 @@ footer {
   font-size: 1rem;
   margin-bottom: 1rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .footer-links-column a {
@@ -801,6 +812,7 @@ footer {
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
   transition: color 0.3s ease;
+  text-align: center;
 }
 
 .footer-links-column a:hover {
@@ -811,6 +823,7 @@ footer {
 .social-links {
   display: flex;
   gap: 0.75rem;
+  justify-content: center;
 }
 
 .social-link {
@@ -833,7 +846,8 @@ footer {
 
 .footer-bottom {
   margin-top: 1rem;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
+  text-align: center;
 }
 
 .copyright {
@@ -841,21 +855,33 @@ footer {
   font-size: 0.9rem;
 }
 
-.footer-bottom-links {
+/* Fix CTA section centering */
+.cta-section {
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+.cta-content {
+  text-align: center;
+}
+
+.cta-content h2 {
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-trust {
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
-}
-
-.footer-bottom-links a {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
-}
-
-.footer-bottom-links a:hover {
-  color: #ffffff;
-  text-decoration: underline;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
 /* Improve text selection and readability across the site */
