@@ -217,13 +217,19 @@
 .value-props-container {
   margin: 2rem auto;
   max-width: 900px;
+  z-index: 5;
+  position: relative;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .value-prop-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .bad-alternative,
@@ -234,6 +240,7 @@
   border-radius: 8px;
   width: 48%;
   box-sizing: border-box;
+  cursor: text;
 }
 
 .bad-alternative {
@@ -281,16 +288,43 @@ header {
   background-color: #1a2a6c;
   background-image: linear-gradient(135deg, #1a2a6c 0%, #2a4858 100%);
   color: #ffffff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
 }
 
-.hero-banner h1, 
-.hero-banner p, 
-.hero-subtitle {
+.hero-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-banner h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 1.5rem 0;
   color: #ffffff;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+  z-index: 5;
+}
+
+.hero-subtitle {
+  font-size: 1.35rem;
+  color: #ffffff;
+  margin: 0 auto 2.5rem;
+  max-width: 800px;
+  z-index: 5;
+  position: relative;
 }
 
 .text-highlight {
   color: #56ab2f;
+  position: relative;
+  z-index: 2;
 }
 
 /* CTA Button styling - more vibrant */
@@ -407,17 +441,19 @@ section {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
   margin: 2rem 0;
+  width: 100%;
 }
 
 .project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
-  display: flex;
-  flex-direction: column;
 }
 
 .project-card:hover {
@@ -698,4 +734,159 @@ section {
 .clear-tags:hover {
   color: #2d3748;
   text-decoration: underline;
+}
+
+/* Improve footer readability */
+footer {
+  background-color: #1a2a6c;
+  color: #ffffff;
+  padding: 4rem 0 2rem;
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-logo {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 2rem;
+}
+
+.footer-logo p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.footer-links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  flex: 2;
+}
+
+.footer-links-column h4 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.footer-links-column a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links-column a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: #56ab2f;
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-bottom-links a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Improve text selection and readability across the site */
+p, h1, h2, h3, h4, h5, h6, span, div {
+  user-select: text;
+}
+
+/* Cookie banner improvements */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1a2a6c;
+  color: #ffffff;
+  padding: 1rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#cookie-banner p {
+  margin: 0 1rem 0 0;
+  flex: 1;
+}
+
+#cookie-banner a {
+  color: #56ab2f;
+  text-decoration: underline;
+}
+
+#accept-cookies {
+  background-color: #56ab2f;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#accept-cookies:hover {
+  background-color: #4a9428;
 }

@@ -2,6 +2,9 @@
  * Main.js - Core functionality for the Drive2Earn website
  */
 
+// Make the initialization function global for data.js to access
+window.initializeProjects = initializeProjects;
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize project loading
     initializeProjects();
@@ -11,7 +14,46 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize animations
     initAnimations();
+    
+    // Fix text selection issues
+    fixTextSelection();
 });
+
+/**
+ * Fix text selection issues by ensuring proper z-index and element stacking
+ */
+function fixTextSelection() {
+    // Add appropriate z-index to prevent overlapping elements
+    const elementsToFix = [
+        '.hero-content', 
+        '.value-props-container',
+        '.value-prop-row',
+        '.bad-alternative',
+        '.better-solution',
+        '.trust-badge',
+        '.hero-banner h1',
+        '.hero-subtitle',
+        '.hero-cta',
+        '.cta-button',
+        '.cta-subtext'
+    ];
+    
+    elementsToFix.forEach((selector, index) => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+            // Set increasing z-index for better stacking context
+            el.style.position = el.style.position || 'relative';
+            el.style.zIndex = (10 + index).toString();
+        });
+    });
+    
+    // Ensure better text selection behavior
+    document.querySelectorAll('.value-props-container span, h1, p, .hero-subtitle').forEach(el => {
+        el.style.position = 'relative';
+        el.style.userSelect = 'text';
+        el.style.cursor = 'text';
+    });
+}
 
 /**
  * Initialize project loading from data.js
@@ -59,11 +101,11 @@ function displayProjects(projects, container) {
                 </div>
             </div>
             <h3 class="project-name">${project.name}</h3>
-            <p class="project-description">${project.shortDescription}</p>
+            <p class="project-description">${project.shortDescription || project.description}</p>
             <div class="project-details">
                 <div class="detail-item">
                     <i class="fas fa-money-bill-wave"></i>
-                    <span>Est. Earnings: ${project.estEarnings}</span>
+                    <span>Est. Earnings: ${project.estEarnings || 'Varies'}</span>
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-globe"></i>
@@ -71,10 +113,10 @@ function displayProjects(projects, container) {
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-car"></i>
-                    <span>Type: ${project.type}</span>
+                    <span>Type: ${project.type || project.category}</span>
                 </div>
             </div>
-            <a href="#" class="view-project-btn" data-id="${project.id}">View Details</a>
+            <a href="${project.url}" class="view-project-btn" data-id="${project.id}" target="_blank">View Details</a>
         </div>
         `;
     });
