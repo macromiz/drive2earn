@@ -6,9 +6,11 @@
   --light-bg: #f8f9fa;
   --main-bg: #ffffff;
   --section-bg: #f0f4f8;
+  --hero-bg: #0f1824; /* Keep hero section dark for contrast */
   --card-bg: #ffffff;
   --text-color: #2d3748;
   --light-text: #4a5568;
+  --hero-text: #ffffff; /* Light text for dark hero section */
   --featured-color: #ffd166;
   --popular-color: #7ac70c;
   --positive-color: #7ac70c;
@@ -17,12 +19,14 @@
   --alternate-section-bg: #edf2f7;
   --error-color: #e53e3e;
   --success-color: #7ac70c;
-  --header-bg: #ffffff;
+  --header-bg: #0f1824; /* Keep header dark */
   --footer-bg: #2d3748;
   --footer-text: #e2e8f0;
   --border-color: #e2e8f0;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --cta-text-color: #1a202c;
+  --error-bg: rgba(229, 62, 62, 0.15);
+  --success-bg: rgba(122, 199, 12, 0.15);
 }
 
 body {
@@ -47,7 +51,6 @@ header {
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 10px var(--shadow-color);
-  border-bottom: 1px solid var(--border-color);
 }
 
 .header-content {
@@ -60,7 +63,7 @@ header {
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--text-color);
+  color: white;
   text-decoration: none;
 }
 
@@ -75,7 +78,7 @@ header {
 }
 
 .nav-link {
-  color: var(--text-color);
+  color: white;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -103,7 +106,7 @@ header {
 
 .cta-button-sm {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--header-bg);
   font-weight: 600;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
@@ -118,9 +121,9 @@ header {
   box-shadow: 0 5px 15px rgba(122, 199, 12, 0.3);
 }
 
-/* Hero Banner - Fixed below header */
+/* Hero Banner styling - Keep dark with same layout */
 .hero-banner {
-  background-color: var(--section-bg);
+  background-color: var(--hero-bg);
   padding: 6rem 0;
   text-align: center;
   margin-bottom: 4rem;
@@ -203,7 +206,7 @@ header {
   display: inline-block;
   background-color: rgba(122, 199, 12, 0.1);
   border: 1px solid rgba(122, 199, 12, 0.3);
-  color: var(--text-color);
+  color: var(--accent-color);
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   font-size: 0.9rem;
@@ -220,7 +223,7 @@ header {
   font-size: 3.5rem;
   font-weight: 800;
   margin: 0 0 1.5rem 0;
-  color: var(--text-color);
+  color: white;
   line-height: 1.2;
   position: relative;
   display: inline-block;
@@ -247,8 +250,10 @@ header {
   color: var(--light-text);
   margin: 0 auto 2.5rem;
   max-width: 800px;
+  color: white;
 }
 
+/* Updated value props to match screenshot */
 .value-props {
   display: flex;
   flex-direction: column;
@@ -257,30 +262,32 @@ header {
   margin: 0 auto 2rem;
 }
 
-.value-prop {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.bad-alternative, .better-solution {
+.bad-alternative,
+.better-solution {
   display: flex;
   align-items: center;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
+  margin: 0.5rem auto;
+  width: calc(100% - 4rem);
+  max-width: 690px;
 }
 
 .bad-alternative {
-  background-color: rgba(229, 62, 62, 0.1);
-  border: 1px solid rgba(229, 62, 62, 0.2);
+  background-color: rgba(229, 62, 62, 0.15);
+  border: 1px solid rgba(229, 62, 62, 0.3);
+  color: white;
 }
 
 .better-solution {
-  background-color: rgba(122, 199, 12, 0.1);
-  border: 1px solid rgba(122, 199, 12, 0.2);
+  background-color: rgba(122, 199, 12, 0.15);
+  border: 1px solid rgba(122, 199, 12, 0.3);
+  color: white;
+  background-color: #4c7127;
 }
 
-.bad-alternative i, .better-solution i {
+.bad-alternative i,
+.better-solution i {
   font-size: 1.1rem;
   margin-right: 1rem;
 }
@@ -290,7 +297,7 @@ header {
 }
 
 .better-solution i {
-  color: var(--positive-color);
+  color: white;
 }
 
 .hero-cta {
@@ -299,7 +306,7 @@ header {
 
 .cta-button {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--hero-bg);
   font-weight: 600;
   padding: 1rem 2rem;
   border-radius: 0.5rem;

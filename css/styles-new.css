@@ -210,3 +210,173 @@
 }
 
 /* Theme Toggle Button styles removed */
+
+/* Additional styles to enhance the light theme */
+
+/* Value proposition enhancements */
+.value-props {
+  margin: 2rem auto;
+}
+
+.bad-alternative {
+  background-color: rgba(229, 62, 62, 0.15);
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(229, 62, 62, 0.3);
+  width: 100%;
+  max-width: 690px;
+  box-sizing: border-box;
+}
+
+.better-solution {
+  background-color: #4c7127;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(122, 199, 12, 0.3);
+  width: 100%;
+  max-width: 690px;
+  box-sizing: border-box;
+}
+
+.bad-alternative i {
+  color: #e53e3e;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.better-solution i {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+/* Ensure header is dark with white text */
+header {
+  background-color: #0f1824;
+}
+
+.logo, .nav-link {
+  color: #ffffff;
+}
+
+.logo span {
+  color: #7ac70c;
+}
+
+/* Ensure hero section has dark background */
+.hero-banner {
+  background-color: #0f1824;
+  color: #ffffff;
+}
+
+.hero-banner h1, 
+.hero-banner p, 
+.hero-subtitle {
+  color: #ffffff;
+}
+
+.text-highlight {
+  color: #7ac70c;
+}
+
+/* CTA Button styling */
+.cta-button {
+  background-color: #7ac70c;
+  color: #0f1824;
+  font-weight: 600;
+}
+
+.cta-button-sm {
+  background-color: #7ac70c;
+  color: #0f1824;
+}
+
+/* Add more spacing to content sections */
+section {
+  padding: 4rem 0;
+}
+
+/* Box shadow for cards and containers */
+.card, .feature-box {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover, .feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Animation for hero banner elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content > * {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-content > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.hero-content > *:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.hero-content > *:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.hero-content > *:nth-child(4) {
+  animation-delay: 0.7s;
+}
+
+.hero-content > *:nth-child(5) {
+  animation-delay: 0.9s;
+}
+
+/* Improve readability in content sections */
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Better contrast for buttons and interactive elements */
+button, .button, .nav-link, .cta-button, .cta-button-sm {
+  transition: all 0.3s ease;
+}
+
+/* Ensure the Trust Badge stands out */
+.trust-badge {
+  background-color: rgba(122, 199, 12, 0.15);
+  border: 1px solid rgba(122, 199, 12, 0.3);
+  color: #7ac70c;
+}
+
+.trust-badge i {
+  color: #7ac70c;
+}

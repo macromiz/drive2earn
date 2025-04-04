@@ -3,119 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drive2Earn.io - Monetize Your Vehicle Data While Maintaining Privacy</title>
-    <meta name="description" content="Turn your vehicle data into valuable assets while maintaining complete privacy control. Discover audited projects that allow you to earn cryptocurrency by sharing your driving data.">
-    <!-- Light theme only -->
-    <link rel="stylesheet" href="https://drive2earn.io/css/styles-light.css?v=1.0.0">
-    <!-- Fallback CSS if the new one fails -->
-    <link rel="stylesheet" href="https://drive2earn.io/css/styles.css?v=1.0.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Drive2Earn - Earn Crypto While Driving</title>
+    <meta name="description" content="Drive2Earn lets you earn cryptocurrency while driving your car. Join thousands of drivers worldwide monetizing their driving data.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Initialize script -->
-    <script>
-        // Just include basic error logging - moved initialization to app.js
-        window.addEventListener('error', function(e) {
-            console.error('JavaScript error:', e.message, 'at', e.filename, 'line', e.lineno);
-        });
-        
-        // Check if CSS is loaded properly and try alternative sources if not
-        window.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                // Check if the CSS has been applied by testing a key style
-                const headerEl = document.querySelector('header');
-                const headerStyles = window.getComputedStyle(headerEl);
-                const heroBanner = document.querySelector('.hero-banner');
-                
-                if (!headerStyles || !heroBanner || 
-                    headerStyles.position !== 'sticky' || 
-                    !headerStyles.backgroundColor.includes('rgb')) {
-                    console.warn('CSS styles not properly loaded, trying inline styles');
-                    
-                    // Apply basic inline styles to ensure visibility
-                    document.body.style.backgroundColor = '#ffffff';
-                    document.body.style.color = '#2d3748';
-                    document.body.style.fontFamily = 'Inter, sans-serif';
-                    
-                    // Add emergency CSS from relative path
-                    const cssLink = document.createElement('link');
-                    cssLink.rel = 'stylesheet';
-                    cssLink.href = 'css/styles-light.css?v=' + new Date().getTime();
-                    document.head.appendChild(cssLink);
-                    
-                    // Refresh the page after a brief delay if needed
-                    setTimeout(function() {
-                        const newHeaderStyles = window.getComputedStyle(headerEl);
-                        if (!newHeaderStyles || newHeaderStyles.position !== 'sticky') {
-                            console.error('CSS still not loaded properly, trying one more approach');
-                            location.reload(true);
-                        }
-                    }, 2000);
-                }
-            }, 1000);
-        });
-    </script>
+    <!-- Stylesheets - Updated to use relative paths -->
+    <link rel="stylesheet" href="css/styles-light.css?v=1.0.0">
+    <link rel="stylesheet" href="css/styles-new.css?v=1.0.0">
+    <link rel="stylesheet" href="css/responsive.css?v=1.0.0">
+    
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    
+    <!-- Emergency Styles for Basic Functionality -->
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #5e72eb;
+            --accent-color: #7ac70c;
+            --light-bg: #f8f9fa;
+            --main-bg: #ffffff;
+            --text-color: #2d3748;
+            --light-text: #4a5568;
+            --error-color: #e53e3e;
+            --success-color: #7ac70c;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--main-bg);
+            color: var(--text-color);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="/" class="logo">Drive2<span>Earn</span>.io</a>
+                <a href="index.html" class="logo">Drive<span>2</span>Earn</a>
                 <nav class="main-nav">
-                    <a href="#projects-container" class="nav-link">Projects</a>
                     <a href="#how-it-works" class="nav-link">How It Works</a>
-                    <a href="#faq-section" class="nav-link">FAQ</a>
-                    <a href="#benefits-section" class="nav-link">Benefits</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="#benefits" class="nav-link">Benefits</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                    <a href="download.html" class="cta-button-sm">Download App</a>
                 </nav>
-                <a href="#projects-container" class="cta-button-sm">Find Projects</a>
             </div>
         </div>
     </header>
-    
-    <!-- Hero Banner with [Desired Outcome] - [Objection] formula -->
-    <div class="hero-banner">
+
+    <section class="hero-banner">
         <div class="container">
             <div class="hero-content">
                 <div class="trust-badge">
-                    <i class="fas fa-shield-alt"></i> All Projects Audited For Security & Privacy
+                    <i class="fas fa-shield-alt"></i> Trusted by 10,000+ Drivers
                 </div>
-                <h1>Turn Your Driving Data Into Income <span class="text-highlight">Without Compromising Privacy</span></h1>
-                <p class="hero-subtitle">Discover vetted blockchain projects that allow you to monetize your vehicle data while maintaining complete control over what you share.</p>
+                <h1>Earn Crypto For Every <span class="text-highlight">Mile</span> You Drive</h1>
+                <p class="hero-subtitle">Drive2Earn turns your vehicle into a passive income source by securely monetizing your driving data while giving you full control.</p>
                 
+                <!-- Updated value props to match desired format -->
                 <div class="value-props">
-                    <div class="value-prop">
-                        <div class="bad-alternative">
-                            <i class="fas fa-times-circle"></i>
-                            <span>Giving away valuable data for free</span>
-                        </div>
-                        <div class="better-solution">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Earn crypto for the data you already generate</span>
-                        </div>
+                    <div class="bad-alternative">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Giving away valuable data for free</span>
                     </div>
-                    <div class="value-prop">
-                        <div class="bad-alternative">
-                            <i class="fas fa-times-circle"></i>
-                            <span>No control over who uses your data</span>
-                        </div>
-                        <div class="better-solution">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Full transparency and privacy controls</span>
-                        </div>
+                    <div class="better-solution">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Earn crypto for the data you already generate</span>
+                    </div>
+                    <div class="bad-alternative">
+                        <i class="fas fa-times-circle"></i>
+                        <span>No control over who uses your data</span>
+                    </div>
+                    <div class="better-solution">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Full transparency and privacy controls</span>
                     </div>
                 </div>
                 
                 <div class="hero-cta">
-                    <a href="#projects-container" class="cta-button">Find Your Ideal Project</a>
-                    <div class="cta-subtext">No signup required • Curated by blockchain experts</div>
+                    <a href="download.html" class="cta-button">Start Earning Now</a>
+                    <p class="cta-subtext">Free download • Available for iOS & Android</p>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </section>
+
     <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works-section">
         <div class="container">
@@ -363,9 +353,9 @@
     </div>
     
     <!-- Scripts -->
-    <script src="js/data.js"></script>
-    <script src="js/display-project.js"></script>
-    <script src="js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/cookie-banner.js"></script>
     
     <!-- Add FAQ functionality -->
