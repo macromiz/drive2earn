@@ -414,7 +414,7 @@ const featuredProjects = [
         earnings: '$50-$120/month',
         region: 'global',
         type: 'Camera Network',
-        featured: true,
+        featured: false,
         popular: true,
         logoUrl: 'img/logos/natix-logo.png'
     },
@@ -425,8 +425,8 @@ const featuredProjects = [
         earnings: '$30-$80/month',
         region: 'global',
         type: 'Navigation App',
-        featured: true,
-        popular: true,
+        featured: false,
+        popular: false,
         logoUrl: 'img/logos/mapmetrics-logo.png'
     },
     {
@@ -437,7 +437,7 @@ const featuredProjects = [
         region: 'north-america',
         type: 'OBD Device',
         featured: true,
-        popular: true,
+        popular: false,
         logoUrl: 'img/logos/dimo-logo.png'
     },
     {
@@ -447,8 +447,8 @@ const featuredProjects = [
         earnings: '$25-$60/month',
         region: 'global',
         type: 'OBD Scanner',
-        featured: true,
-        popular: true,
+        featured: false,
+        popular: false,
         logoUrl: 'img/logos/carblock-logo.png'
     },
     {
