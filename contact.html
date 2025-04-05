@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Drive2Earn.io</title>
-    <meta name="description" content="Contact the Drive2Earn.io team - We'd love to hear from you">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="description" content="Contact Drive2Earn.io for support, partnerships, or general inquiries. We're here to help you with any questions about our platform.">
+    <link rel="stylesheet" href="css/styles-light.css?v=1.0.0">
+    <link rel="stylesheet" href="css/styles-new.css?v=1.0.1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,56 +19,100 @@
         });
     </script>
     <style>
-        .page-content {
-            background: var(--section-bg);
-            border-radius: 1rem;
-            padding: 3rem;
-            margin: 3rem 0;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(76, 201, 240, 0.1);
-            user-select: text !important;
+        /* Additional Styles for Contact Page */
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            color: #2d3748;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
         
-        .page-content h1 {
-            font-size: 2.6rem;
+        .contact-header {
+            border-bottom: 3px solid #f59e0b;
+            padding-bottom: 1.5rem;
             margin-bottom: 2rem;
-            position: relative;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            user-select: text !important;
         }
         
-        .page-content h1:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -18px;
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, var(--accent-color), var(--primary-color));
-            border-radius: 3px;
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
-        .page-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--light-text);
-            margin-bottom: 1.5rem;
-            user-select: text !important;
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #f59e0b;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .submit-button:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
         }
         
         .contact-info {
-            margin: 3rem 0;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 0.5rem;
-            border: 1px solid rgba(76, 201, 240, 0.1);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
         }
         
         .contact-info h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #4a5568;
         }
         
         .contact-item {
@@ -77,102 +122,47 @@
         }
         
         .contact-item i {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            margin-right: 1rem;
-            width: 30px;
-            text-align: center;
+            margin-right: 0.75rem;
+            color: #f59e0b;
+            font-size: 1.25rem;
         }
         
-        .contact-form {
-            margin-top: 3rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--light-text);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(76, 201, 240, 0.2);
-            border-radius: 0.5rem;
-            background: rgba(0, 0, 0, 0.2);
-            color: var(--light-text);
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(184, 255, 80, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn-submit {
+        .back-to-home {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--accent-color);
-            color: var(--dark-bg);
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #f59e0b;
+            color: #ffffff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(184, 255, 80, 0.25);
         }
         
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(184, 255, 80, 0.35);
+        .back-to-home:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
         }
         
-        .success-message {
-            display: none;
-            padding: 1.5rem;
-            background: rgba(90, 200, 90, 0.1);
-            border: 1px solid rgba(90, 200, 90, 0.3);
-            border-radius: 0.5rem;
-            margin-top: 2rem;
-            color: var(--accent-color);
-            font-weight: 500;
+        main {
+            background-color: #f8f9fa;
+            padding: 3rem 0;
         }
         
-        .error-message {
-            display: none;
-            padding: 1.5rem;
-            background: rgba(200, 90, 90, 0.1);
-            border: 1px solid rgba(200, 90, 90, 0.3);
-            border-radius: 0.5rem;
-            margin-top: 2rem;
-            color: #ff6b6b;
-            font-weight: 500;
-        }
-        
-        @media (max-width: 768px) {
-            .page-content {
-                padding: 2rem;
-            }
-            
-            .page-content h1 {
-                font-size: 2rem;
+        @media (min-width: 768px) {
+            .contact-layout {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 2rem;
             }
             
             .contact-info {
-                padding: 1.5rem;
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+                border-left: 1px solid #e2e8f0;
+                padding-left: 2rem;
             }
         }
     </style>
@@ -180,62 +170,89 @@
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">Drive2<span>Earn</span>.io</a>
-                <nav class="main-nav">
-                    <!-- No navigation items for now -->
-                </nav>
-            </div>
+            <nav class="navbar">
+                <div class="logo">Drive<span>2</span>Earn.io</div>
+                <div class="nav-links">
+                    <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                    <a href="index.html#benefits-section" class="nav-link">Benefits</a>
+                    <a href="index.html#faq-section" class="nav-link">FAQ</a>
+                    <a href="index.html#projects-container" class="cta-button-sm">Start Earning</a>
+                </div>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
     </header>
-    
-    <main class="container">
-        <div class="page-content">
-            <h1>Contact Us</h1>
-            
-            <p>Have questions about Drive2Earn.io or want to get in touch? Fill out the form below, and we'll get back to you as soon as possible.</p>
-            
-            <div class="contact-form">
-                <h2>Send Us a Message</h2>
-                
-                <!-- FormSubmit.co integration -->
-                <form action="https://formsubmit.co/contact@drive2earn.io" method="POST" id="contactForm">
-                    <!-- FormSubmit configuration -->
-                    <input type="hidden" name="_subject" value="New Drive2Earn.io Contact Form Submission">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://drive2earn.io/thank-you.html">
-                    
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" name="email" id="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" name="subject" id="subject" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea name="message" id="message" class="form-control" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">Send Message</button>
-                </form>
-                
-                <div id="successMessage" class="success-message">
-                    <i class="fas fa-check-circle"></i> Your message has been sent successfully. We'll get back to you soon!
+
+    <main>
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h1>Contact Us</h1>
+                    <p>We're here to help with any questions you might have about Drive2Earn.io. Fill out the form below, and we'll get back to you as soon as possible.</p>
                 </div>
                 
-                <div id="errorMessage" class="error-message">
-                    <i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again later.
+                <div class="contact-layout">
+                    <div class="contact-form-container">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="topic">Topic</label>
+                                <select id="topic" name="topic">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>Feel free to reach out to us directly through any of the following methods:</p>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@drive2earn.io</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fab fa-twitter"></i>
+                            <span>@Drive2EarnApp</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fab fa-discord"></i>
+                            <span>Join our Discord</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Response Time: 24-48 hours</span>
+                        </div>
+                    </div>
                 </div>
+                
+                <a href="index.html" class="back-to-home">Back to Home</a>
             </div>
         </div>
     </main>
@@ -243,57 +260,67 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-text">
-                    &copy; 2025 Drive2Earn.io - All Rights Reserved
+                <div class="footer-links-container">
+                    <div class="footer-links-column">
+                        <h4>Navigation</h4>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#benefits-section">Benefits</a>
+                        <a href="index.html#faq-section">FAQ</a>
+                        <a href="index.html#projects-container">Projects</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Resources</h4>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-of-service.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <a href="https://drive2earn.io/privacy-policy.html">Privacy Policy</a>
-                    <a href="https://drive2earn.io/terms-of-service.html">Terms of Service</a>
-                    <a href="https://drive2earn.io/contact.html">Contact</a>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 Drive2Earn.io</p>
             </div>
         </div>
     </footer>
     
     <!-- Cookie Banner -->
-    <div id="cookie-banner" style="display: none;">
-        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="https://drive2earn.io/privacy-policy.html#cookies">Learn more</a></p>
+    <div id="cookie-banner">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
         <button id="accept-cookies">Accept</button>
     </div>
-    
-    <!-- Scripts -->
-    <script src="js/data.js"></script>
-    <script src="js/cookie-banner.js"></script>
+
+    <script src="js/main.js"></script>
     <script>
-        // Form handling script
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const contactForm = document.getElementById('contactForm');
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Cookie banner
+        document.getElementById('accept-cookies').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        });
+        
+        // Check if cookies were previously accepted
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+        
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Check for form submission status from URL parameters
-            if (urlParams.has('submitted')) {
-                document.getElementById('contactForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-            }
-            
-            if (urlParams.has('error')) {
-                document.getElementById('errorMessage').style.display = 'block';
-            }
-            
-            // Add loading state to prevent multiple submissions
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    // Disable submit button to prevent multiple submissions
-                    const submitBtn = this.querySelector('.btn-submit');
-                    if (submitBtn) {
-                        submitBtn.disabled = true;
-                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                    }
-                    
-                    // Allow form to submit normally
-                    return true;
-                });
-            }
+            // Here you would typically send the form data to your backend
+            // For now, we'll just show an alert
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
         });
     </script>
 </body>

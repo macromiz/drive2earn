@@ -1,178 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - Drive2Earn.io</title>
-    <meta name="description" content="Terms of Service for Drive2Earn.io - Understand our terms and conditions">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Initialize script -->
-    <script>
-        window.addEventListener('error', function(e) {
-            console.error('JavaScript error:', e.message, 'at', e.filename, 'line', e.lineno);
-        });
-    </script>
+    <meta name="description" content="Terms of Service for Drive2Earn.io. Learn about the terms and conditions that govern your use of our platform.">
+    <link rel="stylesheet" href="css/styles-light.css?v=1.0.0">
+    <link rel="stylesheet" href="css/styles-new.css?v=1.0.1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        .page-content {
-            background: var(--section-bg);
-            border-radius: 1rem;
-            padding: 3rem;
-            margin: 3rem 0;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(76, 201, 240, 0.1);
-            user-select: text !important;
+        /* Additional Styles for Terms Page */
+        .policy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            color: #2d3748;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
         
-        .page-content h1 {
-            font-size: 2.6rem;
+        .policy-header {
+            border-bottom: 3px solid #f59e0b;
+            padding-bottom: 1.5rem;
             margin-bottom: 2rem;
-            position: relative;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            user-select: text !important;
         }
         
-        .page-content h1:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -18px;
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, var(--accent-color), var(--primary-color));
-            border-radius: 3px;
+        .policy-section {
+            margin-bottom: 2.5rem;
         }
         
-        .page-content h2 {
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem;
-            color: var(--accent-color);
+        .policy-section h2 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
         
-        .page-content p, .page-content ul, .page-content ol {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--light-text);
-            margin-bottom: 1.5rem;
-            user-select: text !important;
+        .policy-section p, .policy-section li {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #4a5568;
         }
         
-        .page-content ul, .page-content ol {
-            padding-left: 2rem;
-            user-select: text !important;
-        }
-        
-        .page-content li {
-            margin-bottom: 0.75rem;
-            user-select: text !important;
-        }
-        
-        .page-content a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .page-content a:hover {
-            text-decoration: underline;
+        .policy-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .last-updated {
+            font-size: 0.9rem;
+            color: #718096;
             font-style: italic;
-            margin-top: 3rem;
-            color: var(--light-text);
-            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #f59e0b;
+            color: #ffffff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+        
+        main {
+            background-color: #f8f9fa;
+            padding: 3rem 0;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">Drive2<span>Earn</span>.io</a>
-                <nav class="main-nav">
-                    <!-- No navigation items for now -->
-                </nav>
-            </div>
+            <nav class="navbar">
+                <div class="logo">Drive<span>2</span>Earn.io</div>
+                <div class="nav-links">
+                    <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                    <a href="index.html#benefits-section" class="nav-link">Benefits</a>
+                    <a href="index.html#faq-section" class="nav-link">FAQ</a>
+                    <a href="index.html#projects-container" class="cta-button-sm">Start Earning</a>
+                </div>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
     </header>
-    
-    <main class="container">
-        <div class="page-content">
-            <h1>Terms of Service</h1>
-            
-            <p>Last Updated: March 25, 2025</p>
-            
-            <p>Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the Drive2Earn.io website ("Service") operated by us ("we", "us", or "our").</p>
-            
-            <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who access or use the Service.</p>
-            
-            <p>By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.</p>
-            
-            <h2>1. Use of Our Service</h2>
-            
-            <p>Drive2Earn.io provides information about various crypto and blockchain projects in the vehicle data monetization space. Our content is provided for informational purposes only and does not constitute financial advice, investment advice, or any other type of advice.</p>
-            
-            <h2>2. User Accounts</h2>
-            
-            <p>When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.</p>
-            
-            <p>You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password.</p>
-            
-            <h2>3. Intellectual Property</h2>
-            
-            <p>The Service and its original content, features, and functionality are and will remain the exclusive property of Drive2Earn.io and its licensors. The Service is protected by copyright, trademark, and other laws of both Poland and foreign countries.</p>
-            
-            <p>Our trademarks and other branding may not be used in connection with any product or service without the prior written consent of Drive2Earn.io.</p>
-            
-            <h2>4. External Links</h2>
-            
-            <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Drive2Earn.io.</p>
-            
-            <p>Drive2Earn.io has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services. You further acknowledge and agree that Drive2Earn.io shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
-            
-            <h2>5. Limitation of Liability</h2>
-            
-            <p>In no event shall Drive2Earn.io, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:</p>
-            
-            <ul>
-                <li>Your access to or use of or inability to access or use the Service;</li>
-                <li>Any conduct or content of any third party on the Service;</li>
-                <li>Any content obtained from the Service; and</li>
-                <li>Unauthorized access, use or alteration of your transmissions or content.</li>
-            </ul>
-            
-            <h2>6. Disclaimer</h2>
-            
-            <p>Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance.</p>
-            
-            <h2>7. Governing Law</h2>
-            
-            <p>These Terms shall be governed and construed in accordance with the laws of Poland, without regard to its conflict of law provisions.</p>
-            
-            <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.</p>
-            
-            <h2>8. Changes to Terms</h2>
-            
-            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
-            
-            <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
-            
-            <h2>9. Contact Us</h2>
-            
-            <p>If you have any questions about these Terms, please contact us at:</p>
-            
-            <p>
-                Email: <a href="mailto:contact@drive2earn.io">contact@drive2earn.io</a>
-            </p>
-            
-            <div class="last-updated">
-                These Terms of Service were last updated on March 25, 2025.
+
+    <main>
+        <div class="container">
+            <div class="policy-container">
+                <div class="policy-header">
+                    <h1>Terms of Service</h1>
+                    <p class="last-updated">Last Updated: March 25, 2025</p>
+                </div>
+                
+                <div class="policy-section">
+                    <p>Welcome to Drive2Earn.io. These Terms of Service ("Terms") govern your use of our website and services. By accessing or using Drive2Earn.io, you agree to be bound by these Terms.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By accessing or using Drive2Earn.io, you agree to comply with and be bound by these Terms. If you do not agree to these Terms, please do not use our services.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>2. Description of Service</h2>
+                    <p>Drive2Earn.io is a platform that connects users with blockchain projects that offer compensation for vehicle data sharing. We do not directly collect or process vehicle data, but rather provide information about and links to projects that do so.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>3. User Accounts</h2>
+                    <p>Some features of our service may require you to create an account. You are responsible for:</p>
+                    <ul>
+                        <li>Providing accurate and complete information when creating your account</li>
+                        <li>Maintaining the security of your account credentials</li>
+                        <li>All activities that occur under your account</li>
+                        <li>Notifying us immediately of any unauthorized use of your account</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>4. User Conduct</h2>
+                    <p>When using our services, you agree not to:</p>
+                    <ul>
+                        <li>Violate any applicable laws or regulations</li>
+                        <li>Infringe upon the rights of others</li>
+                        <li>Use our services to distribute malware or other harmful code</li>
+                        <li>Attempt to gain unauthorized access to our systems or networks</li>
+                        <li>Engage in any activity that interferes with or disrupts our services</li>
+                        <li>Impersonate any person or entity</li>
+                    </ul>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>5. Third-Party Projects</h2>
+                    <p>Drive2Earn.io provides information about and links to third-party blockchain projects. We are not responsible for:</p>
+                    <ul>
+                        <li>The content, privacy practices, or security of these third-party projects</li>
+                        <li>Any losses or damages resulting from your use of third-party projects</li>
+                        <li>The accuracy of earnings estimates or other information related to third-party projects</li>
+                    </ul>
+                    <p>While we make efforts to vet and review projects listed on our platform, you should conduct your own research before participating in any project.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>6. Intellectual Property</h2>
+                    <p>The content, design, and other materials on Drive2Earn.io are protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works based on our content without our express written consent.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>7. Disclaimer of Warranties</h2>
+                    <p>Our services are provided "as is" and "as available" without warranties of any kind, either express or implied. We do not guarantee that our services will be uninterrupted, secure, or error-free.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>8. Limitation of Liability</h2>
+                    <p>To the maximum extent permitted by law, Drive2Earn.io and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, arising from your use of our services.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>9. Changes to Terms</h2>
+                    <p>We may update these Terms from time to time. We will notify you of any changes by posting the new Terms on this page and updating the "Last Updated" date at the top.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>10. Governing Law</h2>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of [Jurisdiction], without regard to its conflict of law provisions.</p>
+                </div>
+                
+                <div class="policy-section">
+                    <h2>11. Contact Us</h2>
+                    <p>If you have any questions about these Terms, please contact us at:</p>
+                    <p>Email: legal@drive2earn.io</p>
+                </div>
+                
+                <a href="index.html" class="back-to-home">Back to Home</a>
             </div>
         </div>
     </main>
@@ -180,26 +193,58 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-text">
-                    &copy; 2025 Drive2Earn.io - All Rights Reserved
+                <div class="footer-links-container">
+                    <div class="footer-links-column">
+                        <h4>Navigation</h4>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#benefits-section">Benefits</a>
+                        <a href="index.html#faq-section">FAQ</a>
+                        <a href="index.html#projects-container">Projects</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Resources</h4>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-of-service.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <a href="https://drive2earn.io/privacy-policy.html">Privacy Policy</a>
-                    <a href="https://drive2earn.io/terms-of-service.html">Terms of Service</a>
-                    <a href="https://drive2earn.io/contact.html">Contact</a>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 Drive2Earn.io</p>
             </div>
         </div>
     </footer>
     
     <!-- Cookie Banner -->
-    <div id="cookie-banner" style="display: none;">
-        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="https://drive2earn.io/privacy-policy.html#cookies">Learn more</a></p>
+    <div id="cookie-banner">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy-policy.html">Learn more</a></p>
         <button id="accept-cookies">Accept</button>
     </div>
-    
-    <!-- Scripts -->
-    <script src="js/data.js"></script>
-    <script src="js/cookie-banner.js"></script>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Cookie banner
+        document.getElementById('accept-cookies').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+        });
+        
+        // Check if cookies were previously accepted
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
 </body>
 </html> 
