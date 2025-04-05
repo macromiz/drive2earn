@@ -7,10 +7,12 @@
 
 /* Enhanced FAQ Section based on best practices */
 .faq-section {
-  background-color: var(--section-bg);
-  border-radius: 0.75rem;
-  padding: 2.5rem;
+  background-color: white;
+  border-radius: 12px;
+  padding: 3rem 2rem;
   margin: 3rem 0;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e2e8f0;
 }
 
 .faq-subtitle {
@@ -68,7 +70,7 @@
 }
 
 .faq-question.active {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(56, 189, 248, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -151,12 +153,10 @@
 
 /* PAS framework in benefits section */
 .benefits-section {
-  background-color: var(--section-bg);
-  border-radius: 0.75rem;
-  padding: 2.5rem;
-  margin: 3rem 0;
+  background-color: var(--light-bg);
+  border-radius: 12px;
+  padding: 3rem 2rem;
   position: relative;
-  overflow: hidden;
 }
 
 .benefits-section::before {
@@ -165,8 +165,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 5px;
   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 5px 5px 0 0;
 }
 
 .benefits-grid {
@@ -177,19 +178,18 @@
 }
 
 .benefit-card {
-  background-color: rgba(0, 0, 0, 0.15);
-  border-radius: 0.5rem;
+  background-color: white;
+  border-radius: 10px;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid #e2e8f0;
   height: 100%;
 }
 
 .benefit-card:hover {
   transform: translateY(-5px);
-  background-color: rgba(0, 0, 0, 0.25);
-  border-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+  border-color: var(--accent-color);
 }
 
 .benefit-card i {
@@ -201,11 +201,12 @@
 .benefit-card h3 {
   margin: 0 0 0.75rem 0;
   font-size: 1.25rem;
+  color: var(--secondary-color);
 }
 
 .benefit-card p {
   margin: 0;
-  color: var(--light-text);
+  color: var(--main-bg);
   line-height: 1.5;
 }
 
@@ -245,37 +246,34 @@
 }
 
 .bad-alternative {
-  background-color: rgba(229, 62, 62, 0.25);
-  border: 1px solid rgba(229, 62, 62, 0.4);
-  color: #ffffff;
-  font-weight: 500;
+  background-color: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f1f5f9;
+  backdrop-filter: blur(4px);
 }
 
 .better-solution {
-  background-color: #56ab2f; /* More vibrant green */
-  color: #ffffff;
-  border: 1px solid rgba(122, 199, 12, 0.3);
-  font-weight: 500;
+  background-color: rgba(56, 189, 248, 0.3);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: #f1f5f9;
+  backdrop-filter: blur(4px);
 }
 
 .bad-alternative i {
-  color: #e53e3e;
-  font-size: 1.2rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
+  color: #ef4444;
 }
 
 .better-solution i {
-  color: #ffffff;
-  font-size: 1.2rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
+  color: #38bdf8;
 }
 
 /* Updated color scheme for a more positive feel */
 header {
-  background-color: #1a2a6c; /* Deep blue heading */
-  background-image: linear-gradient(to right, #1a2a6c, #2a4858); /* Gradient blue background */
+  background-color: var(--dark-bg);
+  background-image: linear-gradient(to right, var(--dark-bg), var(--main-bg));
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo, .nav-link {
@@ -288,78 +286,128 @@ header {
 
 /* Ensure hero section has vibrant gradient background */
 .hero-banner {
-  background-color: #1a2a6c;
-  background-image: linear-gradient(135deg, #1a2a6c 0%, #2a4858 100%);
-  color: #ffffff;
-  text-align: center;
   position: relative;
+  background-color: var(--dark-bg);
+  color: var(--text-color);
+  text-align: center;
+  padding: 0; /* Remove padding to allow full bleed image */
   overflow: hidden;
-  padding: 4rem 0;
+  height: 70vh; /* Set height for 16:9 aspect ratio */
+  max-height: 800px;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/hero-car.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  opacity: 0.85; /* Slightly dim the image to improve text readability */
+}
+
+/* Add a dark overlay */
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.4));
+  z-index: 2;
 }
 
 .hero-content {
-  max-width: 1100px;
-  margin: 0 auto;
   position: relative;
-  z-index: 10;
+  z-index: 5;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-banner h1 {
   font-size: 3.5rem;
   font-weight: 800;
   margin: 0 0 1.5rem 0;
-  color: #ffffff;
+  color: var(--text-color);
   line-height: 1.2;
-  position: relative;
-  display: inline-block;
-  z-index: 5;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
   font-size: 1.35rem;
-  color: #ffffff;
+  color: var(--light-text);
   margin: 0 auto 2.5rem;
   max-width: 800px;
-  z-index: 5;
-  position: relative;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .text-highlight {
-  color: #56ab2f;
+  color: var(--accent-color);
   position: relative;
   z-index: 2;
+  text-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
 }
 
 /* Improve trust badge visibility */
 .trust-badge {
-  background-color: rgba(86, 171, 47, 0.3);
-  border: 1px solid rgba(86, 171, 47, 0.5);
-  color: #ffffff;
+  background-color: rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--text-color);
   font-weight: 600;
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  z-index: 10;
-  position: relative;
+  backdrop-filter: blur(4px);
 }
 
 .trust-badge i {
-  color: #ffffff;
-  margin-right: 0.5rem;
+  color: var(--accent-color);
 }
 
 /* CTA Button styling - more vibrant */
-.cta-button {
-  background-color: #56ab2f;
-  color: #ffffff;
-  font-weight: 600;
+.cta-button, .view-project-btn, .search-btn {
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-shadow: none;
+  border: none;
+}
+
+.cta-button:hover, .view-project-btn:hover, .search-btn:hover {
+  background-color: #0ea5e9;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
 }
 
 .cta-button-sm {
-  background-color: #56ab2f;
-  color: #ffffff;
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-button-sm:hover {
+  background-color: #0ea5e9;
+  transform: translateY(-2px);
 }
 
 /* Add more spacing to content sections */
@@ -376,13 +424,13 @@ section {
 
 /* Ensure the Trust Badge stands out */
 .trust-badge {
-  background-color: rgba(86, 171, 47, 0.3);
-  border: 1px solid rgba(86, 171, 47, 0.5);
-  color: #ffffff;
+  background-color: rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: var(--text-color);
 }
 
 .trust-badge i {
-  color: #ffffff;
+  color: var(--accent-color);
 }
 
 /* Step numbers and icons */
@@ -471,7 +519,7 @@ section {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #ffffff;
+  background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
@@ -750,9 +798,9 @@ section {
 }
 
 .tag.active {
-  background-color: #56ab2f;
+  background-color: var(--accent-color);
   color: white;
-  border-color: #56ab2f;
+  border-color: var(--accent-color);
 }
 
 .tag i {
@@ -921,7 +969,7 @@ p, h1, h2, h3, h4, h5, h6, span, div {
 
 #accept-cookies {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--dark-bg);
   border: none;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -960,7 +1008,7 @@ p, h1, h2, h3, h4, h5, h6, span, div {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   color: white;
   font-weight: 700;
   font-size: 1.5rem;
@@ -981,11 +1029,16 @@ section {
 
 /* Update design with brighter colors and more dynamic elements */
 :root {
-  --primary-color: #3b82f6;
-  --secondary-color: #4f46e5;
-  --accent-color: #22c55e;
-  --gradient-start: #4f46e5;
-  --gradient-end: #0ea5e9;
+  --primary-color: #0ea5e9; /* Bright cyan/blue from the glowing wheels */
+  --secondary-color: #1e3a8a; /* Darker blue */
+  --accent-color: #38bdf8; /* Bright blue from the $ symbols */
+  --gradient-start: #1e3a8a; /* Dark blue */
+  --gradient-end: #0284c7; /* Medium blue */
+  --text-color: #f8fafc; /* Light text for dark backgrounds */
+  --dark-bg: #0f172a; /* Very dark blue/black for night scene */
+  --light-text: #e2e8f0; /* Light gray text */
+  --main-bg: #1e293b; /* Dark blue background */
+  --section-bg: #0f172a; /* Darker section background */
 }
 
 /* Gradient backgrounds for dynamic look */
@@ -1041,13 +1094,17 @@ header {
 
 /* Adjust value propositions for better appearance */
 .bad-alternative {
-  background-color: rgba(239, 68, 68, 0.15);
+  background-color: rgba(239, 68, 68, 0.2);
   border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f1f5f9;
+  backdrop-filter: blur(4px);
 }
 
 .better-solution {
-  background-color: #22c55e;
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background-color: rgba(56, 189, 248, 0.3);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: #f1f5f9;
+  backdrop-filter: blur(4px);
 }
 
 .bad-alternative i {
@@ -1055,16 +1112,6 @@ header {
 }
 
 /* Make buttons more dynamic */
-.cta-button, .view-project-btn, .search-btn {
-  background-color: var(--accent-color);
-  color: white;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
 .cta-button::after, .view-project-btn::after, .search-btn::after {
   content: '';
   position: absolute;
@@ -1130,7 +1177,7 @@ header {
 
 .cta-button-sm {
   background-color: var(--accent-color);
-  color: white;
+  color: var(--dark-bg);
   padding: 0.6rem 1.2rem;
   border-radius: 4px;
   font-weight: 600;
@@ -1142,7 +1189,7 @@ header {
 }
 
 .cta-button-sm:hover {
-  background-color: #4a9428;
+  background-color: #0ea5e9;
   transform: translateY(-2px);
 }
 
@@ -1181,4 +1228,265 @@ header {
     opacity: 1;
     pointer-events: all;
   }
+}
+
+/* Apply the blue theme from the car image to other sections */
+.section-title {
+  color: var(--secondary-color);
+  position: relative;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: var(--main-bg);
+  margin-bottom: 2.5rem;
+}
+
+/* Updated How It Works section */
+.how-it-works-section {
+  background-color: var(--light-bg);
+  padding: 4rem 0;
+}
+
+/* Step cards with blue accent */
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.step-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+}
+
+.step-card h3 {
+  margin: 0 0 1rem;
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+.step-card p {
+  margin: 0;
+  color: var(--main-bg);
+  line-height: 1.6;
+}
+
+/* Benefits section styling */
+.benefits-section {
+  background-color: var(--light-bg);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.benefits-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 5px 5px 0 0;
+}
+
+.benefits-section h2 {
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.benefit-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  height: 100%;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+  border-color: var(--accent-color);
+}
+
+.benefit-card i {
+  font-size: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.benefit-card p {
+  margin: 0;
+  color: var(--main-bg);
+  line-height: 1.5;
+}
+
+/* FAQ section with blue theme */
+.faq-section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  margin: 3rem 0;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.faq-section h2 {
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.faq-question.active {
+  background-color: rgba(56, 189, 248, 0.05);
+}
+
+.faq-question.active i {
+  color: var(--accent-color);
+}
+
+/* CTA section styling */
+.cta-section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  margin: 3rem auto;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e2e8f0;
+  max-width: 900px;
+}
+
+.cta-section h2 {
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.cta-trust {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--main-bg);
+}
+
+.trust-item i {
+  color: var(--accent-color);
+}
+
+/* Projects styling */
+.project-card {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: var(--accent-color);
+}
+
+.project-logo-placeholder {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.view-project-btn, .learn-more-btn {
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
+}
+
+.view-project-btn:hover, .learn-more-btn:hover {
+  background-color: var(--primary-color);
+}
+
+/* Search section styling */
+.search-section {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 3rem 0;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.search-header h2 {
+  color: var(--secondary-color);
+}
+
+.search-btn {
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
+}
+
+.search-btn:hover {
+  background-color: var(--primary-color);
+}
+
+.tag.active {
+  background-color: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+/* Ensure cookie banner matches the new style */
+#cookie-banner {
+  background-color: white;
+  border-top: 1px solid #e2e8f0;
+}
+
+#cookie-banner a {
+  color: var(--accent-color);
+}
+
+#accept-cookies {
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
 }
