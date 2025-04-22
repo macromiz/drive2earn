@@ -96,70 +96,82 @@
 /* Complete mobile rewrite for hero section */
 @media (max-width: 768px) {
   .hero-banner {
+    min-height: auto;
     height: auto;
-    min-height: 100vh;
-    padding: 30px 20px;
+    padding: 80px 0 40px;
   }
   
   .hero-content {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
-    max-width: 100%;
-    margin: 0 auto;
   }
   
   .main-heading {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 15px;
-    line-height: 1.2;
     width: 100%;
     text-align: center;
   }
   
   .hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
     width: 100%;
     text-align: center;
   }
   
   .value-props-container {
     width: 100%;
-    margin-bottom: 25px;
+    margin: 15px auto 25px;
   }
   
   .value-prop-row {
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    gap: 15px;
   }
   
   .bad-alternative, .better-solution {
     width: 100%;
-    margin: 10px 0;
+    margin: 0;
     padding: 15px;
   }
   
-  .bad-alternative h3, .better-solution h3 {
-    font-size: 1rem;
-    margin-bottom: 5px;
-  }
-  
-  .bad-alternative p, .better-solution p {
-    font-size: 1.1rem;
-  }
-  
   .trust-badge {
-    margin: 20px 0;
-    padding: 10px 15px;
-    font-size: 1rem;
+    margin: 15px 0;
     width: auto;
-    display: inline-block;
   }
   
+  .hero-cta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .cta-button {
+    width: 80%;
+    max-width: 250px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4);
+  }
+  
+  .cta-subtext {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+  }
+  
+  /* Fix display helper classes for mobile */
   .show-on-mobile {
     display: block !important;
   }
@@ -170,66 +182,6 @@
   
   .hide-on-desktop {
     display: block;
-  }
-  
-  .hero-cta {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .cta-button {
-    width: 80%;
-    max-width: 300px;
-    padding: 15px 20px;
-    font-size: 1.2rem;
-  }
-  
-  .cta-subtext {
-    margin-top: 15px;
-    font-size: 0.9rem;
-  }
-  
-  /* Benefit section mobile optimization */
-  .benefits-section {
-    padding: 40px 20px;
-  }
-  
-  .benefits-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  /* How it works mobile optimization */
-  .steps-container {
-    flex-direction: column;
-  }
-  
-  .step {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  
-  /* FAQ section mobile optimization */
-  .faq-container {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-  
-  /* Footer mobile optimization */
-  .footer {
-    padding: 30px 20px;
-  }
-  
-  .footer-content {
-    flex-direction: column;
-  }
-  
-  .footer-navigation, .footer-social {
-    width: 100%;
-    margin-bottom: 20px;
   }
 }
 
@@ -331,31 +283,34 @@
 /* Value proposition enhancements - now in table format */
 .value-props-container {
   width: 100%;
-  margin: 20px 0;
+  max-width: 900px;
+  margin: 20px auto;
 }
 
 .value-prop-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
-  gap: 15px;
+  margin-bottom: 20px;
+  gap: 20px;
 }
 
 .bad-alternative, .better-solution {
   flex: 1;
-  padding: 15px;
+  padding: 15px 20px;
   border-radius: 8px;
   text-align: left;
 }
 
 .bad-alternative {
-  background-color: rgba(255, 0, 0, 0.1);
-  border: 1px solid rgba(255, 0, 0, 0.3);
+  background-color: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ffffff;
 }
 
 .better-solution {
-  background-color: rgba(255, 165, 0, 0.1);
-  border: 1px solid rgba(255, 165, 0, 0.3);
+  background-color: rgba(255, 165, 0, 0.2);
+  border: 1px solid rgba(255, 165, 0, 0.4);
+  color: #ffffff;
 }
 
 .bad-alternative h3, .better-solution h3 {
@@ -363,60 +318,181 @@
   text-transform: uppercase;
   margin-bottom: 8px;
   letter-spacing: 1px;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .bad-alternative p, .better-solution p {
   font-size: 1.1rem;
   margin: 0;
+  color: #ffffff;
 }
 
 /* Updated color scheme for a more positive feel */
 header {
-  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  background: linear-gradient(90deg, #1e3a8a, #0284c7);
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 100;
-  box-sizing: border-box;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo, .nav-link {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
+  position: relative;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: var(--accent-color);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #FFA500;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover:after {
+  width: 100%;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .logo span {
-  color: var(--accent-color);
+  color: #FFA500;
   font-weight: 800;
+}
+
+.mobile-menu-btn {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* Mobile navigation styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1e3a8a, #0284c7);
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 1rem;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .cta-button-sm {
+    margin-top: 10px;
+  }
+}
+
+/* Fix overall body and layout */
+body {
+  padding-top: 70px;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Fix for helper classes */
+.show-on-mobile {
+  display: none;
+}
+
+.hide-on-mobile {
+  display: block;
+}
+
+.hide-on-desktop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+  
+  .show-on-mobile {
+    display: block !important;
+  }
+  
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  .hide-on-desktop {
+    display: block !important;
+  }
 }
 
 /* Hero section improvements */
 .hero-banner {
   position: relative;
-  background-color: var(--gradient-start); /* Fallback if image fails to load */
-  color: var(--text-color);
+  background-color: #1e3a8a; /* Fallback if image fails to load */
+  color: #ffffff;
   text-align: center;
   padding: 0; 
   overflow: hidden;
   height: auto;
-  min-height: 500px;
-  max-height: 800px;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 16/9;
   z-index: 1;
+  width: 100%;
 }
 
 .hero-overlay {
@@ -425,29 +501,32 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.5));
+  background: rgba(15, 23, 42, 0.6);
   z-index: 2;
 }
 
 .hero-banner::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Background image now set directly on the hero-banner element in HTML */
-  /* background-image: url('../img/Drive2EarnHero.png'); */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
   z-index: 1;
-  opacity: 1;
 }
 
-/* Remove the after pseudo-element since we now have a dedicated overlay div */
 .hero-banner::after {
-  content: none;
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  z-index: 1;
 }
 
 .hero-content {
@@ -459,21 +538,21 @@ header {
   margin: 0 auto;
 }
 
-.hero-banner h1 {
+.hero-banner h1, .main-heading {
   font-size: 3.5rem;
   font-weight: 800;
   margin: 0 0 1.5rem 0;
-  color: var(--text-color);
+  color: #ffffff;
   line-height: 1.2;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
   font-size: 1.35rem;
-  color: var(--light-text);
+  color: #e2e8f0;
   margin: 0 auto 2.5rem;
   max-width: 800px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .text-highlight {
@@ -485,14 +564,15 @@ header {
 
 /* Improve trust badge visibility */
 .trust-badge {
-  background-color: rgba(255, 166, 0, 0.9);
-  color: #000;
+  background-color: rgba(255, 165, 0, 0.2);
+  color: #ffffff;
   font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 165, 0, 0.5);
   display: inline-block;
-  margin-bottom: 20px;
-  font-size: 14px;
+  margin: 20px 0;
+  font-size: 0.9rem;
 }
 
 .trust-badge i {
@@ -1251,7 +1331,7 @@ header {
 .bad-alternative {
   background-color: rgba(239, 68, 68, 0.2);
   border: 1px solid rgba(239, 68, 68, 0.3);
-  color: #f8fafc;
+  color: #ffffff;
   backdrop-filter: blur(4px);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
@@ -1259,7 +1339,7 @@ header {
 .better-solution {
   background-color: rgba(56, 189, 248, 0.3);
   border: 1px solid rgba(56, 189, 248, 0.5);
-  color: #f8fafc;
+  color: #ffffff;
   backdrop-filter: blur(4px);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }

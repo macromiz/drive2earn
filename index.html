@@ -94,7 +94,12 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="trust-badge show-on-mobile">Trusted by 10,000+ Drivers</div>
-            <h1 class="main-heading"><span class="hide-on-desktop show-on-mobile">Turn Driving Into</span> Digital Assets</h1>
+            
+            <h1 class="main-heading">
+                <span class="hide-on-desktop show-on-mobile">Turn Driving Into</span>
+                Digital Assets
+            </h1>
+            
             <p class="hero-subtitle">Earn crypto for the data you already generate while driving</p>
             
             <div class="value-props-container">
@@ -366,6 +371,28 @@
     <script src="js/display-project.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cookie-banner.js"></script>
+    
+    <!-- Mobile menu functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Close menu when a link is clicked
+                    const links = navLinks.querySelectorAll('a');
+                    links.forEach(link => {
+                        link.addEventListener('click', function() {
+                            navLinks.classList.remove('active');
+                        });
+                    });
+                });
+            }
+        });
+    </script>
     
     <!-- Add FAQ functionality -->
     <script>
