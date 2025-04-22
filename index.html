@@ -6,11 +6,28 @@
     <title>Drive2Earn - Earn Crypto While Driving</title>
     <meta name="description" content="Drive2Earn lets you earn cryptocurrency while driving your car. Join thousands of drivers worldwide monetizing their driving data.">
     
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://drive2earn.io/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Drive2Earn - Earn Crypto While Driving">
+    <meta property="og:description" content="Turn your driving into a passive income source. Join thousands of drivers already monetizing their data.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://drive2earn.io/">
+    <meta property="og:image" content="https://drive2earn.io/img/Drive2EarnHero.png">
+    <meta property="og:site_name" content="Drive2Earn.io">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Drive2Earn - Earn Crypto While Driving">
+    <meta name="twitter:description" content="Turn your driving into a passive income source. Join thousands of drivers already monetizing their data.">
+    <meta name="twitter:image" content="https://drive2earn.io/img/Drive2EarnHero.png">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon.png">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,11 +37,10 @@
     <!-- Stylesheets - Updated to use relative paths -->
     <link rel="stylesheet" href="css/styles-light.css?v=1.0.0">
     <link rel="stylesheet" href="css/styles-new.css?v=1.0.1">
-    <link rel="stylesheet" href="css/responsive.css?v=1.0.0">
     
     <!-- Slick Carousel CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Emergency Styles for Basic Functionality -->
     <style>
@@ -74,7 +90,7 @@
     </header>
 
     <!-- Hero Banner with car image background -->
-    <section class="hero-banner" style="background-image: url('img/Drive2EarnHero.png'); background-size: cover; background-position: center;">
+    <section class="hero-banner">
         <div class="container">
             <div class="hero-content">
                 <div class="trust-badge">
@@ -240,51 +256,51 @@
             
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What if I don't like the project I chose?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                        <h3 id="faq-question-1">What if I don't like the project I chose?</h3>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </div>
-                    <div class="faq-answer">
+                    <div id="faq-answer-1" class="faq-answer" aria-labelledby="faq-question-1">
                         <p>Most projects offer a 30-day satisfaction guarantee. We also provide detailed reviews and comparison tools to help you choose the right project from the start.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How does this compare to traditional vehicle data collection?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                        <h3 id="faq-question-2">How does this compare to traditional vehicle data collection?</h3>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </div>
-                    <div class="faq-answer">
+                    <div id="faq-answer-2" class="faq-answer" aria-labelledby="faq-question-2">
                         <p>Unlike traditional data collection where companies profit from your data without compensation, blockchain-based projects give you ownership and control. You decide what to share and receive fair compensation through tokens.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Is it hard to set up and use?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                        <h3 id="faq-question-3">Is it hard to set up and use?</h3>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </div>
-                    <div class="faq-answer">
+                    <div id="faq-answer-3" class="faq-answer" aria-labelledby="faq-question-3">
                         <p>Most projects can be set up within 2-5 minutes. App-based solutions require just downloading an app, while device-based ones use simple plug-and-play hardware that connects to your car's OBD port.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How much can I actually earn?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+                        <h3 id="faq-question-4">How much can I actually earn?</h3>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </div>
-                    <div class="faq-answer">
+                    <div id="faq-answer-4" class="faq-answer" aria-labelledby="faq-question-4">
                         <p>Earnings vary based on how much you drive, your location, and which project(s) you choose. Most users report earning between $30-150 per month. Use our calculator to get a personalized estimate.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How do I know these projects are secure?</h3>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">
+                        <h3 id="faq-question-5">How do I know these projects are secure?</h3>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
                     </div>
-                    <div class="faq-answer">
+                    <div id="faq-answer-5" class="faq-answer" aria-labelledby="faq-question-5">
                         <p>All projects listed on Drive2Earn.io undergo a thorough security audit by our blockchain experts. We verify smart contract security, data privacy practices, and review the team's credentials before listing any project.</p>
                     </div>
                 </div>
@@ -326,8 +342,8 @@
                     <div class="footer-links-column">
                         <h4>Connect</h4>
                         <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                            <a href="https://twitter.com/drive2earn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://discord.gg/drive2earn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
                         </div>
                     </div>
                 </div>
@@ -345,8 +361,8 @@
     </div>
     
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/data.js"></script>
     <script src="js/display-project.js"></script>
     <script src="js/main.js"></script>
@@ -362,13 +378,16 @@
                 const answer = item.querySelector('.faq-answer');
                 
                 question.addEventListener('click', () => {
-                    const isOpen = answer.style.maxHeight;
+                    const isOpen = question.getAttribute('aria-expanded') === 'true';
                     
                     // Close all other FAQs
                     faqItems.forEach(otherItem => {
                         if (otherItem !== item) {
-                            otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                            otherItem.querySelector('.faq-question').classList.remove('active');
+                            const otherQuestion = otherItem.querySelector('.faq-question');
+                            const otherAnswer = otherItem.querySelector('.faq-answer');
+                            otherAnswer.style.maxHeight = null;
+                            otherQuestion.classList.remove('active');
+                            otherQuestion.setAttribute('aria-expanded', 'false');
                         }
                     });
                     
@@ -376,9 +395,11 @@
                     if (isOpen) {
                         answer.style.maxHeight = null;
                         question.classList.remove('active');
+                        question.setAttribute('aria-expanded', 'false');
                     } else {
                         answer.style.maxHeight = answer.scrollHeight + 'px';
                         question.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
                     }
                 });
             });

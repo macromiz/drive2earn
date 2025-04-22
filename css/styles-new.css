@@ -290,10 +290,23 @@ header {
 
 .logo, .nav-link {
   color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-color);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .logo span {
-  color: #56ab2f; /* More vibrant green */
+  color: var(--accent-color);
+  font-weight: 800;
 }
 
 /* Ensure hero section has vibrant gradient background */
@@ -320,7 +333,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../img/Drive2EarnHero.png'); /* Fixed path with double .. to correctly go up two levels */
+  background-image: url('../img/Drive2EarnHero.png'); /* Fixed path to use one level up from css directory */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -910,10 +923,14 @@ footer {
   font-size: 1.25rem;
   text-align: center;
   padding: 0;
+  position: relative;
 }
 
 .social-link i {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 24px;
   height: 24px;
   display: flex;
