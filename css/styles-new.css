@@ -1232,7 +1232,7 @@ p, h1, h2, h3, h4, h5, h6, span, div {
   color: #ffffff;
   padding: 15px;
   z-index: 1000;
-  display: flex;
+  display: flex !important; /* Force display */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1628,4 +1628,79 @@ header {
   .hero-banner {
     padding: 100px 0 50px;
   }
+}
+
+/* Make How It Works section text colors consistent with Benefits section */
+.step-card h3 {
+  color: #1e3a8a;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.step-card p {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.benefit-card h3 {
+  color: #1e3a8a;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.benefit-card p {
+  color: #4b5563;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Ensure How It Works steps have consistent styling */
+.steps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.step-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  color: #f59e0b;
+  margin-bottom: 1.2rem;
 }
