@@ -82,23 +82,6 @@ const projects = [
         popular: true
     },
     {
-        id: 7,
-        name: "Dovu",
-        description: "Dovu enables users to earn DOV tokens by tracking and verifying their carbon-friendly transportation choices. The platform rewards sustainable mobility behaviors, helping reduce carbon footprints while earning crypto.",
-        shortDescription: "Earn tokens for your eco-friendly driving habits while reducing your carbon footprint.",
-        category: "app",
-        region: "europe",
-        logo: "https://pbs.twimg.com/profile_images/1468947000813162496/N5-tYlZ5_400x400.jpg",
-        token: "DOV",
-        tokenTicker: "DOV",
-        tokenPrice: 0.0005,
-        priceChange: -0.6,
-        url: "https://dovu.earth/",
-        featured: true,
-        estEarnings: "$15-$40/month",
-        type: "Carbon Tracking"
-    },
-    {
         id: 8,
         name: "peaq Network",
         description: "peaq Network is building the Economy of Things on Web3 foundations. Users can earn from vehicle data and services including charging stations, ridesharing, and connected vehicle applications, all powered by blockchain technology.",
@@ -116,41 +99,6 @@ const projects = [
         type: "IoT Platform"
     },
     {
-        id: 9,
-        name: "CarBlock",
-        description: "Turn your car's diagnostic data into passive income. With a simple $30 OBD-II device, you can start earning CARB tokens while helping build the future transportation data ecosystem. Drivers typically recover their hardware cost within the first month.",
-        shortDescription: "Convert your car's diagnostic data into income with a simple and affordable OBD-II device.",
-        category: "device",
-        region: "global",
-        logo: "https://pbs.twimg.com/profile_images/1115539544591036416/DaTgHxPa_400x400.png",
-        token: "CARB",
-        tokenTicker: "CARB",
-        tokenPrice: 0.015,
-        priceChange: 1.2,
-        url: "https://www.carblock.io/",
-        hardwareCost: "$30",
-        featured: true,
-        popular: true,
-        estEarnings: "$25-$60/month",
-        type: "OBD Scanner"
-    },
-    {
-        id: 10,
-        name: "Wibson",
-        description: "A blockchain-based data marketplace that allows users to securely and anonymously sell validated personal data, including driving patterns and location information, earning Wibson tokens in exchange.",
-        shortDescription: "Sell your driving patterns and location data securely and anonymously on this blockchain marketplace.",
-        category: "app",
-        region: "global",
-        logo: "https://imgur.com/xrEzCtp.png",
-        token: "WIB",
-        tokenTicker: "WIB",
-        tokenPrice: 0.005,
-        priceChange: 0.3,
-        url: "https://wibson.org/",
-        estEarnings: "$10-$30/month",
-        type: "Data Marketplace"
-    },
-    {
         id: 11,
         name: "DreamCars",
         description: "DreamCars is creating a decentralized platform for vehicle data monetization, allowing drivers to share driving data and earn tokens. The project focuses on building a comprehensive mobility data marketplace.",
@@ -165,23 +113,6 @@ const projects = [
         url: "https://dreamcars.co/",
         estEarnings: "$20-$50/month",
         type: "Mobility Marketplace"
-    },
-    {
-        id: 12,
-        name: "Carro",
-        description: "Carro leverages vehicle data to provide better insurance rates and vehicle maintenance insights while compensating users with CAR tokens. The platform uses AI to analyze driving habits and vehicle performance.",
-        shortDescription: "Get better insurance rates and earn tokens by sharing your vehicle data with this AI-powered platform.",
-        category: "device",
-        region: "asia",
-        logo: "https://imgur.com/yYGMz4N.png",
-        token: "CAR",
-        tokenTicker: "CAR",
-        tokenPrice: 0.075,
-        priceChange: 0.9,
-        url: "https://carro.sg/",
-        hardwareCost: "$120",
-        estEarnings: "$30-$80/month",
-        type: "Insurance Telematics"
     }
 ];
 
@@ -441,26 +372,6 @@ const featuredProjects = [
         logoUrl: 'img/logos/dimo-logo.png'
     },
     {
-        id: 'carblock',
-        name: 'CarBlock',
-        description: 'Convert your car\'s diagnostic data into income with a simple and affordable OBD-II device.',
-        earnings: '$25-$60/month',
-        region: 'global',
-        type: 'OBD Scanner',
-        featured: false,
-        popular: false,
-        logoUrl: 'img/logos/carblock-logo.png'
-    },
-    {
-        id: 'wibson',
-        name: 'Wibson',
-        description: 'Sell your driving patterns and location data securely and anonymously on this blockchain marketplace.',
-        earnings: '$10-$30/month',
-        region: 'global',
-        type: 'Data Marketplace',
-        logoUrl: 'img/logos/wibson-logo.png'
-    },
-    {
         id: 'dreamcars',
         name: 'DreamCars',
         description: 'Join a decentralized platform for vehicle data monetization and earn tokens for sharing driving data.',
@@ -468,15 +379,6 @@ const featuredProjects = [
         region: 'north-america',
         type: 'Mobility Marketplace',
         logoUrl: 'img/logos/dreamcars-logo.png'
-    },
-    {
-        id: 'carro',
-        name: 'Carro',
-        description: 'Get better insurance rates and earn tokens by sharing your vehicle data with this AI-powered platform.',
-        earnings: '$15-$45/month',
-        region: 'asia',
-        type: 'Insurance & Data',
-        logoUrl: 'img/logos/carro-logo.png'
     }
 ];
 

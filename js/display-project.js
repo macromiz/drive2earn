@@ -33,7 +33,7 @@ function displayProjects(projects) {
     console.log("Original projects before filtering:", projects.map(p => p.name).join(', '));
     
     // Filter out projects that should be excluded
-    const excludedProjects = ['Wibson', 'DOVU', 'Dovu']; // CarBlock is now displayed
+    const excludedProjects = ['Wibson', 'DOVU', 'Dovu', 'CarBlock', 'Carro']; 
     const filteredProjects = projects.filter(project => !excludedProjects.includes(project.name));
     
     console.log("After filtering, remaining projects:", filteredProjects.map(p => p.name).join(', '));
@@ -141,12 +141,11 @@ function displayProjects(projects) {
                     case 'Hivemapper':
                         description = 'Hivemapper is building a global, blockchain-based map using dashcams and community contributions. Drivers earn HONEY tokens by capturing street-level imagery that improves map accuracy and freshness through the Hivemapper Dashcam.';
                         break;
-                    case 'Dovu':
-                    case 'DOVU':
-                        description = 'Dovu enables users to earn DOV tokens by tracking and verifying their carbon-friendly transportation choices. The platform rewards sustainable mobility behaviors, helping reduce carbon footprints while earning crypto.';
-                        break;
                     case 'peaq Network':
                         description = 'peaq Network is building the Economy of Things on Web3 foundations. Users can earn from vehicle data and services including charging stations, ridesharing, and connected vehicle applications, all powered by blockchain technology.';
+                        break;
+                    case 'DreamCars':
+                        description = 'DreamCars is creating a decentralized platform for vehicle data monetization, allowing drivers to share driving data and earn tokens. The project focuses on building a comprehensive mobility data marketplace.';
                         break;
                     default:
                         // For other projects, just remove the ellipsis
@@ -174,7 +173,7 @@ function displayProjects(projects) {
                     ${hardwareCost}
                 </div>
                 ${tokenInfo}
-                <a href="${project.name === 'DIMO' ? 'https://drivedimo.com/ADRIANIWANOWSKI' : project.url}" target="_blank" class="learn-more-btn">
+                <a href="${project.name === 'DIMO' ? 'https://drivedimo.com/ADRIANIWANOWSKI' : project.name === 'DreamCars' ? 'https://dreamcars.co/' : project.url}" target="_blank" class="learn-more-btn">
                     ${buttonText}
                 </a>
             `;
@@ -250,12 +249,8 @@ function getCtaButtonText(projectName, category) {
             return 'Join Network';
         case 'peaq Network':
             return 'Connect & Earn';
-        case 'CarBlock':
-            return 'Get Hardware';
         case 'DreamCars':
-            return 'Start Now';
-        case 'Carro':
-            return 'Get Started';
+            return 'View Details';
         default:
             return category === 'app' ? 'Download App' : 'Start Earning';
     }
