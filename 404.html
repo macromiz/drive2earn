@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Drive2Earn.io</title>
     <meta name="description" content="Page not found - Drive2Earn.io">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles-light.css?v=1.0.0">
+    <link rel="stylesheet" href="css/styles-new.css?v=1.0.1">
     
     <!-- Redirect script -->
     <script>
@@ -19,85 +29,139 @@
         }, 5000);
     </script>
     <style>
+        body {
+            padding-top: 70px;
+            background-color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            color: #0f172a;
+            min-height: 100vh;
+        }
+
+        .error-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+        }
+        
         .error-content {
-            background: var(--section-bg);
-            border-radius: 1rem;
-            padding: 4rem;
-            margin: 5rem 0;
+            background: white;
+            border-radius: 12px;
+            padding: 60px 40px;
+            margin: 20px 0;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(76, 201, 240, 0.1);
-            user-select: text !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            width: 100%;
         }
         
         .error-icon {
-            font-size: 5rem;
-            color: var(--accent-color);
-            margin-bottom: 2rem;
+            font-size: 4rem;
+            color: #f59e0b;
+            margin-bottom: 30px;
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 20px;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            line-height: 60px;
         }
         
         .error-content h1 {
             font-size: 5rem;
-            margin-bottom: 1rem;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            user-select: text !important;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+            font-weight: 800;
         }
         
         .error-content h2 {
             font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-            user-select: text !important;
+            margin-bottom: 24px;
+            color: #1e3a8a;
+            font-weight: 700;
         }
         
         .error-content p {
             font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--light-text);
-            margin-bottom: 2rem;
-            user-select: text !important;
+            line-height: 1.6;
+            color: #4b5563;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .countdown {
             font-weight: bold;
-            color: var(--accent-color);
+            color: #f59e0b;
         }
         
         .back-home-btn {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--accent-color);
-            color: var(--dark-bg);
-            border-radius: 0.5rem;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: white;
+            border-radius: 30px;
             font-weight: 600;
             font-size: 1.1rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(184, 255, 80, 0.25);
+            box-shadow: 0 6px 15px rgba(245, 158, 11, 0.25);
+            border: none;
+            margin-top: 20px;
         }
         
         .back-home-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(184, 255, 80, 0.35);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.35);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
         }
         
         @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+            
+            .error-container {
+                padding: 30px 20px;
+            }
+            
             .error-content {
-                padding: 3rem 1.5rem;
-                margin: 3rem 0;
+                padding: 40px 20px;
+            }
+            
+            .error-icon {
+                font-size: 3rem;
+                width: 80px;
+                height: 80px;
+                line-height: 40px;
+                padding: 20px;
+                margin-bottom: 20px;
             }
             
             .error-content h1 {
-                font-size: 4rem;
+                font-size: 3.5rem;
+                margin-bottom: 15px;
             }
             
             .error-content h2 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                margin-bottom: 18px;
             }
             
             .error-content p {
-                font-size: 1.1rem;
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            .back-home-btn {
+                padding: 14px 28px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -105,52 +169,103 @@
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <a href="/" class="logo">Drive2<span>Earn</span>.io</a>
-                <nav class="main-nav">
-                    <!-- No navigation items for now -->
-                </nav>
-            </div>
+            <nav class="navbar">
+                <a href="/" class="logo">Drive<span>2</span>Earn.io</a>
+                <div class="nav-links">
+                    <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+                    <a href="index.html#benefits-section" class="nav-link">Benefits</a>
+                    <a href="index.html#faq-section" class="nav-link">FAQ</a>
+                    <a href="index.html#projects-container" class="cta-button-sm">Start Earning</a>
+                </div>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
         </div>
     </header>
     
-    <main class="container">
+    <main class="error-container">
         <div class="error-content">
-            <i class="fas fa-map-marker-alt error-icon"></i>
+            <div class="error-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
             <h1>404</h1>
             <h2>Page Not Found</h2>
             <p>Oops! The page you are looking for doesn't exist or has been moved.</p>
             <p>You will be redirected to the homepage in <span id="countdown" class="countdown">5</span> seconds.</p>
-            <a href="/" class="back-home-btn">Back to Home</a>
+            <a href="index.html" class="back-home-btn">Back to Home</a>
         </div>
     </main>
     
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-text">
-                    &copy; 2025 Drive2Earn.io - All Rights Reserved
+                <div class="footer-links-container">
+                    <div class="footer-links-column">
+                        <h4>Navigation</h4>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#benefits-section">Benefits</a>
+                        <a href="index.html#faq-section">FAQ</a>
+                        <a href="index.html#projects-container">Projects</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Resources</h4>
+                        <a href="contact.html">Contact Us</a>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-of-service.html">Terms of Service</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Connect</h4>
+                        <div class="social-links">
+                            <a href="https://twitter.com/drive2earn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="https://discord.gg/drive2earn" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-links">
-                    <a href="https://drive2earn.io/privacy-policy.html">Privacy Policy</a>
-                    <a href="https://drive2earn.io/terms-of-service.html">Terms of Service</a>
-                    <a href="https://drive2earn.io/contact.html">Contact</a>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 Drive2Earn.io</p>
             </div>
         </div>
     </footer>
     
+    <!-- Cookie Banner -->
+    <div id="cookie-banner">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy-policy.html#cookies">Learn more</a></p>
+        <button id="accept-cookies">Accept</button>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/cookie-banner.js"></script>
+    
+    <!-- Mobile menu functionality -->
     <script>
-        // Countdown timer
-        let seconds = 5;
-        const countdownElement = document.getElementById('countdown');
-        
-        setInterval(function() {
-            seconds--;
-            if (seconds >= 0) {
-                countdownElement.textContent = seconds;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
             }
-        }, 1000);
+            
+            // Countdown timer
+            let seconds = 5;
+            const countdownElement = document.getElementById('countdown');
+            
+            const timer = setInterval(function() {
+                seconds--;
+                if (seconds >= 0) {
+                    countdownElement.textContent = seconds;
+                }
+                if (seconds < 0) {
+                    clearInterval(timer);
+                }
+            }, 1000);
+        });
     </script>
 </body>
 </html> 
