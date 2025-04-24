@@ -512,7 +512,7 @@ body {
   width: 100%;
   padding: 140px 0 80px;
   box-sizing: border-box;
-  background-image: url('../img/Drive2EarnHero.jpg');
+  background-image: url('../img/Drive2EarnHero.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -801,6 +801,8 @@ section {
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
   width: 100%;
+  position: relative;
+  min-height: 350px;
 }
 
 .project-card:hover {
@@ -871,8 +873,13 @@ section {
   color: #4a5568;
   padding: 0 1rem;
   margin: 0.25rem 0 0.75rem;
-  flex-grow: 1;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 4.5em;
 }
 
 .project-details {
@@ -880,6 +887,12 @@ section {
   border-top: 1px solid #e2e8f0;
   background-color: #f8f9fa;
   margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .detail-item {
@@ -916,6 +929,10 @@ section {
   position: relative;
   overflow: hidden;
   margin-top: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .view-project-btn:hover {
@@ -1359,6 +1376,10 @@ header {
   background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   position: relative;
   overflow: hidden;
+  background-image: url('../img/Drive2EarnHero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Add dynamic background elements */
@@ -1621,7 +1642,7 @@ header {
   width: 100%;
   padding: 140px 0 80px;
   box-sizing: border-box;
-  background-image: url('../img/Drive2EarnHero.jpg');
+  background-image: url('../img/Drive2EarnHero.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1644,10 +1665,30 @@ header {
   
   .hero-banner {
     padding: 100px 0 50px;
+    background-image: url('../img/Drive2EarnHero.png');
+    background-position: center;
+    background-size: cover;
   }
   
   .hero-background {
     background-position: center 20%;
+  }
+  
+  /* Fix project card layout on mobile */
+  .project-card {
+    min-height: 400px;
+  }
+  
+  .project-details {
+    position: relative;
+    bottom: auto;
+    margin-top: 15px;
+  }
+  
+  .view-project-btn {
+    position: relative;
+    bottom: auto;
+    margin-top: 15px;
   }
 }
 
