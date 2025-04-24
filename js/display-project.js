@@ -180,7 +180,7 @@ function displayProjects(projects) {
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-globe-americas"></i>
-                        <span>Region: ${project.region}</span>
+                        <span>Region: ${project.regionDetails || project.region}</span>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-car"></i>
@@ -299,7 +299,7 @@ function createProjectCard(project) {
             </div>
             <div class="detail-item">
                 <i class="fas fa-globe-americas"></i>
-                <span>Region: ${project.region}</span>
+                <span>Region: ${project.regionDetails || project.region}</span>
             </div>
             <div class="detail-item">
                 <i class="fas fa-car"></i>

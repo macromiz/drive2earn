@@ -12,7 +12,7 @@ const projects = [
         description: "DIMO is a user-owned IoT platform connecting drivers, vehicles and apps. It allows users to earn tokens by sharing vehicle data while maintaining ownership and control of their information, creating value from everyday driving.",
         shortDescription: "Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.",
         category: "device",
-        region: "north-america",
+        region: "global",
         logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a6073ffa27de6e2d03e051_DIMO_400x400.png",
         token: "DIMO",
         tokenTicker: "DIMO",
@@ -23,7 +23,8 @@ const projects = [
         estEarnings: "$40-$100/month",
         type: "OBD Device, App",
         coingeckoId: "dimo",
-        featured: true
+        featured: true,
+        regionDetails: "OBD: North America, EMEA; App: Global"
     },
     {
         id: 1,
@@ -40,7 +41,7 @@ const projects = [
         url: "https://natix.network/",
         hardwareCost: "$299",
         featured: true,
-        popular: true,
+        popular: false,
         estEarnings: "$50-$120/month",
         type: "Dashcam",
         coingeckoId: "natix-network"
@@ -58,7 +59,7 @@ const projects = [
         tokenPrice: 0.042,
         priceChange: 1.5,
         url: "https://mapmetrics.org/",
-        featured: true,
+        featured: false,
         popular: false,
         estEarnings: "$30-$80/month",
         type: "Navigation App",
@@ -183,7 +184,7 @@ function displayProjectsFallback(projects, container) {
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-globe"></i>
-                    <span>Region: ${project.region}</span>
+                    <span>Region: ${project.regionDetails || project.region}</span>
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-car"></i>
