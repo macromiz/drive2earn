@@ -499,7 +499,7 @@ body {
 /* Hero section improvements - revised for desktop */
 .hero-banner {
   position: relative;
-  background-color: #1e3a8a;
+  background-color: #1e3a8a; /* Fallback color */
   color: #ffffff;
   text-align: center;
   overflow: hidden;
@@ -512,10 +512,10 @@ body {
   width: 100%;
   padding: 140px 0 80px;
   box-sizing: border-box;
-  background-image: url('../img/Drive2EarnHero.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: url('../img/Drive2EarnHero.jpg') !important; /* Force background image */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 
 .hero-overlay {
@@ -790,10 +790,10 @@ section {
   width: 100%;
 }
 
+/* Complete rewrite of project card styling to fix text truncation */
 .project-card {
   display: flex;
   flex-direction: column;
-  height: 100%;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -802,7 +802,8 @@ section {
   border: 1px solid #e2e8f0;
   width: 100%;
   position: relative;
-  min-height: 350px;
+  min-height: 400px; /* Ensure enough space */
+  height: 100%;
 }
 
 .project-card:hover {
@@ -864,7 +865,7 @@ section {
   font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
   color: #2d3748;
 }
 
@@ -872,27 +873,26 @@ section {
   font-size: 0.9rem;
   color: #4a5568;
   padding: 0 1rem;
-  margin: 0.25rem 0 0.75rem;
+  margin: 0.5rem 0 5rem; /* Add space for details */
   line-height: 1.5;
+  /* Remove all truncation */
+  display: block;
   overflow: visible;
   text-overflow: clip;
-  height: auto;
-  max-height: none;
   white-space: normal;
-  margin-bottom: 90px; /* Space for details and button */
+  height: auto;
+  min-height: 3rem;
 }
 
 .project-details {
   padding: 0.75rem 1rem;
   border-top: 1px solid #e2e8f0;
   background-color: #f8f9fa;
-  margin-top: auto;
-  position: absolute;
-  bottom: 51px; /* Height of button */
-  left: 0;
-  right: 0;
   width: 100%;
   box-sizing: border-box;
+  position: absolute;
+  bottom: 50px; /* Position above button */
+  left: 0;
 }
 
 .detail-item {
@@ -930,7 +930,7 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 51px;
+  height: 50px;
   line-height: 1.5;
   box-sizing: border-box;
 }
@@ -1772,4 +1772,23 @@ header {
   font-size: 2.5rem;
   color: #f59e0b;
   margin-bottom: 1.2rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: 100px 0 50px;
+    background-image: url('../img/Drive2EarnHero.jpg') !important;
+    background-position: center !important;
+    background-size: cover !important;
+  }
+  
+  .project-card {
+    min-height: 420px; /* Extra space for mobile */
+    margin-bottom: 1rem;
+  }
+  
+  .project-description {
+    margin-bottom: 6rem; /* More space on mobile */
+  }
 }

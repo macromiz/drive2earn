@@ -137,33 +137,22 @@ function displayProjects(projects) {
                 `;
             }
             
-            // Complete project description if it ends with "..."
+            // Ensure we always use shortDescription or complete description with no truncation
             let description = project.shortDescription || project.description || "No description available";
-            if (description && description.endsWith('...')) {
-                // More complete descriptions for specific projects
-                switch(project.name) {
-                    case 'NATIX Network':
-                        description = 'NATIX helps cities transform existing urban camera networks into powerful AI sensing tools using computer vision, without sharing any video or image data. The system generates insights across mobility, safety, and traffic analytics while preserving privacy.';
-                        break;
-                    case 'MapMetrics':
-                        description = 'MapMetrics rewards users for contributing GPS location data while driving. The app validates, processes, and enhances map quality data and compensates users with MAP tokens. Perfect for daily commuters looking to earn passively.';
-                        break;
-                    case 'DIMO':
-                        description = 'Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.';
-                        break;
-                    case 'Hivemapper':
-                        description = 'Hivemapper is building a global, blockchain-based map using dashcams and community contributions. Drivers earn HONEY tokens by capturing street-level imagery that improves map accuracy and freshness through the Hivemapper Dashcam.';
-                        break;
-                    case 'peaq Network':
-                        description = 'peaq Network is building the Economy of Things on Web3 foundations. Join DePin ecosystem, and earn from multiple projects.';
-                        break;
-                    case 'DreamCars':
-                        description = 'DreamCars is the world\'s first blockchain powered luxury car trading platform. Invest in luxury rental cars and earn monthly income in USDT, monitor historical performance & price data, with each car generating an average of 20% to 50% APY.';
-                        break;
-                    default:
-                        // For other projects, just remove the ellipsis
-                        description = description.slice(0, -3);
-                }
+            
+            // Special descriptions for specific projects
+            if (project.name === 'DIMO') {
+                description = 'Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.';
+            } else if (project.name === 'NATIX Network') {
+                description = 'Transform urban camera networks into AI sensing tools with privacy-preserving computer vision.';
+            } else if (project.name === 'MapMetrics') {
+                description = 'Earn tokens by contributing to map quality with your GPS location data while driving.';
+            } else if (project.name === 'Hivemapper') {
+                description = 'Build a global blockchain-based map with your dashcam and earn HONEY tokens for your contributions.';
+            } else if (project.name === 'peaq Network') {
+                description = 'Join DePin ecosystem, and earn from multiple projects.';
+            } else if (project.name === 'DreamCars') {
+                description = 'Invest in luxury rental cars and earn monthly income.';
             }
             
             // Check for missing getCtaButtonText function

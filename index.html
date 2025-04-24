@@ -14,14 +14,14 @@
     <meta property="og:description" content="Turn your driving into a passive income source. Join thousands of drivers already monetizing their data.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://drive2earn.io/">
-    <meta property="og:image" content="https://drive2earn.io/img/Drive2EarnHero.png">
+    <meta property="og:image" content="https://drive2earn.io/img/Drive2EarnHero.jpg">
     <meta property="og:site_name" content="Drive2Earn.io">
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Drive2Earn - Earn Crypto While Driving">
     <meta name="twitter:description" content="Turn your driving into a passive income source. Join thousands of drivers already monetizing their data.">
-    <meta name="twitter:image" content="https://drive2earn.io/img/Drive2EarnHero.png">
+    <meta name="twitter:image" content="https://drive2earn.io/img/Drive2EarnHero.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -34,9 +34,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Stylesheets - Updated to use relative paths -->
-    <link rel="stylesheet" href="css/styles-light.css?v=1.0.0">
-    <link rel="stylesheet" href="css/styles-new.css?v=1.0.1">
+    <!-- Stylesheets - Add version query parameters to avoid caching -->
+    <link rel="stylesheet" href="css/styles-light.css?v=1.0.2">
+    <link rel="stylesheet" href="css/styles-new.css?v=1.0.3">
     
     <!-- Slick Carousel CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -68,6 +68,12 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 1rem;
+        }
+        /* Force hero image to appear */
+        .hero-banner {
+            background-image: url('img/Drive2EarnHero.jpg') !important;
+            background-size: cover !important;
+            background-position: center !important;
         }
     </style>
 </head>
