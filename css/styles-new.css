@@ -802,7 +802,7 @@ section {
   border: 1px solid #e2e8f0;
   width: 100%;
   position: relative;
-  min-height: 400px; /* Ensure enough space */
+  min-height: 350px; /* Reduced from 400px */
   height: 100%;
 }
 
@@ -873,7 +873,7 @@ section {
   font-size: 0.9rem;
   color: #4a5568;
   padding: 0 1rem;
-  margin: 0.5rem 0 5rem; /* Add space for details */
+  margin: 0.5rem 0 3.5rem; /* Reduced from 5rem to 3.5rem */
   line-height: 1.5;
   /* Remove all truncation */
   display: block;
@@ -1676,8 +1676,8 @@ header {
   
   /* Fix project card layout on mobile */
   .project-card {
-    min-height: 350px;
-    margin-bottom: 15px;
+    min-height: 380px; /* Reduced from 420px */
+    margin-bottom: 1rem;
   }
   
   .project-details {
@@ -1784,11 +1784,11 @@ header {
   }
   
   .project-card {
-    min-height: 420px; /* Extra space for mobile */
+    min-height: 380px; /* Reduced from 420px */
     margin-bottom: 1rem;
   }
   
   .project-description {
-    margin-bottom: 6rem; /* More space on mobile */
+    margin-bottom: 4.5rem; /* Reduced from 6rem */
   }
 }
