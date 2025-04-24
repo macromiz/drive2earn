@@ -73,6 +73,19 @@ function displayProjects(projects) {
             card.className = 'project-card';
             card.style.animationDelay = `${delay}s`;
             
+            // Add project badges (featured, popular, trending)
+            let badgesHtml = '<div class="project-badges">';
+            if (project.featured) {
+                badgesHtml += '<span class="badge featured">Featured</span>';
+            }
+            if (project.popular) {
+                badgesHtml += '<span class="badge popular">Popular</span>';
+            }
+            if (project.trending) {
+                badgesHtml += '<span class="badge trending">Trending</span>';
+            }
+            badgesHtml += '</div>';
+            
             // Extract hardware cost if available
             let hardwareCost = '';
             if (project.hardwareCost) {
@@ -167,6 +180,7 @@ function displayProjects(projects) {
             card.innerHTML = `
                 ${logoHtml}
                 <h3 class="project-name">${project.name}</h3>
+                ${badgesHtml}
                 <p class="project-description">${description}</p>
                 <div class="project-tags">
                     ${tags}
