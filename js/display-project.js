@@ -138,7 +138,7 @@ function displayProjects(projects) {
             }
             
             // Complete project description if it ends with "..."
-            let description = project.description || "No description available";
+            let description = project.shortDescription || project.description || "No description available";
             if (description && description.endsWith('...')) {
                 // More complete descriptions for specific projects
                 switch(project.name) {
@@ -149,7 +149,7 @@ function displayProjects(projects) {
                         description = 'MapMetrics rewards users for contributing GPS location data while driving. The app validates, processes, and enhances map quality data and compensates users with MAP tokens. Perfect for daily commuters looking to earn passively.';
                         break;
                     case 'DIMO':
-                        description = 'DIMO is a user-owned IoT platform connecting drivers, vehicles and apps. It allows users to earn tokens by sharing vehicle data while maintaining ownership and control of their information, creating value from everyday driving.';
+                        description = 'Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.';
                         break;
                     case 'Hivemapper':
                         description = 'Hivemapper is building a global, blockchain-based map using dashcams and community contributions. Drivers earn HONEY tokens by capturing street-level imagery that improves map accuracy and freshness through the Hivemapper Dashcam.';
