@@ -40,8 +40,8 @@ const projects = [
         priceChange: 1.4,
         url: "https://natix.network/",
         hardwareCost: "$299",
-        featured: true,
-        popular: false,
+        featured: false,
+        popular: true,
         estEarnings: "$50-$120/month",
         type: "Dashcam",
         coingeckoId: "natix-network"
@@ -114,7 +114,7 @@ const projects = [
         tokenPrice: 0.012,
         priceChange: 1.1,
         url: "https://dreamcars.co/",
-        estEarnings: "Depends on Car Rarity and Luxury",
+        estEarnings: "Depends on Car Rarity",
         type: "Luxury Car Investment Platform"
     }
 ];
