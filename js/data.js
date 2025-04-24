@@ -7,6 +7,25 @@
 // Project data for Drive2Earn
 const projects = [
     {
+        id: 3,
+        name: "DIMO",
+        description: "DIMO is a user-owned IoT platform connecting drivers, vehicles and apps. It allows users to earn tokens by sharing vehicle data while maintaining ownership and control of their information, creating value from everyday driving.",
+        shortDescription: "Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.",
+        category: "device",
+        region: "north-america",
+        logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a6073ffa27de6e2d03e051_DIMO_400x400.png",
+        token: "DIMO",
+        tokenTicker: "DIMO",
+        tokenPrice: 0.07468,
+        priceChange: 6.6,
+        url: "https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591",
+        hardwareCost: "$99-$249",
+        estEarnings: "$40-$100/month",
+        type: "OBD Device, App",
+        coingeckoId: "dimo",
+        featured: true
+    },
+    {
         id: 1,
         name: "NATIX Network",
         description: "NATIX helps cities transform existing urban camera networks into powerful AI sensing tools using computer vision, without sharing any video or image data. The system generates insights across mobility, safety, and traffic analytics while preserving privacy.",
@@ -23,7 +42,7 @@ const projects = [
         featured: true,
         popular: true,
         estEarnings: "$50-$120/month",
-        type: "Camera Network",
+        type: "Dashcam",
         coingeckoId: "natix-network"
     },
     {
@@ -40,28 +59,10 @@ const projects = [
         priceChange: 1.5,
         url: "https://mapmetrics.org/",
         featured: true,
-        popular: true,
+        popular: false,
         estEarnings: "$30-$80/month",
         type: "Navigation App",
         coingeckoId: "mapmetrics"
-    },
-    {
-        id: 3,
-        name: "DIMO",
-        description: "DIMO is a user-owned IoT platform connecting drivers, vehicles and apps. It allows users to earn tokens by sharing vehicle data while maintaining ownership and control of their information, creating value from everyday driving.",
-        shortDescription: "Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.",
-        category: "device",
-        region: "north-america",
-        logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a6073ffa27de6e2d03e051_DIMO_400x400.png",
-        token: "DIMO",
-        tokenTicker: "DIMO",
-        tokenPrice: 0.07468,
-        priceChange: 6.6,
-        url: "https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591",
-        hardwareCost: "$99-$249",
-        estEarnings: "$40-$100/month",
-        type: "OBD Device",
-        coingeckoId: "dimo"
     },
     {
         id: 4,
@@ -79,15 +80,15 @@ const projects = [
         hardwareCost: "$549",
         estEarnings: "$100-$300/month",
         type: "Dashcam",
-        popular: true
+        popular: false
     },
     {
         id: 8,
         name: "peaq Network",
         description: "peaq Network is building the Economy of Things on Web3 foundations. Users can earn from vehicle data and services including charging stations, ridesharing, and connected vehicle applications, all powered by blockchain technology.",
-        shortDescription: "Join the Economy of Things and earn from your vehicle data and connected services.",
+        shortDescription: "Join DePin ecosystem, and earn from multiple projects.",
         category: "device",
-        region: "europe",
+        region: "global",
         logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a5fb25e3125c4d2ea0928b_peaq.png",
         token: "PEAQ",
         tokenTicker: "PEAQ",
@@ -95,8 +96,9 @@ const projects = [
         priceChange: 2.1,
         url: "https://portal.peaq.xyz/?ref=Voixtk3Ix",
         hardwareCost: "$50-$200",
-        estEarnings: "$30-$90/month",
-        type: "IoT Platform"
+        estEarnings: "N/A",
+        type: "EoT Ecosystem",
+        region: "global"
     },
     {
         id: 11,

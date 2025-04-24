@@ -142,7 +142,7 @@ function displayProjects(projects) {
                         description = 'Hivemapper is building a global, blockchain-based map using dashcams and community contributions. Drivers earn HONEY tokens by capturing street-level imagery that improves map accuracy and freshness through the Hivemapper Dashcam.';
                         break;
                     case 'peaq Network':
-                        description = 'peaq Network is building the Economy of Things on Web3 foundations. Users can earn from vehicle data and services including charging stations, ridesharing, and connected vehicle applications, all powered by blockchain technology.';
+                        description = 'peaq Network is building the Economy of Things on Web3 foundations. Join DePin ecosystem, and earn from multiple projects.';
                         break;
                     case 'DreamCars':
                         description = 'DreamCars is creating a decentralized platform for vehicle data monetization, allowing drivers to share driving data and earn tokens. The project focuses on building a comprehensive mobility data marketplace.';
