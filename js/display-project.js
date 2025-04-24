@@ -173,7 +173,26 @@ function displayProjects(projects) {
                     ${hardwareCost}
                 </div>
                 ${tokenInfo}
-                <a href="${project.name === 'DIMO' ? 'https://drivedimo.com/ADRIANIWANOWSKI' : project.name === 'DreamCars' ? 'https://dreamcars.co/' : project.url}" target="_blank" class="learn-more-btn">
+                <div class="project-details">
+                    <div class="detail-item">
+                        <i class="fas fa-coins"></i>
+                        <span>Est. Earnings: ${project.earnings}</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-globe-americas"></i>
+                        <span>Region: ${project.region}</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-car"></i>
+                        <span>Type: ${project.type}</span>
+                    </div>
+                </div>
+                <a href="${
+                    project.name === 'DIMO' ? 'https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591' : 
+                    project.name === 'DreamCars' ? 'https://dreamcars.co/' : 
+                    project.name === 'peaq Network' ? 'https://portal.peaq.xyz/?ref=Voixtk3Ix' : 
+                    project.url
+                }" target="_blank" class="learn-more-btn">
                     ${buttonText}
                 </a>
             `;
@@ -287,7 +306,12 @@ function createProjectCard(project) {
                 <span>Type: ${project.type}</span>
             </div>
         </div>
-        <a href="${project.url}" class="view-project-btn">View Details</a>
+        <a href="${
+            project.name === 'DIMO' ? 'https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591' : 
+            project.name === 'DreamCars' ? 'https://dreamcars.co/' : 
+            project.name === 'peaq Network' ? 'https://portal.peaq.xyz/?ref=Voixtk3Ix' : 
+            project.url
+        }" class="view-project-btn">View Details</a>
     `;
     
     return card;

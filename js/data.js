@@ -57,7 +57,7 @@ const projects = [
         tokenTicker: "DIMO",
         tokenPrice: 0.07468,
         priceChange: 6.6,
-        url: "https://dimo.zone/",
+        url: "https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591",
         hardwareCost: "$99-$249",
         estEarnings: "$40-$100/month",
         type: "OBD Device",
@@ -93,7 +93,7 @@ const projects = [
         tokenTicker: "PEAQ",
         tokenPrice: 0.029,
         priceChange: 2.1,
-        url: "https://www.peaq.network/",
+        url: "https://portal.peaq.xyz/?ref=Voixtk3Ix",
         hardwareCost: "$50-$200",
         estEarnings: "$30-$90/month",
         type: "IoT Platform"
