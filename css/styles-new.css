@@ -524,6 +524,7 @@ body {
   background-size: cover;
   background-position: center;
   z-index: 1;
+  will-change: transform;
 }
 
 .hero-overlay {
@@ -858,6 +859,11 @@ section {
 
 .badge.popular {
   background-color: var(--accent-color);
+  color: white;
+}
+
+.badge.trending {
+  background-color: #e53e3e;
   color: white;
 }
 

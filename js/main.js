@@ -98,6 +98,7 @@ function displayProjects(projects, container) {
                 <div class="project-badges">
                     ${project.featured ? '<span class="badge featured">Featured</span>' : ''}
                     ${project.popular ? '<span class="badge popular">Popular</span>' : ''}
+                    ${project.trending ? '<span class="badge trending">Trending</span>' : ''}
                 </div>
             </div>
             <h3 class="project-name">${project.name}</h3>
@@ -175,17 +176,13 @@ function initSearchAndFilters() {
                 const filterType = this.getAttribute('data-filter');
                 
                 // Handle app/hardware tag click
-                if (filterType === 'app' || filterType === 'hardware') {
+                if (filterType === 'app' || filterType === 'device') {
                     // Toggle this tag
                     this.classList.toggle('active');
                     
                     // Update category filter value
                     if (this.classList.contains('active')) {
-                        if (filterType === 'app') {
-                            categoryFilter.value = 'app';
-                        } else if (filterType === 'hardware') {
-                            categoryFilter.value = 'device';
-                        }
+                        categoryFilter.value = filterType;
                     } else {
                         categoryFilter.value = 'all';
                     }

@@ -61,6 +61,7 @@ const projects = [
         url: "https://mapmetrics.org/",
         featured: false,
         popular: false,
+        trending: true,
         estEarnings: "$30-$80/month",
         type: "Navigation App",
         coingeckoId: "mapmetrics"
