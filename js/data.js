@@ -104,18 +104,18 @@ const projects = [
     {
         id: 11,
         name: "DreamCars",
-        description: "DreamCars is creating a decentralized platform for vehicle data monetization, allowing drivers to share driving data and earn tokens. The project focuses on building a comprehensive mobility data marketplace.",
-        shortDescription: "Join a decentralized platform for vehicle data monetization and earn tokens for sharing driving data.",
+        description: "DreamCars is the world's first blockchain powered luxury car trading platform. Invest in luxury rental cars and earn monthly income in USDT, monitor historical performance & price data, with each car generating an average of 20% to 50% APY. Buy real luxury car shares and trade them in seconds on the DreamCars marketplace.",
+        shortDescription: "Invest in luxury rental cars and earn monthly income. Buy car shares generating 20-50% APY.",
         category: "app",
-        region: "north-america",
+        region: "global",
         logo: "https://imgur.com/nVqKRh0.png",
         token: "DREAM",
         tokenTicker: "DREAM",
         tokenPrice: 0.012,
         priceChange: 1.1,
         url: "https://dreamcars.co/",
-        estEarnings: "$20-$50/month",
-        type: "Mobility Marketplace"
+        estEarnings: "Depends on Car Rarity and Luxury",
+        type: "Luxury Car Investment Platform"
     }
 ];
 

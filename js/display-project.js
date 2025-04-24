@@ -145,7 +145,7 @@ function displayProjects(projects) {
                         description = 'peaq Network is building the Economy of Things on Web3 foundations. Join DePin ecosystem, and earn from multiple projects.';
                         break;
                     case 'DreamCars':
-                        description = 'DreamCars is creating a decentralized platform for vehicle data monetization, allowing drivers to share driving data and earn tokens. The project focuses on building a comprehensive mobility data marketplace.';
+                        description = 'DreamCars is the world\'s first blockchain powered luxury car trading platform. Invest in luxury rental cars and earn monthly income in USDT, monitor historical performance & price data, with each car generating an average of 20% to 50% APY.';
                         break;
                     default:
                         // For other projects, just remove the ellipsis
@@ -269,7 +269,7 @@ function getCtaButtonText(projectName, category) {
         case 'peaq Network':
             return 'Connect & Earn';
         case 'DreamCars':
-            return 'View Details';
+            return 'Invest Now';
         default:
             return category === 'app' ? 'Download App' : 'Start Earning';
     }
