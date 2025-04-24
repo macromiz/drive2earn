@@ -802,7 +802,7 @@ section {
   border: 1px solid #e2e8f0;
   width: 100%;
   position: relative;
-  min-height: 350px;
+  min-height: 280px;
 }
 
 .project-card:hover {
@@ -879,7 +879,7 @@ section {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 4.5em;
+  height: 4em;
 }
 
 .project-details {
@@ -887,12 +887,12 @@ section {
   border-top: 1px solid #e2e8f0;
   background-color: #f8f9fa;
   margin-top: auto;
-  position: absolute;
-  bottom: 0;
+  bottom: 56px;
   left: 0;
   right: 0;
   width: 100%;
   box-sizing: border-box;
+  position: absolute;
 }
 
 .detail-item {
@@ -924,15 +924,16 @@ section {
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.3s ease;
-  border-radius: 0;
+  border-radius: 0 0 12px 12px;
   width: 100%;
-  position: relative;
-  overflow: hidden;
-  margin-top: auto;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
+  margin: 0;
+  height: 56px;
+  line-height: 1.5;
+  box-sizing: border-box;
 }
 
 .view-project-btn:hover {
@@ -1676,19 +1677,19 @@ header {
   
   /* Fix project card layout on mobile */
   .project-card {
-    min-height: 400px;
+    min-height: 320px;
+    margin-bottom: 15px;
   }
   
   .project-details {
-    position: relative;
-    bottom: auto;
-    margin-top: 15px;
+    position: absolute;
+    bottom: 56px;
   }
   
   .view-project-btn {
-    position: relative;
-    bottom: auto;
-    margin-top: 15px;
+    position: absolute;
+    bottom: 0;
+    height: 56px;
   }
 }
 
