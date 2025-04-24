@@ -512,57 +512,49 @@ body {
   width: 100%;
   padding: 140px 0 80px;
   box-sizing: border-box;
-  background-image: url('../img/Drive2EarnHero.jpg') !important; /* Force background image */
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  background-image: url(../img/Drive2EarnHero.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-.hero-overlay {
+/* Add semi-transparent overlay */
+.hero-banner:after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.75);
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.65); /* Changed from 0 to 0.65 to restore the overlay */
   z-index: 2;
-}
-
-.hero-banner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.hero-banner::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -5%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-  border-radius: 50%;
-  z-index: 1;
 }
 
 .hero-content {
   position: relative;
-  z-index: 5;
-  padding: 2rem;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
+  z-index: 3;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .main-heading {
@@ -802,7 +794,7 @@ section {
   border: 1px solid #e2e8f0;
   width: 100%;
   position: relative;
-  min-height: 350px; /* Reduced from 400px */
+  min-height: 340px; /* Slightly reduced height */
   height: 100%;
 }
 
@@ -873,7 +865,7 @@ section {
   font-size: 0.9rem;
   color: #4a5568;
   padding: 0 1rem;
-  margin: 0.5rem 0 3.5rem; /* Reduced from 5rem to 3.5rem */
+  margin: 0.5rem 0 3rem; /* Reduced space below description */
   line-height: 1.5;
   /* Remove all truncation */
   display: block;
@@ -1791,4 +1783,10 @@ header {
   .project-description {
     margin-bottom: 4.5rem; /* Reduced from 6rem */
   }
+}
+
+/* Improve accessibility with focus states */
+a:focus, button:focus, input:focus, select:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
