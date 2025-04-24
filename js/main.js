@@ -90,7 +90,7 @@ function displayProjects(projects, container) {
     
     projects.forEach(project => {
         html += `
-        <div class="project-card" data-id="${project.id}" data-category="${project.category}" data-region="${project.region}">
+        <div class="project-card" data-id="${project.id}" data-category="${project.category}" data-region="${project.region}" style="display: flex;">
             <div class="project-header">
                 <div class="project-logo">
                     <img src="${project.logo || 'img/placeholder-logo.png'}" alt="${project.name} logo">
@@ -109,7 +109,7 @@ function displayProjects(projects, container) {
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-globe"></i>
-                    <span>Region: ${project.region}</span>
+                    <span>Region: ${project.regionDetails || project.region}</span>
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-car"></i>
@@ -172,7 +172,28 @@ function initSearchAndFilters() {
     if (tags.length) {
         tags.forEach(tag => {
             tag.addEventListener('click', function() {
-                this.classList.toggle('active');
+                const filterType = this.getAttribute('data-filter');
+                
+                // Handle app/hardware tag click
+                if (filterType === 'app' || filterType === 'hardware') {
+                    // Toggle this tag
+                    this.classList.toggle('active');
+                    
+                    // Update category filter value
+                    if (this.classList.contains('active')) {
+                        if (filterType === 'app') {
+                            categoryFilter.value = 'app';
+                        } else if (filterType === 'hardware') {
+                            categoryFilter.value = 'device';
+                        }
+                    } else {
+                        categoryFilter.value = 'all';
+                    }
+                } else {
+                    // For other tags, just toggle
+                    this.classList.toggle('active');
+                }
+                
                 filterProjects();
             });
         });
@@ -226,8 +247,10 @@ function filterProjects() {
         }
         
         // Check category filter
-        if (categoryValue !== 'all' && projectCategory !== categoryValue) {
-            showCard = false;
+        if (categoryValue !== 'all') {
+            if (projectCategory !== categoryValue && projectCategory !== 'both') {
+                showCard = false;
+            }
         }
         
         // Check region filter
@@ -239,7 +262,7 @@ function filterProjects() {
         if (tagFilters.length) {
             let hasTag = false;
             tagFilters.forEach(tag => {
-                if (projectCategory === tag) {
+                if (projectCategory === tag || projectCategory === 'both') {
                     hasTag = true;
                 }
             });
@@ -248,14 +271,14 @@ function filterProjects() {
             }
         }
         
-        // Show or hide card
-        card.style.display = showCard ? 'block' : 'none';
+        // Show or hide card - use flex instead of block to maintain card styling
+        card.style.display = showCard ? 'flex' : 'none';
     });
     
     // Show no results message if needed
     const projectsContainer = document.getElementById('projects-container');
     const projectsGrid = document.querySelector('.projects-grid');
-    const visibleCards = document.querySelectorAll('.project-card[style="display: block;"]');
+    const visibleCards = document.querySelectorAll('.project-card[style="display: flex;"]');
     
     if (visibleCards.length === 0 && projectsGrid) {
         let noResultsEl = document.querySelector('.no-results');

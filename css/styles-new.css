@@ -808,6 +808,7 @@ section {
   overflow: hidden;
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
+  width: 100%;
 }
 
 .project-card:hover {
@@ -913,10 +914,11 @@ section {
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.3s ease;
-  border-radius: 8px;
+  border-radius: 0;
   width: 100%;
   position: relative;
   overflow: hidden;
+  margin-top: auto;
 }
 
 .view-project-btn:hover {
