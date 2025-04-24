@@ -116,7 +116,12 @@ function displayProjects(projects, container) {
                     <span>Type: ${project.type || project.category}</span>
                 </div>
             </div>
-            <a href="${project.url}" class="view-project-btn" data-id="${project.id}" target="_blank">View Details</a>
+            <a href="${
+                project.name === 'DIMO' ? 'https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591' : 
+                project.name === 'DreamCars' ? 'https://dreamcars.co/' : 
+                project.name === 'peaq Network' ? 'https://portal.peaq.xyz/?ref=Voixtk3Ix' : 
+                project.url
+            }" class="view-project-btn" data-id="${project.id}" target="_blank">View Details</a>
         </div>
         `;
     });
@@ -276,16 +281,28 @@ function filterProjects() {
  * Show project details modal or page
  */
 function showProjectDetails(projectId) {
-    // Redirect to project details page or show modal
-    // This function would be implemented based on your design approach
-    console.log('Showing details for project ID:', projectId);
+    // Find the project with the given ID
+    const project = window.projectsData.find(p => p.id == projectId);
     
-    if (typeof showProjectModal === 'function') {
-        // If display-project.js is loaded, use its function
-        showProjectModal(projectId);
+    if (project) {
+        console.log('Redirecting to project URL:', project.url);
+        
+        // Handle special URL cases
+        let targetUrl = project.url;
+        if (project.name === 'DIMO') {
+            targetUrl = 'https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591';
+        } else if (project.name === 'DreamCars') {
+            targetUrl = 'https://dreamcars.co/';
+        } else if (project.name === 'peaq Network') {
+            targetUrl = 'https://portal.peaq.xyz/?ref=Voixtk3Ix';
+        }
+        
+        // Open the link in a new tab
+        window.open(targetUrl, '_blank');
     } else {
-        // Otherwise navigate to a details page
-        window.location.href = `project-details.html?id=${projectId}`;
+        console.error('Project not found with ID:', projectId);
+        // Redirect to homepage if project not found
+        window.location.href = '/';
     }
 }
 

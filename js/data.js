@@ -188,7 +188,12 @@ function displayProjectsFallback(projects, container) {
                     <span>Type: ${project.type || project.category}</span>
                 </div>
             </div>
-            <a href="${project.url}" class="view-project-btn" data-id="${project.id}" target="_blank">View Details</a>
+            <a href="${
+                project.name === 'DIMO' ? 'https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591' : 
+                project.name === 'DreamCars' ? 'https://dreamcars.co/' : 
+                project.name === 'peaq Network' ? 'https://portal.peaq.xyz/?ref=Voixtk3Ix' : 
+                project.url
+            }" class="view-project-btn" data-id="${project.id}" target="_blank">View Details</a>
         </div>
         `;
     });
