@@ -254,15 +254,9 @@ function filterProjects(category = null) {
             // No category filter, show all projects
             filteredProjects = projectsData;
         } else {
-            // Filter projects by category
+            // Filter projects by category, handling the 'both' category properly
             filteredProjects = projectsData.filter(project => {
-                if (Array.isArray(project.category)) {
-                    // If project has multiple categories
-                    return project.category.includes(category);
-                } else {
-                    // If project has single category
-                    return project.category === category;
-                }
+                return project.category === category || project.category === 'both';
             });
         }
         

@@ -512,7 +512,7 @@ body {
   width: 100%;
   padding: 140px 0 80px;
   box-sizing: border-box;
-  background-image: url('../img/Drive2EarnHero.png'); /* Changed to PNG version */
+  background-image: url(../img/Drive2EarnHero.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
