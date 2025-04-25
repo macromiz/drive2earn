@@ -276,43 +276,95 @@ function initSearchAndFilters() {
 }
 
 /**
- * Filter projects based on category
+ * Filter projects based on all active filters
  */
 function filterProjects(category = null) {
-    console.log(`Filtering projects by category: ${category || 'all'}`);
+    console.log('Filtering projects with category:', category);
+    
+    // Get all filter values
+    const searchInput = document.getElementById('searchInput');
+    const regionFilter = document.getElementById('regionFilter');
+    const searchQuery = searchInput ? searchInput.value.toLowerCase() : '';
+    const regionValue = regionFilter ? regionFilter.value : 'all';
     
     // Get all projects data from the global projectsData array
     if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
-        let filteredProjects;
+        let filteredProjects = projectsData;
         
-        if (category === null || category === 'all') {
-            // No category filter, show all projects
-            filteredProjects = projectsData;
-            console.log("Showing all projects:", filteredProjects.length);
-        } else {
-            // Filter projects by category
-            filteredProjects = projectsData.filter(project => {
+        // Apply search filter if there's a search query
+        if (searchQuery) {
+            filteredProjects = filteredProjects.filter(project => 
+                project.name.toLowerCase().includes(searchQuery) ||
+                project.description.toLowerCase().includes(searchQuery) ||
+                (project.type && project.type.toLowerCase().includes(searchQuery))
+            );
+        }
+        
+        // Apply category filter
+        if (category && category !== 'all') {
+            filteredProjects = filteredProjects.filter(project => {
                 if (category === 'app') {
-                    // Show app and both categories for app filter
                     return project.category === 'app' || project.category === 'both';
                 } else if (category === 'device') {
-                    // Show device and both categories for device filter
                     return project.category === 'device' || project.category === 'both';
                 } else {
-                    // For any other category value, just match exactly
                     return project.category === category;
                 }
             });
-            
-            console.log(`Filtered to ${filteredProjects.length} projects for category '${category}'`);
-            console.log("Filtered projects:", filteredProjects.map(p => p.name));
         }
         
-        // Display filtered projects
-        displayProjects(filteredProjects);
+        // Apply region filter
+        if (regionValue && regionValue !== 'all') {
+            filteredProjects = filteredProjects.filter(project => 
+                project.region.toLowerCase() === regionValue.toLowerCase()
+            );
+        }
+        
+        console.log(`Filtered to ${filteredProjects.length} projects`);
+        console.log("Filtered projects:", filteredProjects.map(p => p.name));
+        
+        // Display filtered projects using the display-project.js function
+        if (typeof window.displayProjects === 'function') {
+            window.displayProjects(filteredProjects);
+        } else {
+            console.error('displayProjects function not found');
+            // Fallback to basic display if display-project.js is not loaded
+            displayProjectsFallback(filteredProjects);
+        }
     } else {
-        console.warn("Projects data not available for filtering");
+        console.warn("No projects data available for filtering");
+        if (typeof window.displayProjects === 'function') {
+            window.displayProjects([]);
+        }
     }
+}
+
+// Fallback display function if display-project.js is not loaded
+function displayProjectsFallback(projects) {
+    const projectsContainer = document.getElementById('projects-container');
+    if (!projectsContainer) return;
+    
+    if (!projects || !projects.length) {
+        projectsContainer.innerHTML = '<div class="no-projects">No projects found matching your criteria.</div>';
+        return;
+    }
+    
+    let html = '<div class="projects-grid">';
+    projects.forEach(project => {
+        html += `
+            <div class="project-card" data-category="${project.category}" data-region="${project.region}">
+                <h3>${project.name}</h3>
+                <p>${project.description}</p>
+                <div class="project-details">
+                    <span>Category: ${project.category}</span>
+                    <span>Region: ${project.region}</span>
+                </div>
+                <a href="${project.url}" target="_blank" class="view-project-btn">View Details</a>
+            </div>
+        `;
+    });
+    html += '</div>';
+    projectsContainer.innerHTML = html;
 }
 
 /**
