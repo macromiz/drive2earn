@@ -17,6 +17,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Fix text selection issues
     fixTextSelection();
+
+    // Get tag elements
+    const tagElements = document.querySelectorAll('.tag');
+    const clearTagsButton = document.querySelector('.clear-tags');
+    
+    // Add click event listeners to tag elements
+    tagElements.forEach(tag => {
+        tag.addEventListener('click', function() {
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Toggle active class
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                // If the tag was active and is now deactivated, show all projects
+                filterProjects();
+            } else {
+                // Remove active class from all tags
+                tagElements.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tag
+                this.classList.add('active');
+                // Filter projects by selected category
+                filterProjects(filterValue);
+            }
+        });
+    });
+    
+    // Add click event listener to clear tags button
+    if (clearTagsButton) {
+        clearTagsButton.addEventListener('click', function() {
+            // Remove active class from all tags
+            tagElements.forEach(tag => tag.classList.remove('active'));
+            // Show all projects
+            filterProjects();
+        });
+    }
 });
 
 /**
@@ -208,92 +243,33 @@ function initSearchAndFilters() {
 /**
  * Filter projects based on search input and filters
  */
-function filterProjects() {
-    const searchInput = document.getElementById('searchInput');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const regionFilter = document.getElementById('regionFilter');
-    const activeTags = document.querySelectorAll('.tag.active');
-    const projectCards = document.querySelectorAll('.project-card');
+function filterProjects(category = null) {
+    console.log(`Filtering projects by category: ${category || 'all'}`);
     
-    if (!projectCards.length) return;
-    
-    const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
-    const categoryValue = categoryFilter ? categoryFilter.value : 'all';
-    const regionValue = regionFilter ? regionFilter.value : 'all';
-    
-    // Get active tag filters
-    const tagFilters = [];
-    if (activeTags.length) {
-        activeTags.forEach(tag => {
-            tagFilters.push(tag.getAttribute('data-filter'));
-        });
-    }
-    
-    // Filter projects
-    projectCards.forEach(card => {
-        const projectName = card.querySelector('.project-name').textContent.toLowerCase();
-        const projectDesc = card.querySelector('.project-description').textContent.toLowerCase();
-        const projectCategory = card.getAttribute('data-category');
-        const projectRegion = card.getAttribute('data-region');
+    // Get all projects data from the global projectsData array
+    if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
+        let filteredProjects;
         
-        let showCard = true;
-        
-        // Check search term
-        if (searchTerm && !projectName.includes(searchTerm) && !projectDesc.includes(searchTerm)) {
-            showCard = false;
-        }
-        
-        // Check category filter
-        if (categoryValue !== 'all') {
-            if (projectCategory !== categoryValue && projectCategory !== 'both') {
-                showCard = false;
-            }
-        }
-        
-        // Check region filter
-        if (regionValue !== 'all' && projectRegion !== regionValue) {
-            showCard = false;
-        }
-        
-        // Check tag filters
-        if (tagFilters.length) {
-            let hasTag = false;
-            tagFilters.forEach(tag => {
-                if (projectCategory === tag || projectCategory === 'both') {
-                    hasTag = true;
+        if (category === null) {
+            // No category filter, show all projects
+            filteredProjects = projectsData;
+        } else {
+            // Filter projects by category
+            filteredProjects = projectsData.filter(project => {
+                if (Array.isArray(project.category)) {
+                    // If project has multiple categories
+                    return project.category.includes(category);
+                } else {
+                    // If project has single category
+                    return project.category === category;
                 }
             });
-            if (!hasTag) {
-                showCard = false;
-            }
         }
         
-        // Show or hide card - use flex instead of block to maintain card styling
-        card.style.display = showCard ? 'flex' : 'none';
-    });
-    
-    // Show no results message if needed
-    const projectsContainer = document.getElementById('projects-container');
-    const projectsGrid = document.querySelector('.projects-grid');
-    const visibleCards = document.querySelectorAll('.project-card[style="display: flex;"]');
-    
-    if (visibleCards.length === 0 && projectsGrid) {
-        let noResultsEl = document.querySelector('.no-results');
-        if (!noResultsEl) {
-            noResultsEl = document.createElement('div');
-            noResultsEl.className = 'no-results';
-            noResultsEl.innerHTML = '<p>No projects match your search criteria. Try adjusting your filters.</p>';
-            projectsContainer.appendChild(noResultsEl);
-        }
-        projectsGrid.style.display = 'none';
+        // Display filtered projects
+        displayProjects(filteredProjects);
     } else {
-        const noResultsEl = document.querySelector('.no-results');
-        if (noResultsEl) {
-            noResultsEl.remove();
-        }
-        if (projectsGrid) {
-            projectsGrid.style.display = 'grid';
-        }
+        console.warn("Projects data not available for filtering");
     }
 }
 
