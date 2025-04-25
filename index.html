@@ -69,40 +69,55 @@
             margin: 0 auto;
             padding: 1rem;
         }
-        /* Force hero image to appear with NO overlay */
+        
+        /* DIRECT HERO IMAGE FIX - This will override all other styles */
         .hero-banner {
             background-image: url('img/Drive2EarnHero.jpg') !important;
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
             position: relative !important;
-            background-color: transparent !important;
+            background-color: #1e3a8a !important;
+            min-height: 90vh !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 140px 0 80px !important;
         }
         
-        /* Make overlay a subtle gradient instead of solid color */
-        .hero-banner:after {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(10,25,50,0.7)) !important;
+        /* Create overlay with pseudo-element */
+        .hero-banner::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(10,25,50,0.6)) !important;
+            z-index: 1 !important;
         }
         
-        /* Boost text visibility */
+        /* Ensure hero content is above overlay */
         .hero-content {
             position: relative !important;
-            z-index: 10 !important;
-            text-shadow: 1px 1px 5px black, 0 0 10px rgba(0,0,0,0.9) !important;
+            z-index: 2 !important;
+            width: 100% !important;
+            max-width: 1200px !important;
+            padding: 0 20px !important;
         }
         
-        /* Force all text elements to be highly visible */
+        /* Make all text elements visible */
         .main-heading, .hero-subtitle, .trust-badge, .bad-alternative h3, .better-solution h3, .bad-alternative p, .better-solution p {
-            text-shadow: 1px 1px 5px black, 0 0 10px rgba(0,0,0,0.9) !important;
-            position: relative !important;
-            z-index: 10 !important;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.7) !important;
             color: white !important;
+            position: relative !important;
+            z-index: 2 !important;
         }
         
-        /* Make the value props stand out more */
+        /* Control value props container */
         .value-props-container {
             position: relative !important;
-            z-index: 10 !important;
+            z-index: 2 !important;
             margin: 30px auto !important;
         }
     </style>
@@ -126,9 +141,8 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-banner" style="background-image: url('img/Drive2EarnHero.jpg') !important; background-size: cover !important; background-position: center !important; position: relative;">
-        <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(10,25,50,0.7)); z-index: 1;"></div>
-        <div class="hero-content" style="position: relative; z-index: 2;">
+    <section class="hero-banner" style="background-image: url('img/Drive2EarnHero.jpg') !important; background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important;">
+        <div class="hero-content">
             <div class="trust-badge desktop-top">Trusted by 10,000+ Drivers</div>
             
             <h1 class="main-heading">
