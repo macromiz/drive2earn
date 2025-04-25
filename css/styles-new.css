@@ -512,7 +512,7 @@ body {
   width: 100%;
   padding: 140px 0 80px;
   box-sizing: border-box;
-  background-image: url(../img/Drive2EarnHero.jpg);
+  background-image: url('../img/Drive2EarnHero.png'); /* Changed to PNG version */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -527,7 +527,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(15, 23, 42, 0.65); /* Changed from 0 to 0.65 to restore the overlay */
+  background: rgba(15, 23, 42, 0.65);
   z-index: 2;
 }
 

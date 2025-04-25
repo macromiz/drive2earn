@@ -7,116 +7,106 @@
 // Project data for Drive2Earn
 const projects = [
     {
-        id: 3,
-        name: "DIMO",
-        description: "DIMO is a user-owned IoT platform connecting drivers, vehicles and apps. It allows users to earn tokens by sharing vehicle data while maintaining ownership and control of their information, creating value from everyday driving.",
-        shortDescription: "Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.",
-        category: "both",
-        region: "global",
-        logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a6073ffa27de6e2d03e051_DIMO_400x400.png",
-        token: "DIMO",
-        tokenTicker: "DIMO",
-        tokenPrice: 0.07468,
-        priceChange: 6.6,
-        url: "https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591",
-        hardwareCost: "$99-$249",
-        estEarnings: "$40-$100/month",
-        type: "OBD Device, App",
-        coingeckoId: "dimo",
-        featured: true,
-        regionDetails: "OBD: North America, EMEA; App: Global"
-    },
-    {
         id: 1,
-        name: "NATIX Network",
-        description: "NATIX helps cities transform existing urban camera networks into powerful AI sensing tools using computer vision, without sharing any video or image data. The system generates insights across mobility, safety, and traffic analytics while preserving privacy.",
-        shortDescription: "Transform urban camera networks into AI sensing tools with privacy-preserving computer vision.",
-        category: "both",
-        region: "global",
-        logo: "https://uploads-ssl.webflow.com/64d7cea4c213947d7d05ea38/64d8ddcf1f0429e2aefb2d0f_natix-logo-white-bg.png",
-        token: "NTIX",
-        tokenTicker: "NTIX",
-        tokenPrice: 0.0007383,
-        priceChange: 1.4,
-        url: "https://natix.network/",
-        hardwareCost: "$299",
-        featured: false,
+        name: "DIMO",
+        description: "Connect your car's data to earn DIMO tokens while maintaining data ownership and privacy.",
+        shortDescription: "Earn tokens with this IoT platform that connects your vehicle data while maintaining your ownership.",
+        url: "https://dimo.zone",
+        logo: "https://pbs.twimg.com/profile_images/1594554949815668736/7pzqL16w_400x400.jpg",
+        category: ["app", "device"],
+        region: "Global",
+        regionDetails: "Global (North America, Europe, Asia)",
+        type: "Data Sharing",
+        earnings: "$5-50/month",
+        hardwareCost: "$299 for DIMO device",
+        featured: true,
         popular: true,
-        estEarnings: "$50-$120/month",
-        type: "Dashcam",
-        coingeckoId: "natix-network"
+        trending: false
     },
     {
         id: 2,
+        name: "Hivemapper",
+        description: "Build a global map with your dashcam and earn cryptocurrency for your contributions.",
+        shortDescription: "Build a global blockchain-based map with your dashcam and earn HONEY tokens for your contributions.",
+        url: "https://hivemapper.com",
+        logo: "https://pbs.twimg.com/profile_images/1499426963883474944/axYbacHt_400x400.jpg",
+        category: ["device"],
+        region: "Global",
+        regionDetails: "Global (Major Cities)",
+        type: "Mapping",
+        earnings: "$10-100/month",
+        hardwareCost: "$499 for Hivemapper dashcam",
+        featured: true,
+        popular: true,
+        trending: true
+    },
+    {
+        id: 3,
         name: "MapMetrics",
-        description: "MapMetrics rewards users for contributing GPS location data while driving. The app validates, processes, and enhances map quality data and compensates users with MAP tokens. Perfect for daily commuters looking to earn passively.",
+        description: "Earn tokens by contributing to map quality with your GPS location data while driving.",
         shortDescription: "Earn tokens by contributing to map quality with your GPS location data while driving.",
-        category: "app",
-        region: "global",
-        logo: "https://pbs.twimg.com/profile_images/1625953683342336000/8LhLtXGR_400x400.jpg",
-        token: "MAP",
-        tokenTicker: "MAP",
-        tokenPrice: 0.042,
-        priceChange: 1.5,
-        url: "https://mapmetrics.org/",
+        url: "https://mapmetrics.org",
+        logo: "https://pbs.twimg.com/profile_images/1493543021084401666/JBtH_F_F_400x400.png",
+        category: ["app"],
+        region: "Europe",
+        regionDetails: "Europe (Expanding Globally)",
+        type: "Mapping",
+        earnings: "$5-30/month",
+        hardwareCost: "Free (App-Based)",
         featured: false,
-        popular: false,
-        trending: true,
-        estEarnings: "$30-$80/month",
-        type: "Navigation App",
-        coingeckoId: "mapmetrics"
+        popular: true,
+        trending: false
     },
     {
         id: 4,
-        name: "Hivemapper",
-        description: "Hivemapper is building a global, blockchain-based map using dashcams and community contributions. Drivers earn HONEY tokens by capturing street-level imagery that improves map accuracy and freshness through the Hivemapper Dashcam.",
-        shortDescription: "Build a global blockchain-based map with your dashcam and earn HONEY tokens for your contributions.",
-        category: "device",
-        region: "global",
-        logo: "https://pbs.twimg.com/profile_images/1635267082441412608/Kd5c_mt8_400x400.png",
-        token: "HONEY",
-        tokenTicker: "HONEY",
-        tokenPrice: 0.18,
-        priceChange: -2.4,
-        url: "https://hivemapper.com/",
-        hardwareCost: "$549",
-        estEarnings: "$100-$300/month",
-        type: "Dashcam",
-        popular: false
+        name: "NATIX Network",
+        description: "Transform urban camera networks into AI sensing tools with privacy-preserving computer vision.",
+        shortDescription: "Transform urban camera networks into AI sensing tools with privacy-preserving computer vision.",
+        url: "https://natix.network",
+        logo: "https://pbs.twimg.com/profile_images/1359600351413743617/LoKmMZMY_400x400.jpg",
+        category: ["app", "device"],
+        region: "Global",
+        regionDetails: "Global (Smart Cities)",
+        type: "Computer Vision",
+        earnings: "$10-200/month",
+        hardwareCost: "$150+ for camera setup",
+        featured: true,
+        popular: false,
+        trending: true
     },
     {
-        id: 8,
+        id: 5,
         name: "peaq Network",
-        description: "peaq Network is building the Economy of Things on Web3 foundations. Users can earn from vehicle data and services including charging stations, ridesharing, and connected vehicle applications, all powered by blockchain technology.",
+        description: "Join DePin ecosystem, and earn from multiple projects.",
         shortDescription: "Join DePin ecosystem, and earn from multiple projects.",
-        category: "app",
-        region: "global",
-        logo: "https://assets-global.website-files.com/61a5fb25e3125ca024a09128/61a5fb25e3125c4d2ea0928b_peaq.png",
-        token: "PEAQ",
-        tokenTicker: "PEAQ",
-        tokenPrice: 0.029,
-        priceChange: 2.1,
-        url: "https://portal.peaq.xyz/?ref=Voixtk3Ix",
-        hardwareCost: "$50-$200",
-        estEarnings: "N/A",
-        type: "EoT Ecosystem",
-        region: "global"
+        url: "https://www.peaq.network/",
+        logo: "https://pbs.twimg.com/profile_images/1478288852186877954/TR_gvKTy_400x400.jpg",
+        category: ["app"],
+        region: "Global",
+        regionDetails: "Global",
+        type: "Multi-project Platform",
+        earnings: "Varies by project",
+        hardwareCost: "Free (App-Based)",
+        featured: false,
+        popular: false,
+        trending: true
     },
     {
-        id: 11,
+        id: 6,
         name: "DreamCars",
-        description: "DreamCars is the world's first blockchain powered luxury car trading platform. Invest in luxury rental cars and earn monthly income in USDT, monitor historical performance & price data, with each car generating an average of 20% to 50% APY. Buy real luxury car shares and trade them in seconds on the DreamCars marketplace.",
+        description: "Invest in luxury rental cars and earn monthly income.",
         shortDescription: "Invest in luxury rental cars and earn monthly income.",
-        category: "app",
-        region: "global",
-        logo: "https://imgur.com/nVqKRh0.png",
-        token: "DREAM",
-        tokenTicker: "DREAM",
-        tokenPrice: 0.012,
-        priceChange: 1.1,
         url: "https://dreamcars.co/",
-        estEarnings: "Depends on Car Rarity",
-        type: "Luxury Car Investment Platform"
+        logo: "https://dreamcars.co/assets/img/favicon.png",
+        category: ["app"],
+        region: "Global",
+        regionDetails: "Global",
+        type: "Investment",
+        earnings: "5-15% APY",
+        hardwareCost: "Free (App-Based)",
+        featured: false,
+        popular: false,
+        trending: true
     }
 ];
 
@@ -181,7 +171,7 @@ function displayProjectsFallback(projects, container) {
             <div class="project-details">
                 <div class="detail-item">
                     <i class="fas fa-money-bill-wave"></i>
-                    <span>Est. Earnings: ${project.estEarnings || 'Varies'}</span>
+                    <span>Est. Earnings: ${project.earnings || 'Varies'}</span>
                 </div>
                 <div class="detail-item">
                     <i class="fas fa-globe"></i>
@@ -192,12 +182,7 @@ function displayProjectsFallback(projects, container) {
                     <span>Type: ${project.type || project.category}</span>
                 </div>
             </div>
-            <a href="${
-                project.name === 'DIMO' ? 'https://dimo.co/products/dimo-lte-r1?ref=ADRIANIWANOWSKI&utm_source=affiliate&variant=46140394766591' : 
-                project.name === 'DreamCars' ? 'https://dreamcars.co/' : 
-                project.name === 'peaq Network' ? 'https://portal.peaq.xyz/?ref=Voixtk3Ix' : 
-                project.url
-            }" class="view-project-btn" data-id="${project.id}" target="_blank">View Details</a>
+            <a href="${project.url}" class="view-project-btn" data-id="${project.id}" target="_blank">View Details</a>
         </div>
         `;
     });
