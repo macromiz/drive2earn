@@ -1262,6 +1262,37 @@ p, h1, h2, h3, h4, h5, h6, span, div {
   user-select: text;
 }
 
+/* Ensure text elements have proper selection behavior */
+.hero-content p, 
+.hero-content h1, 
+.hero-subtitle, 
+.value-props-container p,
+.value-props-container h3,
+.bad-alternative p,
+.better-solution p,
+.hero-banner .text-highlight,
+.trust-badge,
+.main-heading {
+  user-select: text;
+  position: relative;
+  z-index: 5;
+}
+
+/* Fix container selection behaviors */
+.hero-banner,
+.hero-content,
+.value-props-container,
+.value-prop-row,
+.bad-alternative,
+.better-solution {
+  user-select: text;
+}
+
+/* Ensure section elements don't interfere with text selection */
+section, div {
+  user-select: auto;
+}
+
 /* Cookie banner improvements */
 #cookie-banner {
   position: fixed;
