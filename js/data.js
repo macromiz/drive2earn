@@ -452,7 +452,7 @@ function performSearch() {
     const activeTags = Array.from(document.querySelectorAll('.tag.active')).map(tag => tag.getAttribute('data-filter'));
     
     // Filter projects based on search criteria
-    const filteredProjects = featuredProjects.filter(project => {
+    const filteredProjects = window.projectsData.filter(project => {
         // Text search
         const matchesSearch = searchQuery === '' || 
             project.name.toLowerCase().includes(searchQuery) || 
@@ -461,12 +461,8 @@ function performSearch() {
         
         // Category filter
         const matchesCategory = categoryFilter === 'all' || 
-            (categoryFilter === 'app' && project.type.toLowerCase().includes('app')) ||
-            (categoryFilter === 'device' && (
-                project.type.toLowerCase().includes('device') || 
-                project.type.toLowerCase().includes('obd') || 
-                project.type.toLowerCase().includes('hardware')
-            ));
+            (categoryFilter === 'app' && (project.category === 'app' || project.category === 'both')) ||
+            (categoryFilter === 'device' && (project.category === 'device' || project.category === 'both'));
         
         // Region filter
         const matchesRegion = regionFilter === 'all' || 
@@ -476,11 +472,9 @@ function performSearch() {
         const matchesTags = activeTags.length === 0 || 
             activeTags.some(tag => {
                 if (tag === 'app') {
-                    return project.type.toLowerCase().includes('app');
-                } else if (tag === 'hardware') {
-                    return project.type.toLowerCase().includes('device') || 
-                           project.type.toLowerCase().includes('obd') || 
-                           project.type.toLowerCase().includes('scanner');
+                    return project.category === 'app' || project.category === 'both';
+                } else if (tag === 'device' || tag === 'hardware') {
+                    return project.category === 'device' || project.category === 'both';
                 }
                 return false;
             });
