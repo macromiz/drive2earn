@@ -74,6 +74,26 @@
             background-image: url('img/Drive2EarnHero.jpg') !important;
             background-size: cover !important;
             background-position: center !important;
+            background-repeat: no-repeat !important;
+            position: relative !important;
+        }
+        
+        /* Override any overlay that might be hiding the image */
+        .hero-banner:after {
+            background: rgba(15, 23, 42, 0.4) !important;
+        }
+        
+        /* Ensure text is visible against the image */
+        .hero-content {
+            position: relative !important;
+            z-index: 10 !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+        }
+        
+        /* Force the main elements to be visible */
+        .main-heading, .hero-subtitle, .value-props-container, .hero-cta {
+            position: relative !important;
+            z-index: 10 !important;
         }
     </style>
 </head>

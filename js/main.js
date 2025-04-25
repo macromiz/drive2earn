@@ -21,22 +21,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get tag elements
     const tagElements = document.querySelectorAll('.tag');
     const clearTagsButton = document.querySelector('.clear-tags');
+    const categoryFilter = document.getElementById('categoryFilter');
     
     // Add click event listeners to tag elements
     tagElements.forEach(tag => {
         tag.addEventListener('click', function() {
             const filterValue = this.getAttribute('data-filter');
+            console.log('Tag clicked:', filterValue);
             
             // Toggle active class
             if (this.classList.contains('active')) {
-                this.classList.remove('active');
                 // If the tag was active and is now deactivated, show all projects
-                filterProjects();
+                this.classList.remove('active');
+                // Reset the category filter dropdown to "All Categories"
+                if (categoryFilter) categoryFilter.value = 'all';
+                // Show all projects
+                filterProjects(null);
             } else {
                 // Remove active class from all tags
                 tagElements.forEach(t => t.classList.remove('active'));
                 // Add active class to clicked tag
                 this.classList.add('active');
+                // Update the category filter dropdown to match the selected tag
+                if (categoryFilter) categoryFilter.value = filterValue;
                 // Filter projects by selected category
                 filterProjects(filterValue);
             }
@@ -48,8 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
         clearTagsButton.addEventListener('click', function() {
             // Remove active class from all tags
             tagElements.forEach(tag => tag.classList.remove('active'));
+            // Reset the category filter dropdown to "All Categories"
+            if (categoryFilter) categoryFilter.value = 'all';
             // Show all projects
-            filterProjects();
+            filterProjects(null);
         });
     }
 });
@@ -250,14 +259,18 @@ function filterProjects(category = null) {
     if (typeof projectsData !== 'undefined' && projectsData.length > 0) {
         let filteredProjects;
         
-        if (category === null) {
+        if (category === null || category === 'all') {
             // No category filter, show all projects
             filteredProjects = projectsData;
+            console.log("Showing all projects:", filteredProjects.length);
         } else {
             // Filter projects by category, handling the 'both' category properly
             filteredProjects = projectsData.filter(project => {
-                return project.category === category || project.category === 'both';
+                const matches = project.category === category || project.category === 'both';
+                console.log(`Project ${project.name}, Category: ${project.category}, Matches ${category}? ${matches}`);
+                return matches;
             });
+            console.log(`Filtered to ${filteredProjects.length} projects for category '${category}'`);
         }
         
         // Display filtered projects

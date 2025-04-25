@@ -499,7 +499,7 @@ body {
 /* Hero section improvements - revised for desktop */
 .hero-banner {
   position: relative;
-  background-color: #1e3a8a; /* Fallback color */
+  background-color: #1e3a8a; /* Fallback color only */
   color: #ffffff;
   text-align: center;
   overflow: hidden;
@@ -516,10 +516,9 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
 }
 
-/* Add semi-transparent overlay */
+/* Add semi-transparent overlay - using a lower opacity */
 .hero-banner:after {
   content: '';
   position: absolute;
@@ -527,7 +526,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(15, 23, 42, 0.4); /* Reduced opacity from 0.65 to 0.4 */
   z-index: 2;
 }
 
