@@ -69,31 +69,41 @@
             margin: 0 auto;
             padding: 1rem;
         }
-        /* Force hero image to appear */
+        /* Force hero image to appear with NO overlay */
         .hero-banner {
             background-image: url('img/Drive2EarnHero.jpg') !important;
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
             position: relative !important;
+            background-color: transparent !important;
         }
         
-        /* Override any overlay that might be hiding the image */
+        /* Make overlay a subtle gradient instead of solid color */
         .hero-banner:after {
-            background: rgba(15, 23, 42, 0.4) !important;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(10,25,50,0.7)) !important;
         }
         
-        /* Ensure text is visible against the image */
+        /* Boost text visibility */
         .hero-content {
             position: relative !important;
             z-index: 10 !important;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+            text-shadow: 1px 1px 5px black, 0 0 10px rgba(0,0,0,0.9) !important;
         }
         
-        /* Force the main elements to be visible */
-        .main-heading, .hero-subtitle, .value-props-container, .hero-cta {
+        /* Force all text elements to be highly visible */
+        .main-heading, .hero-subtitle, .trust-badge, .bad-alternative h3, .better-solution h3, .bad-alternative p, .better-solution p {
+            text-shadow: 1px 1px 5px black, 0 0 10px rgba(0,0,0,0.9) !important;
             position: relative !important;
             z-index: 10 !important;
+            color: white !important;
+        }
+        
+        /* Make the value props stand out more */
+        .value-props-container {
+            position: relative !important;
+            z-index: 10 !important;
+            margin: 30px auto !important;
         }
     </style>
 </head>
@@ -116,7 +126,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-banner">
+    <section class="hero-banner" style="background-image: url('img/Drive2EarnHero.jpg') !important; background-size: cover !important; background-position: center !important;">
         <div class="hero-content">
             <div class="trust-badge desktop-top">Trusted by 10,000+ Drivers</div>
             

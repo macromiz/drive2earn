@@ -25,7 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add click event listeners to tag elements
     tagElements.forEach(tag => {
-        tag.addEventListener('click', function() {
+        tag.addEventListener('click', function(event) {
+            // Prevent default behavior
+            event.preventDefault();
+            
             const filterValue = this.getAttribute('data-filter');
             console.log('Tag clicked:', filterValue);
             
@@ -52,13 +55,36 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add click event listener to clear tags button
     if (clearTagsButton) {
-        clearTagsButton.addEventListener('click', function() {
+        clearTagsButton.addEventListener('click', function(event) {
+            // Prevent default behavior
+            event.preventDefault();
+            
             // Remove active class from all tags
             tagElements.forEach(tag => tag.classList.remove('active'));
             // Reset the category filter dropdown to "All Categories"
             if (categoryFilter) categoryFilter.value = 'all';
             // Show all projects
             filterProjects(null);
+        });
+    }
+    
+    // Add change listener to category filter
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', function() {
+            const value = this.value;
+            
+            // Update tag active state to match selected category
+            tagElements.forEach(tag => {
+                const tagFilter = tag.getAttribute('data-filter');
+                if (tagFilter === value) {
+                    tag.classList.add('active');
+                } else {
+                    tag.classList.remove('active');
+                }
+            });
+            
+            // Apply filter
+            filterProjects(value === 'all' ? null : value);
         });
     }
 });
@@ -250,7 +276,7 @@ function initSearchAndFilters() {
 }
 
 /**
- * Filter projects based on search input and filters
+ * Filter projects based on category
  */
 function filterProjects(category = null) {
     console.log(`Filtering projects by category: ${category || 'all'}`);
@@ -264,13 +290,22 @@ function filterProjects(category = null) {
             filteredProjects = projectsData;
             console.log("Showing all projects:", filteredProjects.length);
         } else {
-            // Filter projects by category, handling the 'both' category properly
+            // Filter projects by category
             filteredProjects = projectsData.filter(project => {
-                const matches = project.category === category || project.category === 'both';
-                console.log(`Project ${project.name}, Category: ${project.category}, Matches ${category}? ${matches}`);
-                return matches;
+                if (category === 'app') {
+                    // Show app and both categories for app filter
+                    return project.category === 'app' || project.category === 'both';
+                } else if (category === 'device') {
+                    // Show device and both categories for device filter
+                    return project.category === 'device' || project.category === 'both';
+                } else {
+                    // For any other category value, just match exactly
+                    return project.category === category;
+                }
             });
+            
             console.log(`Filtered to ${filteredProjects.length} projects for category '${category}'`);
+            console.log("Filtered projects:", filteredProjects.map(p => p.name));
         }
         
         // Display filtered projects

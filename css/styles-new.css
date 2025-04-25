@@ -499,7 +499,7 @@ body {
 /* Hero section improvements - revised for desktop */
 .hero-banner {
   position: relative;
-  background-color: #1e3a8a; /* Fallback color only */
+  background-color: transparent; /* Remove fallback color */
   color: #ffffff;
   text-align: center;
   overflow: hidden;
@@ -512,13 +512,13 @@ body {
   width: 100%;
   padding: 140px 0 80px;
   box-sizing: border-box;
-  background-image: url(../img/Drive2EarnHero.jpg);
+  background-image: url('../img/Drive2EarnHero.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Add semi-transparent overlay - using a lower opacity */
+/* Replace overlay with a more subtle gradient */
 .hero-banner:after {
   content: '';
   position: absolute;
@@ -526,10 +526,11 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(15, 23, 42, 0.4); /* Reduced opacity from 0.65 to 0.4 */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(10,25,50,0.7));
   z-index: 2;
 }
 
+/* Improve text contrast and visibility */
 .hero-content {
   position: relative;
   z-index: 3;
@@ -537,7 +538,7 @@ body {
   text-align: center;
   padding: 2rem 1rem;
   font-weight: 600;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1); /* Stronger text shadow */
 }
 
 .hero-content h1 {
