@@ -195,7 +195,7 @@ function displayProjects(projects) {
                     project.name === 'DreamCars' ? 'https://dreamcars.co/' : 
                     project.name === 'peaq Network' ? 'https://portal.peaq.xyz/?ref=Voixtk3Ix' : 
                     project.url
-                }" target="_blank" class="learn-more-btn">
+                }" target="_blank" class="view-project-btn">
                     ${buttonText}
                 </a>
             `;
