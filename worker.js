@@ -135,7 +135,16 @@ async function handleRequest(request) {
     }
     
     // Create a new response with the GitHub Pages content but with our custom headers
-    const responseBody = await response.text();
+    let responseBody;
+    
+    // Use arrayBuffer for binary content like images, and text for other content
+    const isBinaryContent = contentType.startsWith('image/') || contentType === 'application/octet-stream';
+    
+    if (isBinaryContent) {
+      responseBody = await response.arrayBuffer();
+    } else {
+      responseBody = await response.text();
+    }
     
     return new Response(responseBody, {
       headers: {
