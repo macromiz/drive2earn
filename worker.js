@@ -148,7 +148,7 @@ async function handleRequest(request) {
     
     return new Response(responseBody, {
       headers: {
-        'Content-Type': contentType + '; charset=UTF-8',
+        'Content-Type': isBinaryContent ? contentType : contentType + '; charset=UTF-8',
         'Cache-Control': 'public, max-age=3600' // Cache for 1 hour
       }
     });
