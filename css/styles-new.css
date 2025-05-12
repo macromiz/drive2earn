@@ -99,14 +99,24 @@
     min-height: 100vh;
     height: auto;
     padding: 80px 0 40px;
-    background-size: contain !important; /* Change from cover to contain */
-    background-position: center center !important;
+    background-image: linear-gradient(to bottom, rgba(30, 58, 138, 0.9), rgba(14, 165, 233, 0.8)), url('../img/Drive2EarnHero.png') !important;
+    background-size: cover !important;
+    background-position: center 35% !important;
   }
   
   #hero-section {
-    background-size: contain !important; /* Change from cover to contain */
-    background-position: center center !important;
+    background-image: linear-gradient(to bottom, rgba(30, 58, 138, 0.9), rgba(14, 165, 233, 0.8)), url('../img/Drive2EarnHero.png') !important;
+    background-size: cover !important;
+    background-position: center 35% !important;
     min-height: 100vh;
+  }
+  
+  /* Add a mobile-specific styling for the text elements to ensure they're readable */
+  .main-heading, .hero-subtitle, .trust-badge, 
+  .bad-alternative h3, .better-solution h3, 
+  .bad-alternative p, .better-solution p {
+    text-shadow: 1px 1px 15px rgba(0,0,0,0.9) !important;
+    color: white !important;
   }
   
   .hero-background {
