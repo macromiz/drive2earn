@@ -96,9 +96,17 @@
 /* Complete mobile rewrite for hero section */
 @media (max-width: 768px) {
   .hero-banner {
-    min-height: auto;
+    min-height: 100vh;
     height: auto;
     padding: 80px 0 40px;
+    background-size: contain !important; /* Change from cover to contain */
+    background-position: center center !important;
+  }
+  
+  #hero-section {
+    background-size: contain !important; /* Change from cover to contain */
+    background-position: center center !important;
+    min-height: 100vh;
   }
   
   .hero-background {

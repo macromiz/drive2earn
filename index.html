@@ -85,6 +85,16 @@
             padding: 140px 0 80px !important;
         }
         
+        /* Mobile-specific hero banner styles */
+        @media (max-width: 768px) {
+            .hero-banner {
+                background-size: contain !important;
+                background-position: center center !important;
+                padding: 100px 0 40px !important;
+                min-height: 100vh !important;
+            }
+        }
+        
         /* Create overlay with pseudo-element */
         .hero-banner::before {
             content: '' !important;
@@ -165,6 +175,18 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(10,25,50,0.7));
             z-index: 1;
         "></div>
+        
+        <!-- Add responsive media query for mobile -->
+        <style>
+            @media (max-width: 768px) {
+                #hero-section {
+                    background-size: contain !important;
+                    background-position: center center !important;
+                    min-height: 100vh;
+                    padding: 100px 0 40px;
+                }
+            }
+        </style>
         
         <!-- Content container -->
         <div class="container" style="
