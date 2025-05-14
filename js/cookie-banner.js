@@ -8,11 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const acceptButton = document.getElementById('accept-cookies');
     const declineButton = document.getElementById('decline-cookies');
     
-    // Check if user has already accepted cookies
+    // Check if user has already made a cookie choice
     const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+    const cookiesDeclined = localStorage.getItem('cookiesDeclined');
     
-    // Always show the banner initially for testing purposes
-    // Remove the conditional check to ensure the banner appears
+    // Hide banner if user has already made a choice
+    if (cookiesAccepted === 'true' || cookiesDeclined === 'true') {
+        cookieBanner.style.display = 'none';
+    }
     
     // Add cookie banner styles
     if (cookieBanner) {
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cookieBanner.style.padding = '1rem';
         cookieBanner.style.background = 'rgba(21, 32, 43, 0.95)';
         cookieBanner.style.backdropFilter = 'blur(10px)';
-        cookieBanner.style.borderTop = '1px solid rgba(76, 201, 240, 0.3)';
+        cookieBanner.style.borderTop = 'none'; // Remove border
         cookieBanner.style.zIndex = '9999';
         cookieBanner.style.boxShadow = 'none'; // Remove shadow
         cookieBanner.style.textAlign = 'center';
@@ -45,11 +48,39 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         };
         
+        // Function to set cookies enabled/disabled
+        const setCookiePreference = (enabled) => {
+            // Create a script element to set a global variable for other scripts to check
+            const scriptElem = document.createElement('script');
+            scriptElem.textContent = `window.cookiesEnabled = ${enabled};`;
+            document.head.appendChild(scriptElem);
+            
+            // If cookies declined, disable analytics and tracking scripts
+            if (!enabled) {
+                // Disable Google Analytics if it exists
+                if (window.ga) {
+                    window['ga-disable-UA-XXXXXXXX-X'] = true; // Replace with your GA ID if you have one
+                }
+                
+                // Disable any other tracking scripts
+                const disableTracking = document.createElement('script');
+                disableTracking.textContent = `
+                    // Disable common tracking cookies
+                    document.cookie.split(';').forEach(function(c) {
+                        document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
+                    });
+                `;
+                document.head.appendChild(disableTracking);
+            }
+        };
+        
         // Handle accept button click
         if (acceptButton) {
             acceptButton.addEventListener('click', function() {
                 // Store consent in localStorage
                 localStorage.setItem('cookiesAccepted', 'true');
+                localStorage.removeItem('cookiesDeclined');
+                setCookiePreference(true);
                 hideBanner();
             });
         }
@@ -59,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
             declineButton.addEventListener('click', function() {
                 // Store decline preference in localStorage
                 localStorage.setItem('cookiesDeclined', 'true');
+                localStorage.removeItem('cookiesAccepted');
+                setCookiePreference(false);
                 hideBanner();
             });
         }

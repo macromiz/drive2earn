@@ -1334,6 +1334,8 @@ section, div {
   box-shadow: none; /* Remove the shadow */
   backdrop-filter: blur(10px);
   box-sizing: border-box;
+  border: none; /* Ensure no border */
+  outline: none; /* Remove any outline */
 }
 
 #cookie-banner p {
