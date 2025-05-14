@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptButton = document.getElementById('accept-cookies');
+    const declineButton = document.getElementById('decline-cookies');
     
     // Check if user has already accepted cookies
     const cookiesAccepted = localStorage.getItem('cookiesAccepted');
@@ -28,59 +29,44 @@ document.addEventListener('DOMContentLoaded', function() {
         cookieBanner.style.backdropFilter = 'blur(10px)';
         cookieBanner.style.borderTop = '1px solid rgba(76, 201, 240, 0.3)';
         cookieBanner.style.zIndex = '9999';
-        cookieBanner.style.boxShadow = '0 -5px 20px rgba(0, 0, 0, 0.2)';
+        cookieBanner.style.boxShadow = 'none'; // Remove shadow
         cookieBanner.style.textAlign = 'center';
         
-        // Style the accept button
+        // Function to hide banner
+        const hideBanner = () => {
+            // Hide the banner with a slide-out animation
+            cookieBanner.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+            cookieBanner.style.transform = 'translateY(100%)';
+            cookieBanner.style.opacity = '0';
+            
+            // Remove from DOM after animation completes
+            setTimeout(function() {
+                cookieBanner.style.display = 'none';
+            }, 500);
+        };
+        
+        // Handle accept button click
         if (acceptButton) {
-            acceptButton.style.background = '#38bdf8';
-            acceptButton.style.color = '#0f172a';
-            acceptButton.style.border = 'none';
-            acceptButton.style.borderRadius = '0.5rem';
-            acceptButton.style.padding = '0.75rem 2rem';
-            acceptButton.style.margin = '0.75rem auto 0';
-            acceptButton.style.fontWeight = '600';
-            acceptButton.style.cursor = 'pointer';
-            acceptButton.style.whiteSpace = 'nowrap';
-            acceptButton.style.display = 'block';
-            acceptButton.style.width = 'auto';
-            acceptButton.style.minWidth = '150px';
-            
-            // Add hover effect with transition
-            acceptButton.style.transition = 'all 0.3s ease';
-            acceptButton.addEventListener('mouseover', function() {
-                this.style.transform = 'translateY(-3px)';
-                this.style.boxShadow = '0 5px 15px rgba(56, 189, 248, 0.3)';
-                this.style.background = '#0ea5e9';
-            });
-            
-            acceptButton.addEventListener('mouseout', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = 'none';
-                this.style.background = '#38bdf8';
-            });
-            
-            // Handle accept button click
             acceptButton.addEventListener('click', function() {
                 // Store consent in localStorage
                 localStorage.setItem('cookiesAccepted', 'true');
-                
-                // Hide the banner with a slide-out animation
-                cookieBanner.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-                cookieBanner.style.transform = 'translateY(100%)';
-                cookieBanner.style.opacity = '0';
-                
-                // Remove from DOM after animation completes
-                setTimeout(function() {
-                    cookieBanner.style.display = 'none';
-                }, 500);
+                hideBanner();
+            });
+        }
+        
+        // Handle decline button click
+        if (declineButton) {
+            declineButton.addEventListener('click', function() {
+                // Store decline preference in localStorage
+                localStorage.setItem('cookiesDeclined', 'true');
+                hideBanner();
             });
         }
         
         // Style the text and links in the banner
         const bannerText = cookieBanner.querySelector('p');
         if (bannerText) {
-            bannerText.style.margin = '0';
+            bannerText.style.margin = '0 0 15px 0';
             bannerText.style.color = '#e2e8f0';
             bannerText.style.fontSize = '0.95rem';
             bannerText.style.maxWidth = '800px';
@@ -119,10 +105,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     font-size: 0.85rem;
                 }
                 
-                #accept-cookies {
-                    margin: 0.5rem auto 0;
-                    padding: 0.6rem 1.5rem;
-                    font-size: 0.9rem;
+                .cookie-buttons {
+                    flex-direction: column;
+                    gap: 10px;
+                    width: 100%;
+                    max-width: 250px;
+                }
+                
+                .cookie-btn {
+                    width: 100%;
                 }
             }
         `;
